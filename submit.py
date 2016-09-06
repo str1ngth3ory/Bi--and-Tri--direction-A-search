@@ -77,15 +77,7 @@ def main():
   if args.part == 'assignment_2':
     require_pledges()
     quiz = 'assignment_2'
-    filenames = ["player_submission.py"]
-
-    # Add AI.txt if face off is enabled
-    # if args.enable_face_off:
-    #   filenames.append("AI.txt")
-
-  # else: # args.part == 'play_isolation'
-  #   quiz = 'play_isolation'
-  #   filenames = ["player_submission.py", "challenge_config.json"]
+    filenames = ["search_submission.py"]
 
   print "Submission processing...\n"
   submission = Submission('cs6601', quiz,
