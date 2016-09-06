@@ -60,6 +60,7 @@ class PriorityQueue():
 def breadth_first_search(graph, start, goal):
     raise NotImplementedError
 
+#Warmup exercise: Implement uniform_cost_search
 def uniform_cost_search(graph, start, goal):
     raise NotImplementedError
 
@@ -67,9 +68,11 @@ def uniform_cost_search(graph, start, goal):
 def null_heuristic(graph, u, v, goal ):
     return 0
 
+# Warmup exercise: Implement the euclidean distance heuristic
 def euclidean_dist_heuristic(graph, u, v, goal):
     raise NotImplementedError
 
+# Warmup exercise: Implement A* algorithm
 def a_star(graph, start, goal, heuristic):
     raise NotImplementedError
 
