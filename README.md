@@ -48,4 +48,4 @@ Finally, commit the new updates to your branch and continue developing:
 # Submit your code
 To submit your code to have it evaluated for a grade, use `python submit.py assignment_2`.  You may submit as many times as you like.  The last submission before the deadline will be used to determine your grade.
 
-A friendly reminder: please ensure that your submission is in `player_submission.py`. The scripts described in the following section automatically send that file to the servers for processing.
+A friendly reminder: please ensure that your submission is in `search_submission.py`. The scripts described in the following section automatically send that file to the servers for processing.
