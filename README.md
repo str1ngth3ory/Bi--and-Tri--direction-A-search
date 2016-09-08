@@ -1,3 +1,5 @@
+# CS 6601: Artificial Intelligence - Assignment 2
+
 # Setup
 Clone this repository recursively:
 `git clone --recursive https://github.gatech.edu/omscs6601/assignment_2.git`
