@@ -2,8 +2,8 @@
 # code on the relevant classes included here from the IPython notebook. Do not
 # add any classes or functions to this file that are not part of the classes
 # that we want.
-import math
 from __future__ import division
+import math
 from osm2networkx import *
 import random
 import pickle
