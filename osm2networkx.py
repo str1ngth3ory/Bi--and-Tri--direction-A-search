@@ -8,6 +8,7 @@ http://github.com/bmander/graphserver/tree/master and is copyright (c)
 2007, Brandon Martin-Anderson under the BSD License
 """
 import sys
+sys.path.append('./lib')
 sys.path.append('./workspace/lib')
 
 import xml.sax

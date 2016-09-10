@@ -8,6 +8,7 @@ from osm2networkx import *
 import random
 import pickle
 import sys
+# Comment the next line while submitting to bonnie
 # import matplotlib.pyplot as plt
 
 # Implement a heapq backed priority queue (accompanying the relevant question)
@@ -34,7 +35,7 @@ class PriorityQueue():
     def pop(self):
         raise NotImplementedError
 
-    def remove(self, other):
+    def remove(self, nodeId):
         raise NotImplementedError
     
     def __iter__(self):
@@ -65,11 +66,11 @@ def uniform_cost_search(graph, start, goal):
     raise NotImplementedError
 
 # Warmup exercise: Implement A*
-def null_heuristic(graph, u, v, goal ):
+def null_heuristic(graph, v, goal ):
     return 0
 
 # Warmup exercise: Implement the euclidean distance heuristic
-def euclidean_dist_heuristic(graph, u, v, goal):
+def euclidean_dist_heuristic(graph, v, goal):
     raise NotImplementedError
 
 # Warmup exercise: Implement A* algorithm
@@ -77,7 +78,7 @@ def a_star(graph, start, goal, heuristic):
     raise NotImplementedError
 
 # Exercise 1: Bidirectional Search
-def bidirectional_ucs(graph, start, goal, heuristic=null_heuristic):
+def bidirectional_ucs(graph, start, goal):
     raise NotImplementedError
 
 # Exercise 2: Bidirectional A*
@@ -90,5 +91,5 @@ def tridirectional_search(graph, goals):
 
 # Exercise 4: Present an improvement on tridirectional search in terms of nodes explored
 def tridirectional_upgraded(graph, goals, heuristic):
-    raise NotImplemented
+    raise NotImplementedError
 
