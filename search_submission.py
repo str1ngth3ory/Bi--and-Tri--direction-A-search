@@ -8,7 +8,7 @@ from osm2networkx import *
 import random
 import pickle
 import sys
-# Comment the next line while submitting to bonnie
+# Comment the next line when submitting to bonnie
 # import matplotlib.pyplot as plt
 
 # Implement a heapq backed priority queue (accompanying the relevant question)

@@ -91,6 +91,7 @@ def get_random_path(graph, K=100):
     start_node = nodes[randint(0,min(10,len(nodes)))]
     print('start node has degree %d'%(graph.degree(start_node)))
     path_nodes = []
+    path_edges = []
     explored_nodes = set([start_node])
     last_node = start_node
     explored_nodes.add(start_node)
