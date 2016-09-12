@@ -74,7 +74,7 @@ def euclidean_dist_heuristic(graph, v, goal):
     raise NotImplementedError
 
 # Warmup exercise: Implement A* algorithm
-def a_star(graph, start, goal, heuristic):
+def a_star(graph, start, goal, heuristic=euclidean_dist_heuristic):
     raise NotImplementedError
 
 # Exercise 1: Bidirectional Search
@@ -82,14 +82,14 @@ def bidirectional_ucs(graph, start, goal):
     raise NotImplementedError
 
 # Exercise 2: Bidirectional A*
-def bidirectional_a_star(graph, start, goal, heuristic=null_heuristic):
+def bidirectional_a_star(graph, start, goal, heuristic=euclidean_dist_heuristic):
     raise NotImplementedError
 
-# Exercise 3: Tridirectional Search
+# Exercise 3: Tridirectional UCS Search
 def tridirectional_search(graph, goals):
     raise NotImplementedError
 
 # Exercise 4: Present an improvement on tridirectional search in terms of nodes explored
-def tridirectional_upgraded(graph, goals, heuristic):
+def tridirectional_upgraded(graph, goals, heuristic=euclidean_dist_heuristic):
     raise NotImplementedError
 
