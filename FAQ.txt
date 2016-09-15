@@ -7,3 +7,5 @@ Feedback + Solutions aggregated from students during Beta
 2. Use %matplotlib inline if you want to see the plots displayed within the same browser. Add it after the import statements at the top and you should be good.
 
 3. If you have networkx installed and don’t want to use virtualenv, you can try replacing sys.path.append('lib') with sys.path = ['lib'] + sys.path.
+
+4. Make sure you clean up any changes/modifications/additions you make to the networkx graph struture before you exit the search function. Depending on your changes, the auto grader might face difficulties while testing. The best alternative is to create your own data structure(s).
