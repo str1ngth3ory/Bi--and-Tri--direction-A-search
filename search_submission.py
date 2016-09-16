@@ -93,3 +93,6 @@ def tridirectional_search(graph, goals):
 def tridirectional_upgraded(graph, goals, heuristic=euclidean_dist_heuristic):
     raise NotImplementedError
 
+# Extra Credit: Your best search method for the race
+def custom_search(graph, goals):
+    raise NotImplementedError
