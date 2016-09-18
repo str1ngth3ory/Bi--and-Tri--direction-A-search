@@ -61,7 +61,6 @@ You have the option of using vagrant to make sure that your local code runs in t
 ```
 vagrant up --provider virtualbox
 vagrant ssh
-# Your code lives in the /vagrant folder within this virtual machine.
-# Changes made to files in your assignment folder will automatically
-# be reflected within this virtual machine
 ```
+
+Your code lives in the `/vagrant` folder within this virtual machine. Changes made to files in your assignment folder will automatically be reflected within the machine.
