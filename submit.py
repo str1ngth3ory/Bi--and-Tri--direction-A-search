@@ -70,7 +70,7 @@ def main():
   parser.add_argument('part', choices = ['assignment_2'])
   parser.add_argument('--provider', choices = ['gt', 'udacity'], default = 'gt')
   parser.add_argument('--environment', choices = ['local', 'development', 'staging', 'production'], default = 'production')
-  # parser.add_argument('--enable-face-off', action='store_true', help='Include this flag to sign up for the playoffs. AI.txt must be present')
+  parser.add_argument('--add-data', action='store_true', help='Include this flag to add a data.pickle file that will be available on the test server.')
 
   args = parser.parse_args()
 
@@ -78,6 +78,10 @@ def main():
     require_pledges()
     quiz = 'assignment_2'
     filenames = ["search_submission.py"]
+
+    # Add data.pickle if required
+    if args.add_data:
+      filenames.append("data.pickle")
 
   print "Submission processing...\n"
   submission = Submission('cs6601', quiz,
