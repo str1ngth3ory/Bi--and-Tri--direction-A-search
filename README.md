@@ -50,4 +50,17 @@ Finally, commit the new updates to your branch and continue developing:
 # Submit your code
 To submit your code to have it evaluated for a grade, use `python submit.py assignment_2`.  You may submit as many times as you like.  The last submission before the deadline will be used to determine your grade.
 
+To add a data.pickle file to your submission (containing landmarks of the Atlanta map for custom_search), use `python submit.py assignment_2 --add-data`.
+
 A friendly reminder: please ensure that your submission is in `search_submission.py`. The submit script described automatically sends that file to the servers for processing.
+
+# Vagrant
+
+You have the option of using vagrant to make sure that your local code runs in the same environment as the servers on Bonnie (make sure you have [Vagrant](https://www.vagrantup.com/) and [Virtualbox](https://www.virtualbox.org/wiki/Downloads) installed).  To use this option run the following commands in the root directory of your assignment:
+
+```
+vagrant up --provider virtualbox
+vagrant ssh
+```
+
+Your code lives in the `/vagrant` folder within this virtual machine. Changes made to files in your assignment folder will automatically be reflected within the machine.
