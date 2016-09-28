@@ -45,7 +45,7 @@ The files in conflict are the ones that are "Not staged for commit". Open these 
 
 Finally, commit the new updates to your branch and continue developing:
 
-`git commit -am "<funny message vilifying TAs for the update>"`
+`git commit -am "<funny message vilifying Bonnie>"`
 
 # Submit your code
 To submit your code to have it evaluated for a grade, use `python submit.py assignment_2`.  You may submit as many times as you like.  The last submission before the deadline will be used to determine your grade.
@@ -64,3 +64,7 @@ vagrant ssh
 ```
 
 Your code lives in the `/vagrant` folder within this virtual machine. Changes made to files in your assignment folder will automatically be reflected within the machine.
+
+# Azure Notebooks
+
+Azure has a service for creating and hosting your iPython notebooks. Find it [here](https://notebooks.azure.com/). You can even use your Georgia Tech credentials to sign in. 
