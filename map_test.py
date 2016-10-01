@@ -1,5 +1,4 @@
 # Unit Testing code courtesy one of our former students -  Mac Chan
-# Run at your own risk :)
 
 import unittest
 # if you run this from a separate script, uncomment the following
