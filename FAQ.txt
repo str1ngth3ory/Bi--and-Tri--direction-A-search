@@ -9,3 +9,5 @@ Feedback + Solutions aggregated from students during Beta
 3. If you have networkx installed and don’t want to use virtualenv, you can try replacing sys.path.append('lib') with sys.path = ['lib'] + sys.path.
 
 4. Make sure you clean up any changes/modifications/additions you make to the networkx graph struture before you exit the search function. Depending on your changes, the auto grader might face difficulties while testing. The best alternative is to create your own data structure(s).
+
+5. If you're having problems (exploring too many nodes) with your Breadth first search implementation, one thing many students have found useful is to re-watch the Udacity videos for an optimization trick mentioned.
