@@ -1,6 +1,6 @@
 FAQ
 
-Feedback + Solutions aggregated from students during Beta
+Aggregated Feedback + Solutions
 
 1. If romania = pickle.load(open('romania_graph.pickle', 'rb')) does not work (especially on Windows), you can try reading it without binary mode using romania = pickle.load(open('romania_graph.pickle', 'r')).
 
@@ -11,3 +11,5 @@ Feedback + Solutions aggregated from students during Beta
 4. Make sure you clean up any changes/modifications/additions you make to the networkx graph struture before you exit the search function. Depending on your changes, the auto grader might face difficulties while testing. The best alternative is to create your own data structure(s).
 
 5. If you're having problems (exploring too many nodes) with your Breadth first search implementation, one thing many students have found useful is to re-watch the Udacity videos for an optimization trick mentioned.
+
+6. You may not get full credit if your tri-directional implementation has calls to your bi-directional implementation.
