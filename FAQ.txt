@@ -13,3 +13,5 @@ Aggregated Feedback + Solutions
 5. If you're having problems (exploring too many nodes) with your Breadth first search implementation, one thing many students have found useful is to re-watch the Udacity videos for an optimization trick mentioned.
 
 6. You may not get full credit if your tri-directional implementation has calls to your bi-directional implementation.
+
+7. While submitting to Bonnie, many times the submission goes through even if you get an error on the terminal. You should check the web interface to make sure it’s not gone through before re-submitting. On the other hand, make sure your final submission goes through with Bonnie. Submit your code to T-Square as a backup.
