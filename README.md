@@ -1,4 +1,4 @@
-# CS 6601: Artificial Intelligence - Assignment 2 - Spring 2017
+# CS 6601: Artificial Intelligence - Assignment 2, Search
 
 # Setup
 Clone this repository recursively:
