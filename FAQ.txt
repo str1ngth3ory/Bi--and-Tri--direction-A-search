@@ -15,3 +15,7 @@ Aggregated Feedback + Solutions
 6. You may not get full credit if your tri-directional implementation has calls to your bi-directional implementation.
 
 7. While submitting to Bonnie, many times the submission goes through even if you get an error on the terminal. You should check the web interface to make sure it’s not gone through before re-submitting. On the other hand, make sure your final submission goes through with Bonnie. Submit your code to T-Square as a backup.
+
+8. Most 'NoneType object ...' errors are because the path you return is not completely connected (a pair of successive nodes in the path are not connected). Or because the path variable itself is empty.
+
+9. Adding unit tests to your code may cause your Bonnie submission to fail. It is best to comment them out when you submit to Bonnie.
