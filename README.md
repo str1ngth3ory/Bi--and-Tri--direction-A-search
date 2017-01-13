@@ -1,6 +1,6 @@
 # CS 6601: Artificial Intelligence - Assignment 2, Search
 
-Find the assignment description [here](https://docs.google.com/document/d/1Fct-45PuiT500cYda_15SpWBA44iBObLXQAhuTsWcTs/pub)
+Find the assignment description [here](https://docs.google.com/document/d/1Fct-45PuiT500cYda_15SpWBA44iBObLXQAhuTsWcTs/pub).
 
 # Setup
 Clone this repository recursively:
