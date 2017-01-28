@@ -53,18 +53,6 @@ def display_assignment_2_output(submission):
   else:
     print("Unknown error.")
 
-def display_game(submission):
-  while not submission.poll():
-    time.sleep(3.0)
-
-  if submission.feedback():
-    sys.stdout.write(submission.feedback())
-  elif submission.error_report():
-      error_report = submission.error_report()
-      print(json.dumps(error_report, indent=4))
-  else:
-    print("Unknown error.")
-
 def main():
   parser = argparse.ArgumentParser(description='Submits code to the Udacity site.')
   parser.add_argument('part', choices = ['assignment_2'])
@@ -91,8 +79,6 @@ def main():
 
   if args.part == 'assignment_2':
     display_assignment_2_output(submission)
-  else:
-    display_game(submission)
 
 if __name__ == '__main__':
   main()
