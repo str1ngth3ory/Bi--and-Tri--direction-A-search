@@ -52,8 +52,6 @@ Finally, commit the new updates to your branch and continue developing:
 # Submit your code
 To submit your code to have it evaluated for a grade, use `python submit.py assignment_2`.  You may submit as many times as you like.  The last submission before the deadline will be used to determine your grade.
 
-To add a data.pickle file to your submission (containing landmarks of the Atlanta map for custom_search), use `python submit.py assignment_2 --add-data`.
-
 A friendly reminder: please ensure that your submission is in `search_submission.py`. The submit script described automatically sends that file to the servers for processing.
 
 # Vagrant
