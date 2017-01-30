@@ -10,6 +10,9 @@
 # But you can read the pdf slides for the optimized terminal condition.
 
 import unittest
+import pickle
+import random
+
 # if you run this from a separate script, uncomment the following
 # from search_submission import breadth_first_search, uniform_cost_search, null_heuristic, euclidean_dist_heuristic, a_star, bidirectional_ucs, bidirectional_a_star, tridirectional_search, tridirectional_upgraded
 
