@@ -19,3 +19,5 @@ Aggregated Feedback + Solutions
 8. Most 'NoneType object ...' errors are because the path you return is not completely connected (a pair of successive nodes in the path are not connected). Or because the path variable itself is empty.
 
 9. Adding unit tests to your code may cause your Bonnie submission to fail. It is best to comment them out when you submit to Bonnie.
+
+10. The testing file map_test.py is intended as a diagnostic tool. Feel free to modify it, but be careful.
