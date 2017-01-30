@@ -55,6 +55,15 @@ class PriorityQueue():
         self.current = 0
         return self == other
 
+    def size(self):
+        return len(self.queue)
+    
+    def clear(self):
+        self.queue = []
+        
+    def top(self):
+        return self.queue[0]
+
     __next__ = next
 
 #Warmup exercise: Implement breadth-first-search
