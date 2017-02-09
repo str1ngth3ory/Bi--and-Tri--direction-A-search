@@ -8,6 +8,7 @@ from osm2networkx import *
 import random
 import pickle
 import sys
+import os
 # Comment the next line when submitting to bonnie
 # import matplotlib.pyplot as plt
 
@@ -105,7 +106,7 @@ def tridirectional_upgraded(graph, goals, heuristic=euclidean_dist_heuristic):
 # Extra Credit: Your best search method for the race
 # Loads data from data.pickle and return the data object that is passed to the custom_search method. Will be called only once. Feel free to modify. 
 def load_data():
-    data = pickle.load(open('./data.pickle', 'rb'))
+    data = pickle.load(open(os.path.join(os.path.dirname(os.path.realpath(__file__)), "data.pickle"), 'rb'))
     return data
 
 def custom_search(graph, goals, data=None):

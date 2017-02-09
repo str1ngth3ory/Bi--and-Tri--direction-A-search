@@ -23,3 +23,5 @@ Aggregated Feedback + Solutions
 10. Adding unit tests to your code may cause your Bonnie submission to fail. It is best to comment them out when you submit to Bonnie.
 
 11. The testing file map_test.py is intended as a diagnostic tool. Feel free to modify it, but be careful.
+
+12. Make sure you're returning [] for when the source and destination points are the same.
