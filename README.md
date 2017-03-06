@@ -1,7 +1,7 @@
 # CS 6601: Artificial Intelligence - Assignment 2, Search
 
 Find the assignment description [here](https://docs.google.com/document/d/1Fct-45PuiT500cYda_15SpWBA44iBObLXQAhuTsWcTs/pub).
-Please also read the [FAQ](https://github.gatech.edu/omscs6601/assignment_2/blob/master/FAQ.txt).
+Please also read the [FAQ](https://docs.google.com/document/d/1NtIjSdpTSyq4EmIRUtJE9FtUgy5zJtqadHVAm0vBBa0/pub).
 
 Here are some notes you might find useful.
 <ol>
