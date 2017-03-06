@@ -5,6 +5,7 @@ Please also read the [FAQ](https://github.gatech.edu/omscs6601/assignment_2/blob
 
 Here are some notes you might find useful.
 <ol>
+  <li><a href="https://docs.google.com/document/d/1hykYneVoV_JbwBjVz9ayFTA6Yr3pgw6JBvzrCgM0vyY/pub" target="_blank">Bonnie: Error Messages</a></li>
   <li><a href="https://docs.google.com/document/d/14Wr2SeRKDXFGdD-qNrBpXjW8INCGIfiAoJ0UkZaLWto/pub" target="_blank">Bi-directional Search</a></li>
   <li><a href="https://docs.google.com/document/d/1Gfw8mC36CzC4FypqeU6FBUMEi8A70_Qbvi8WOw63WtU/pub" target="_blank">Tri-directional Search</a></li>
   <li><a href="https://docs.google.com/document/d/1YEptGbSYUtu180MfvmrmA4B6X9ImdI4oOmLaaMRHiCA/pub" target="_blank">Using Landmarks</a></li>
