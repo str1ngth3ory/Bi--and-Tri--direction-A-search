@@ -2,6 +2,7 @@
 
 Find the assignment description [here](https://docs.google.com/document/d/1Fct-45PuiT500cYda_15SpWBA44iBObLXQAhuTsWcTs/pub).
 Please also read the [FAQ](https://docs.google.com/document/d/1NtIjSdpTSyq4EmIRUtJE9FtUgy5zJtqadHVAm0vBBa0/pub).
+A read-only version of the iPython notebook can be found [here](https://github.gatech.edu/omscs6601/assignment_2/blob/master/search_notebook.ipynb).
 
 Here are some notes you might find useful.
 <ol>
