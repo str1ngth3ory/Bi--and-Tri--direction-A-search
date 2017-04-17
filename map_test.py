@@ -1,4 +1,4 @@
-# Unit Testing code courtesy one of our former students -  Mac Chan
+# Error Diagnoistic code courtesy one of our former students -  Mac Chan
 # 
 # The following unit tests will check for all pairs on romania and random points on atlanta.
 # Comment out any tests that you haven't implemented yet.
