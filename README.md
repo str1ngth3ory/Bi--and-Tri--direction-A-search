@@ -16,7 +16,7 @@ Here are some notes you might find useful.
 Clone this repository recursively:
 `git clone --recursive https://github.gatech.edu/omscs6601/assignment_2.git`
 
-(If your version of git does not support recurse clone, then clone without the option and run `git submodule init` and `git submodule update`).
+(If your version of git does not support recursive clone, then clone without the option and run `git submodule init` and `git submodule update`).
 
 If you run across certificate authentication issues during the clone, set the git SSL Verify option to false: `git config --global http.sslVerify false`.
 
