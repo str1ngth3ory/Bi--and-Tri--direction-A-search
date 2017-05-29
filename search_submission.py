@@ -277,7 +277,8 @@ def bidirectional_ucs(graph, start, goal):
 #     3) We will provide some margin of error in grading the size of your
 #        'Explored' set, but it should be close to the results provided by our
 #        reference implementation.
-def bidirectional_a_star(graph, start, goal, heuristic):
+def bidirectional_a_star(graph, start, goal,
+                         heuristic=euclidean_dist_heuristic):
     """
     Run bidirectional A* search between
     start and goal.
