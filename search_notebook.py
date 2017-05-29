@@ -1,22 +1,30 @@
 # coding: utf-8
 
 # # Assignment 2: Graph Search
-# In this assignment you will be implementing a variety of graph search algorithms, with the eventual goal of solving tridirectional search.
+# In this assignment you will be implementing a variety of graph search
+# algorithms, with the eventual goal of solving tri-directional search.
 #
 # Before you start, you will need:
 #
-# 1. [networkx](http://networkx.github.io/), which is a package for processing networks. This assignment will be easier if you take some time to test out and get familiar with the [basic methods](https://networkx.github.io/examples.html) of networkx. We have provided a version of networkx for you to use. It is in the lib folder. Please only use that version. If you have installed networkx already, run this code on a virtualenv without networkx installed. What's a virtualenv you say? See [this](http://docs.python-guide.org/en/latest/dev/virtualenvs/).
+# 1. [networkx](http://networkx.github.io/), which is a package for processing
+# networks. This assignment will be easier if you take some time to test out
+# and get familiar with the [basic methods](https://networkx.github.io/examples.html)
+# of networkx. We have provided a version of networkx for you to use. It is in
+# the lib folder. Please only use that version. If you have installed networkx
+# already, run this code on a virtualenv without networkx installed. What's a
+# virtualenv you say? See [this](http://docs.python-guide.org/en/latest/dev/virtualenvs/).
 #
-# 2. [matplotlib](http://matplotlib.org/downloads.html) for basic network visualization. You're free to use your own version :)
+# 2. [matplotlib](http://matplotlib.org/downloads.html) for basic network
+# visualization. You're free to use your own version :)
 #
-# 3. [Python 2.7.x](https://www.python.org/downloads/) (in case you're on Python 3).
+# 3. [Python 2.7.x](https://www.python.org/downloads/) (in case you're on
+# Python 3).
 #
-# We will be using two undirected networks for this assignment: a simplified [map](http://robotics.cs.tamu.edu/dshell/cs420/images/map.jpg) of Romania (from Russell and Norvig) and a full street map of Atlanta.
+# We will be using two undirected networks for this assignment: a simplified
+# [map](http://robotics.cs.tamu.edu/dshell/cs420/images/map.jpg) of Romania
+# (from Russell and Norvig) and a full street map of Atlanta.
 #
 # A read-only version of this notebook can be found [here](https://github.gatech.edu/omscs6601/assignment_2/blob/master/search_notebook.ipynb).
-
-# In[ ]:
-
 
 from __future__ import division
 import random
