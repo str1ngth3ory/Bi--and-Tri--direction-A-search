@@ -88,8 +88,46 @@ class PriorityQueue(object):
 
     __next__ = next
 
-#Warmup exercise: Implement breadth-first-search
+
+# Warm-up 2: BFS
+# ----------
+# 5 pts
+#
+#
+# To get you started with handling graphs in networkx, implement and test
+# breadth-first search over the test network.
+#
+# You'll do complete this by writing the "breadth_first_search" method. This
+# returns a path of nodes from a given start node to a given end node, as a
+# list.
+#
+# For this part, it is optional to use the PriorityQueue as your frontier. You
+# will require it from the next question onwards. You can use it here too if
+# you want to be consistent.
+#
+# Notes:
+# 1. You need to include start and goal in the path.
+# 2. If your start and goal are the same then just return [].
+#
+# Both of the above are just to keep your results consistent with our test
+# cases.
+#
+# You can access all the neighbors of a given node by calling graph[node], or
+# graph.neighbors(node) ONLY. To measure your search performance, a modified
+# version of the networkx Graph class is provided. It keeps track of which
+# nodes you have accessed in this way (this is referred to as the set of
+# 'Explored' nodes). To retrieve the set of nodes you've explored in this way,
+# check the 'graph.explored_nodes' property. If you wish to perform multiple
+# searches on the same graph instance, call 'graph.reset_search()' to clear out
+# the current set of 'Explored' nodes. Note however, that you will not have
+# access to these modifications on the test server. Also, there is no need to
+# reset the graph while submitting to the test server.
 def breadth_first_search(graph, start, goal):
+    """
+    Run a breadth-first search from start
+    to goal and return the path.
+    """
+    # TODO: finish this function!
     raise NotImplementedError
 
 #Warmup exercise: Implement uniform_cost_search

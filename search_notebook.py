@@ -35,7 +35,7 @@ import matplotlib.pyplot as plt
 import networkx
 
 from ExplorableGraph import ExplorableGraph
-from search_submission import PriorityQueue
+from search_submission import PriorityQueue, breadth_first_search
 
 """Romania map data from Russell and Norvig, Chapter 3."""
 romania = pickle.load(open('romania_graph.pickle', 'rb'))
@@ -66,77 +66,43 @@ def check_pq():
 check_pq()
 
 
-# Warm-up 2: BFS
-# ----------
-# 5 pts
-#
-#
-# To get you started with handling graphs in networkx, implement and test breadth-first search over the test network.
-#
-# You'll do complete this by writing the "breadth_first_search" method. This returns a path of nodes from a given start node to a given end node, as a list.
-#
-# For this part, it is optional to use the PriorityQueue as your frontier. You will require it from the next question onwards. You can use it here too if you want to be consistent.
-#
-# Notes:
-# 1. You need to include start and goal in the path.
-# 2. If your start and goal are the same then just return [].
-#
-# Both of the above are just to keep your results consistent with our test cases.
-#
-# You can access all the neighbors of a given node by calling graph[node], or graph.neighbors(node) ONLY. To measure your search performance, the modified version of networkx provided keeps track of which nodes you have accessed in this way (this is referred to as the set of 'Explored' nodes). To retrieve the set of nodes you've explored in this way, call graph.get_explored_nodes(). If you wish to perform multiple searches on the same graph instance, call 'graph.reset_search()' to clear out the current set of 'Explored' nodes. Note however, that you will not have access to the explored set on the test server. Also, there is no need to reset the graph while submitting to the test server.
-
-# In[ ]:
-
-
-def breadth_first_search(graph, start, goal):
-    """Run a breadth-first search from start
-    to goal and return the path."""
-    # TODO: finish this function!
-    raise NotImplementedError
-    # return path
-
-
-# In[ ]:
-
-
 # This function exists to help you visually debug your code.
 # Feel free to modify it in any way you like.
-# graph should be a networkx graph
+# graph should be an ExplorableGraph which contains a networkx graph
 # node_positions should be a dictionary mapping nodes to x,y coordinates
-
 # IMP - This function may modify the graph you pass to it.
 def draw_graph(graph, node_positions={}, start=None, goal=None, path=[]):
+    explored = list(graph.explored_nodes)
 
-    explored = list(graph.get_explored_nodes())
-
-    labels ={}
+    labels = {}
     for node in graph:
-        labels[node]=node
+        labels[node] = node
 
     if not node_positions:
         node_positions = networkx.spring_layout(graph)
 
     networkx.draw_networkx_nodes(graph, node_positions)
     networkx.draw_networkx_edges(graph, node_positions, style='dashed')
-    networkx.draw_networkx_labels(graph,node_positions, labels)
+    networkx.draw_networkx_labels(graph, node_positions, labels)
 
-    networkx.draw_networkx_nodes(graph, node_positions, nodelist=explored, node_color='g')
+    networkx.draw_networkx_nodes(graph, node_positions, nodelist=explored,
+                                 node_color='g')
 
     if path:
-        edges = [(path[i], path[i+1]) for i in range(0, len(path)-1)]
-        networkx.draw_networkx_edges(graph, node_positions, edgelist=edges, edge_color='b')
+        edges = [(path[i], path[i + 1]) for i in range(0, len(path) - 1)]
+        networkx.draw_networkx_edges(graph, node_positions, edgelist=edges,
+                                     edge_color='b')
 
     if start:
-        networkx.draw_networkx_nodes(graph, node_positions, nodelist=[start], node_color='b')
+        networkx.draw_networkx_nodes(graph, node_positions, nodelist=[start],
+                                     node_color='b')
 
     if goal:
-        networkx.draw_networkx_nodes(graph, node_positions, nodelist=[goal], node_color='y')
+        networkx.draw_networkx_nodes(graph, node_positions, nodelist=[goal],
+                                     node_color='y')
 
     plt.plot()
     plt.show()
-
-
-# In[ ]:
 
 
 """Testing and visualizing breadth-first search
@@ -149,7 +115,8 @@ node_positions = {n: romania.node[n]['pos'] for n in romania.node.keys()}
 romania.reset_search()
 path = breadth_first_search(romania, start, goal)
 
-draw_graph(romania, node_positions=node_positions, start=start, goal=goal, path=path)
+draw_graph(romania, node_positions=node_positions, start=start, goal=goal,
+           path=path)
 
 
 # Warmup Examples
