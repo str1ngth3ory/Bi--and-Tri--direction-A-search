@@ -12,3 +12,7 @@ __pycache__/
 
 # Vagrant
 .vagrant/
+
+# IntelliJ/PyCharm
+.idea/
+*.iml
