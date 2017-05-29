@@ -119,55 +119,6 @@ draw_graph(romania, node_positions=node_positions, start=start, goal=goal,
            path=path)
 
 
-# Warmup 4: A\* search
-# ------------------
-# 10 points
-# Implement A\* search using Euclidean distance as your heuristic. You'll need to implement heuristic_euclid() then pass that function to a_star() as the heuristic parameter. We provide null_heuristic() as a baseline heuristic to test against when calling a_star tests.
-#
-# Hint: you can find a node's position by calling:
-#
-#      graph.node[n]['pos']      - Romania map
-#      graph.node[n]['position'] - Atlanta map
-#
-# Tip: use graph.node[n].get('position') or graph.node[n].get('pos') to check if the key is available.
-#
-# Notes:
-# 1. You do need to include start and goal in the path.
-# 2. If your start and goal are the same then just return []
-# 3. We will provide some margin of error in grading the size of your 'Explored' set, but it should be close to the results provided by our reference implementation.
-#
-# The above are just to keep your results consistent with our test cases.
-
-# In[ ]:
-
-
-def null_heuristic(graph, v, goal):
-    """Return 0 for all nodes."""
-    return 0
-
-
-# In[ ]:
-
-
-def euclidean_dist_heuristic(graph, v, goal):
-    """Return the Euclidean distance from
-    node v to the goal."""
-    # TODO: finish this function
-    raise NotImplementedError
-
-
-# In[ ]:
-
-
-def a_star(graph, start, goal, heuristic):
-    """Run A* search from the start to
-    goal using the specified heuristic
-    function, and return the final path."""
-    # TODO: finish this function
-    raise NotImplementedError
-    # return path
-
-
 # Exercises
 # -------
 #
