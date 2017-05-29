@@ -36,7 +36,7 @@ import os
 #
 # Hints:
 # 1. The [heapq](https://docs.python.org/2/library/heapq.html) module has been
-# imported for you.
+#    imported for you.
 # 2. Each edge has an associated weight.
 # Implement a heapq backed priority queue (accompanying the relevant question)
 class PriorityQueue(object):
@@ -152,8 +152,8 @@ def breadth_first_search(graph, start, goal):
 # 1. You do need to include start and goal in the path.
 # 2. If your start and goal are the same then just return []
 # 3. We will provide some margin of error in grading the size of your
-# 'Explored' set, but it should be close to the results provided by our
-# reference implementation.
+#    'Explored' set, but it should be close to the results provided by our
+#    reference implementation.
 #
 # The above are just to keep your results consistent with our test cases.
 def uniform_cost_search(graph, start, goal):
@@ -165,10 +165,10 @@ def uniform_cost_search(graph, start, goal):
     raise NotImplementedError
 
 
-# Warmup 4: A\* search
+# Warmup 4: A* search
 # ------------------
 # 10 points
-# Implement A\* search using Euclidean distance as your heuristic. You'll need
+# Implement A* search using Euclidean distance as your heuristic. You'll need
 # to implement heuristic_euclid() then pass that function to a_star() as the
 # heuristic parameter. We provide null_heuristic() as a baseline heuristic to
 # test against when calling a_star tests.
@@ -185,8 +185,8 @@ def uniform_cost_search(graph, start, goal):
 # 1. You do need to include start and goal in the path.
 # 2. If your start and goal are the same then just return []
 # 3. We will provide some margin of error in grading the size of your
-# 'Explored' set, but it should be close to the results provided by our
-# reference implementation.
+#    'Explored' set, but it should be close to the results provided by our
+#    reference implementation.
 #
 # The above are just to keep your results consistent with our test cases.
 def null_heuristic(graph, v, goal):
@@ -257,8 +257,32 @@ def bidirectional_ucs(graph, start, goal):
     # TODO: finish this function
     raise NotImplementedError
 
-# Exercise 2: Bidirectional A*
-def bidirectional_a_star(graph, start, goal, heuristic=euclidean_dist_heuristic):
+
+# Exercise 2: Bidirectional A* search
+# -------
+# 20 points
+#
+# Implement bidirectional A* search. Remember that you need to calculate a
+# heuristic for both the start-to-goal search and the goal-to-start search.
+#
+# To test this function, as well as using the provided tests, you can compare
+# the path computed by bidirectional A star to bidirectional ucs search above.
+#
+# bidirectional_a_star should return the path from the start node to the goal
+# node, as a list of nodes.
+#
+# Notes:
+#     1) You do need to include start and goal in the path.
+#     2) If your start and goal are the same then just return []
+#     3) We will provide some margin of error in grading the size of your
+#        'Explored' set, but it should be close to the results provided by our
+#        reference implementation.
+def bidirectional_a_star(graph, start, goal, heuristic):
+    """
+    Run bidirectional A* search between
+    start and goal.
+    """
+    # TODO: finish this function
     raise NotImplementedError
 
 # Exercise 3: Tridirectional UCS Search

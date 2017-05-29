@@ -152,34 +152,6 @@ plot_search(atlanta, 'atlanta_search.json', path, all_explored)
 # then upload 'atlanta_search.json' to Gist
 
 
-# Exercise 2: Bidirectional A\* search
-# -------
-# 20 points
-#
-# Implement bidirectional A\* search. Remember that you need to calculate a heuristic for both the start-to-goal search and the goal-to-start search.
-#
-# To test this function, as well as using the provided tests, you can compare the path computed by bidirectional A star to bidirectional ucs search above.
-#
-# bidirectional_a_star should return the path from the start node to the goal node, as a list of nodes.
-#
-# Notes:
-#
-#     1) You do need to include start and goal in the path.
-#     2) If your start and goal are the same then just return []
-#     3) We will provide some margin of error in grading the size of your 'Explored' set, but it should be close to the results provided by our reference implementation.
-#
-
-# In[ ]:
-
-
-def bidirectional_a_star(graph, start, goal, heuristic):
-    """Run bidirectional A* search between
-    start and goal."""
-    # TODO: finish this function
-    raise NotImplementedError
-    #return path
-
-
 # Exercise 3: Tridirectional search
 # ------
 # 20 points
