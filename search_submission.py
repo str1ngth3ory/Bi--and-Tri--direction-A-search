@@ -213,8 +213,48 @@ def a_star(graph, start, goal, heuristic=euclidean_dist_heuristic):
     raise NotImplementedError
 
 
-# Exercise 1: Bidirectional Search
+# Exercises
+# -------
+#
+#
+# The following exercises will require you to implement several kinds of
+# bidirectional and tri-directional searches. For these exercises, we recommend
+# you take a look at the [resources](https://github.gatech.edu/omscs6601/assignment_2/tree/master/resources)
+# folder in the assignment repo and the notes linked in the assignment repo's
+# [README](https://github.gatech.edu/omscs6601/assignment_2/blob/master/README.md).
+#
+# The benefits of these algorithms over uninformed or unidirectional search are
+# more clearly seen on larger graphs. As such, during grading, we will evaluate
+# your performance on the map of Atlanta [OpenStreetMap](http://wiki.openstreetmap.org/)
+# included in this assignment. If you want to run tests using this data (rather
+# than just testing on the server), you'll need to load the data from the file.
+# If you're testing locally, be advised, not all nodes are connected.
+
+# Exercise 1: Bidirectional uniform-cost search
+# -------
+# 15 points
+#
+# Implement bidirectional uniform-cost search. Remember that this requires
+# starting your search at both the start and end states.
+#
+# bidirectional_ucs() should return the path from the start node to the goal
+# node (as a list of nodes).
+#
+# Notes:
+#     1) You do need to include start and goal in the path.
+#     2) If your start and goal are the same then just return []
+#     3) We will provide some margin of error in grading the size of your
+#        'Explored' set, but it should be close to the results provided by our
+#        reference implementation.
+#
+#
+# All of the above are just to keep your results consistent with our test cases
 def bidirectional_ucs(graph, start, goal):
+    """
+    Run bidirectional uniform-cost search
+    between start and goal
+    """
+    # TODO: finish this function
     raise NotImplementedError
 
 # Exercise 2: Bidirectional A*

@@ -35,7 +35,9 @@ import matplotlib.pyplot as plt
 import networkx
 
 from ExplorableGraph import ExplorableGraph
+from osm2networkx import *
 from search_submission import *
+from visualize_graph import plot_search
 
 """Romania map data from Russell and Norvig, Chapter 3."""
 romania = pickle.load(open('romania_graph.pickle', 'rb'))
@@ -119,36 +121,28 @@ draw_graph(romania, node_positions=node_positions, start=start, goal=goal,
            path=path)
 
 
-# Exercises
-# -------
-#
-#
-# The following exercises will require you to implement several kinds of bidirectional and tridirectional searches. For these exercises, we recommend you take a look at the [resources](https://github.gatech.edu/omscs6601/assignment_2/tree/master/resources) folder in the assignment repo and the notes linked in the assignment repo's [README](https://github.gatech.edu/omscs6601/assignment_2/blob/master/README.md).
-#
-# The benefits of these algorithms over uninformed or unidirectional search are more clearly seen on larger graphs. As such, during grading, we will evaluate your performance on the map of Atlanta [OpenStreetMap](http://wiki.openstreetmap.org/) included in this assignment. If you want to run tests in iPython notebook using this data (rather than just testing on the server), you'll need to load the data from file in the cell below. If you're testing locally, be advised, not all nodes are connected.
-
-# In[ ]:
-
-
-from osm2networkx import *
 """Loading Atlanta map data."""
-atlanta = pickle.load(open('atlanta_osm.pickle','rb'))
+atlanta = pickle.load(open('atlanta_osm.pickle', 'rb'))
+atlanta = ExplorableGraph(atlanta)
 atlanta.reset_search()
 
 
 # Visualizing search results
 # ---
+# When using a geographic network, you may want to visualize your searches. We
+# can do this by converting the search results to a [GeoJSON](https://en.wikipedia.org/wiki/GeoJSON)
+# file which we then visualize on [Gist](https://gist.github.com/) by
+# [importing](https://github.com/blog/1576-gist-meets-geojson) the file.
 #
-# When using a geographic network, you may want to visualize your searches. We can do this by converting the search results to a [GeoJSON](https://en.wikipedia.org/wiki/GeoJSON) file which we then visualize on [Gist](https://gist.github.com/) by [importing](https://github.com/blog/1576-gist-meets-geojson) the file.
-#
-# We provide a method for doing this in visualize_graph.py called plot_search(), which takes as parameters the graph, the name of the file to write, the nodes on the path, and the set of all nodes explored. This produces a GeoJSON file named as specified, which you can upload to Gist to visualize the search path and explored nodes.
-
-# In[ ]:
+# We provide a method for doing this in visualize_graph.py called plot_search()
+# which takes as parameters the graph, the name of the file to write, the nodes
+# on the path, and the set of all nodes explored. This produces a GeoJSON file
+# named as specified, which you can upload to Gist to visualize the search path
+# and explored nodes.
 
 
 """Example of how to visualize search results
 with two sample nodes in Atlanta."""
-from visualize_graph import plot_search
 # NOTE: *** Please complete the  bidirectional_ucs before this.***
 # You can try visualization with any other search methods completed above too.
 atlanta.reset_search()
@@ -156,34 +150,6 @@ path = bidirectional_ucs(atlanta, '69244359', '557989279')
 all_explored = atlanta.get_explored_nodes()
 plot_search(atlanta, 'atlanta_search.json', path, all_explored)
 # then upload 'atlanta_search.json' to Gist
-
-
-# Exercise 1: Bidirectional uniform-cost search
-# -------
-# 15 points
-#
-# Implement bidirectional uniform-cost search. Remember that this requires starting your search at both the start and end states.
-#
-# bidirectional_ucs() should return the path from the start node to the goal node (as a list of nodes).
-#
-# Notes:
-#
-#     1) You do need to include start and goal in the path.
-#     2) If your start and goal are the same then just return []
-#     3) We will provide some margin of error in grading the size of your 'Explored' set, but it should be close to the results provided by our reference implementation.
-#
-#
-# All of the above are just to keep your results consistent with our test cases.
-
-# In[ ]:
-
-
-def bidirectional_ucs(graph, start, goal):
-    """Run bidirectional uniform-cost search
-    between start and goal"""
-    # TODO: finish this function
-    raise NotImplementedError
-#     return path
 
 
 # Exercise 2: Bidirectional A\* search
