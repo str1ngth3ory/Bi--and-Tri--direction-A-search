@@ -150,18 +150,3 @@ path = bidirectional_ucs(atlanta, '69244359', '557989279')
 all_explored = atlanta.get_explored_nodes()
 plot_search(atlanta, 'atlanta_search.json', path, all_explored)
 # then upload 'atlanta_search.json' to Gist
-
-
-# Race!
-# ---
-# Here's your chance to show us your best stuff. This part is mandatory if you want to compete in the race for extra credit. Implement custom_search() using whatever strategy you like. Your search should be tri-directional and it'll be tested on the Atlanta map only.
-
-# In[ ]:
-
-
-def custom_search(graph, goals):
-    """Run your best tridirectional search between
-    goals, and return the path."""
-    raise NotImplementedError
-    # return path
-

@@ -286,11 +286,25 @@ def bidirectional_a_star(graph, start, goal, heuristic):
     raise NotImplementedError
 
 
-# Extra Credit: Your best search method for the race
-# Loads data from data.pickle and return the data object that is passed to the custom_search method. Will be called only once. Feel free to modify.
-def load_data():
-    data = pickle.load(open(os.path.join(os.path.dirname(os.path.realpath(__file__)), "data.pickle"), 'rb'))
-    return data
-
-def custom_search(graph, goals, data=None):
+# Race!
+# ---
+# Here's your chance to show us your best stuff. This part is mandatory if you
+# want to compete in the race for extra credit. Implement custom_search() using
+# whatever strategy you like. Your search should be tri-directional and it'll
+# be tested on the Atlanta map only.
+def custom_search(graph, goals):
+    """
+    Run your best tri-directional search between
+    goals, and return the path.
+    """
     raise NotImplementedError
+
+
+# Extra Credit: Your best search method for the race
+# Loads data from data.pickle and return the data object that is passed to the
+# custom_search method. Will be called only once. Feel free to modify.
+def load_data():
+    path = os.path.join(os.path.dirname(os.path.realpath(__file__)),
+                        "data.pickle")
+    data = pickle.load(open(path, 'rb'))
+    return data
