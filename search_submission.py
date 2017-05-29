@@ -130,8 +130,38 @@ def breadth_first_search(graph, start, goal):
     # TODO: finish this function!
     raise NotImplementedError
 
-#Warmup exercise: Implement uniform_cost_search
+
+# Warmup Examples
+# ----------
+#
+# Some examples of correct warmup searches can be found [here](https://docs.google.com/document/d/18Bl7awruAabUXAhMy-T88hWKTteueEb7hk6gA32GulQ/pub).
+
+
+# Warmup 3: Uniform-cost search
+# ----------------------------
+# 10 points
+#
+# Implement uniform-cost search, using PriorityQueue as your frontier. From now
+# on, PriorityQueue should be your default frontier.
+#
+# uniform_cost_search() should return the same arguments as breadth-first
+# search: the path to the goal node (as a list of nodes).
+#
+#
+# Notes:
+# 1. You do need to include start and goal in the path.
+# 2. If your start and goal are the same then just return []
+# 3. We will provide some margin of error in grading the size of your
+# 'Explored' set, but it should be close to the results provided by our
+# reference implementation.
+#
+# The above are just to keep your results consistent with our test cases.
 def uniform_cost_search(graph, start, goal):
+    """
+    Run uniform-cost search from start
+    to goal and return the path.
+    """
+    # TODO: finish this function
     raise NotImplementedError
 
 # Warmup exercise: Implement A*

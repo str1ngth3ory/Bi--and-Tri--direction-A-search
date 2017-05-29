@@ -35,7 +35,7 @@ import matplotlib.pyplot as plt
 import networkx
 
 from ExplorableGraph import ExplorableGraph
-from search_submission import PriorityQueue, breadth_first_search
+from search_submission import *
 
 """Romania map data from Russell and Norvig, Chapter 3."""
 romania = pickle.load(open('romania_graph.pickle', 'rb'))
@@ -117,41 +117,6 @@ path = breadth_first_search(romania, start, goal)
 
 draw_graph(romania, node_positions=node_positions, start=start, goal=goal,
            path=path)
-
-
-# Warmup Examples
-# ----------
-#
-# Some examples of correct warmup searches can be found [here](https://docs.google.com/document/d/18Bl7awruAabUXAhMy-T88hWKTteueEb7hk6gA32GulQ/pub).
-#
-#
-#
-
-# Warmup 3: Uniform-cost search
-# ----------------------------
-# 10 points
-#
-# Implement uniform-cost search, using PriorityQueue as your frontier. From now on, PriorityQueue should be your default frontier.
-#
-# uniform_cost_search() should return the same arguments as breadth-first search: the path to the goal node (as a list of nodes).
-#
-#
-# Notes:
-# 1. You do need to include start and goal in the path.
-# 2. If your start and goal are the same then just return []
-# 3. We will provide some margin of error in grading the size of your 'Explored' set, but it should be close to the results provided by our reference implementation.
-#
-# The above are just to keep your results consistent with our test cases.
-
-# In[ ]:
-
-
-def uniform_cost_search(graph, start, goal):
-    """Run uniform-cost search from start
-    to goal and return the path"""
-    # TODO: finish this function
-    raise NotImplementedError
-    # return path
 
 
 # Warmup 4: A\* search
