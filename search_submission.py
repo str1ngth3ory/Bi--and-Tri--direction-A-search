@@ -1,67 +1,88 @@
-# This file is your main submission that will be graded against. Only copy-paste
-# code on the relevant classes included here from the IPython notebook. Do not
-# add any classes or functions to this file that are not part of the classes
-# that we want.
+# coding=utf-8
+"""
+This file is your main submission that will be graded against. Only copy-paste
+code on the relevant classes included here from the IPython notebook. Do not
+add any classes or functions to this file that are not part of the classes
+that we want.
+"""
+
 from __future__ import division
-import math
-from osm2networkx import *
-import random
-import pickle
-import sys
-import os
-# Comment the next line when submitting to bonnie
-# import matplotlib.pyplot as plt
 
-# Implement a heapq backed priority queue (accompanying the relevant question)
 import heapq
+import pickle
 
-class PriorityQueue():
-    
-    # HINT look up the module heapq.
+import os
+
+
+# Warmups
+# ------
+# We'll start by implementing some simpler optimization and search algorithms
+# before the real exercises.
+
+# Warmup 1: Priority queue
+# ----------------------
+# 5 points
+#
+# In all searches that involve calculating path cost or heuristic (e.g.
+# uniform-cost), we have to order our search frontier. It turns out the way
+# that we do this can impact our overall search runtime.
+#
+# To show this, you'll implement a [priority queue](https://en.wikipedia.org/wiki/Priority_queue)
+# and demonstrate its performance benefits. For large graphs, sorting all input
+# to a priority queue is impractical. As such, the data structure you implement
+# should have an amortized O(1) insertion and O(lg n) removal time. It should
+# do better than the naive implementation in our tests (InsertionSortQueue),
+# which sorts the entire list after every insertion.
+#
+# Hints:
+# 1. The [heapq](https://docs.python.org/2/library/heapq.html) module has been
+# imported for you.
+# 2. Each edge has an associated weight.
+# Implement a heapq backed priority queue (accompanying the relevant question)
+class PriorityQueue(object):
+    """
+    Implementation of a priority queue
+    to store nodes during search.
+    """
+
+    # TODO: finish this class
+    # HINT look up/use the module heapq.
 
     def __init__(self):
         self.queue = []
-        self.current = 0        
-
-    def next(self):
-        if self.current >=len(self.queue):
-            self.current
-            raise StopIteration
-    
-        out = self.queue[self.current]
-        self.current += 1
-
-        return out
 
     def pop(self):
+        # TODO: finish this
         raise NotImplementedError
 
-    def remove(self, nodeId):
+    # TODO: This is a hint, you might require this in ucs,
+    # however, if you choose not to use it, you are free to
+    # define your own method and not use it.
+    def remove(self, node_id):
         raise NotImplementedError
-    
+
     def __iter__(self):
-        return self
+        return iter(self.queue)
 
     def __str__(self):
-        return 'PQ:[%s]'%(', '.join([str(i) for i in self.queue]))
+        return 'PQ:%s' % self.queue
 
     def append(self, node):
+        # TODO: finish this
         raise NotImplementedError
 
     def __contains__(self, key):
-        self.current = 0
-        return key in [n for v,n in self.queue]
+        return key in [n for _, n in self.queue]
 
     def __eq__(self, other):
-        self.current = 0
         return self == other
 
     def size(self):
         return len(self.queue)
-    
+
     def clear(self):
         self.queue = []
-        
+
     def top(self):
         return self.queue[0]
 
@@ -104,7 +125,7 @@ def tridirectional_upgraded(graph, goals, heuristic=euclidean_dist_heuristic):
     raise NotImplementedError
 
 # Extra Credit: Your best search method for the race
-# Loads data from data.pickle and return the data object that is passed to the custom_search method. Will be called only once. Feel free to modify. 
+# Loads data from data.pickle and return the data object that is passed to the custom_search method. Will be called only once. Feel free to modify.
 def load_data():
     data = pickle.load(open(os.path.join(os.path.dirname(os.path.realpath(__file__)), "data.pickle"), 'rb'))
     return data

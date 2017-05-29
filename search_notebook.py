@@ -27,105 +27,21 @@
 # A read-only version of this notebook can be found [here](https://github.gatech.edu/omscs6601/assignment_2/blob/master/search_notebook.ipynb).
 
 from __future__ import division
-import random
-import matplotlib.pyplot as plt
+
 import pickle
-import sys
-sys.path.append('lib')
+import random
+
+import matplotlib.pyplot as plt
 import networkx
 
-
-# In[ ]:
-
+from ExplorableGraph import ExplorableGraph
+from search_submission import PriorityQueue
 
 """Romania map data from Russell and Norvig, Chapter 3."""
 romania = pickle.load(open('romania_graph.pickle', 'rb'))
+romania = ExplorableGraph(romania)
 romania.reset_search()
 print romania['a']
-
-
-# Warmups
-# ------
-# We'll start by implementing some simpler optimization and search algorithms before the real exercises.
-
-# Warmup 1: Priority queue
-# ----------------------
-# 5 points
-#
-# In all searches that involve calculating path cost or heuristic (e.g. uniform-cost), we have to order our search frontier. It turns out the way that we do this can impact our overall search runtime.
-#
-# To show this, you'll implement a [priority queue](https://en.wikipedia.org/wiki/Priority_queue) and demonstrate its performance benefits. For large graphs, sorting all input to a priority queue is impractical. As such, the datastructure you implement should have an amortized O(1) insertion and O(lg n) removal time. It should do better than the naive implementation in our tests (InsertionSortQueue), which sorts the entire list after every insertion.
-#
-# Hints:
-# 1. The [heapq](https://docs.python.org/2/library/heapq.html) module has been imported for you.
-# 2. Each edge has an associated weight.
-
-# In[ ]:
-
-
-import heapq
-
-class PriorityQueue():
-    """Implementation of a priority queue
-    to store nodes during search."""
-    # TODO: finish this class
-
-    # HINT look up/use the module heapq.
-
-    def __init__(self):
-        self.queue = []
-        self.current = 0
-
-    def next(self):
-        if self.current >=len(self.queue):
-            self.current
-            raise StopIteration
-
-        out = self.queue[self.current]
-        self.current += 1
-
-        return out
-
-    def pop(self):
-        # TODO: finish this
-        raise NotImplementedError
-
-    # TODO: This is a hint, you might require this in ucs,
-    # however, if you choose not to use it, you are free to
-    # define your own method and not use it.
-    def remove(self, nodeId):
-        raise NotImplementedError
-
-    def __iter__(self):
-        return self
-
-    def __str__(self):
-        return 'PQ:[%s]'%(', '.join([str(i) for i in self.queue]))
-
-    def append(self, node):
-        # TODO: finish this
-        raise NotImplementedError
-
-    def __contains__(self, key):
-        self.current = 0
-        return key in [n for v,n in self.queue]
-
-    def __eq__(self, other):
-        return self == other
-
-    def size(self):
-        return len(self.queue)
-
-    def clear(self):
-        self.queue = []
-
-    def top(self):
-        return self.queue[0]
-
-    __next__ = next
-
-
-# In[ ]:
 
 
 def check_pq():
@@ -133,8 +49,8 @@ def check_pq():
     temp_list = []
 
     for i in range(10):
-        a = random.randint(0,10000)
-        pq.append((a,'a'))
+        a = random.randint(0, 10000)
+        pq.append((a, 'a'))
         temp_list.append(a)
 
     temp_list = sorted(temp_list)
@@ -145,6 +61,7 @@ def check_pq():
             return False
 
     return True
+
 
 check_pq()
 
