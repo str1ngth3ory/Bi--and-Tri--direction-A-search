@@ -152,63 +152,6 @@ plot_search(atlanta, 'atlanta_search.json', path, all_explored)
 # then upload 'atlanta_search.json' to Gist
 
 
-# Exercise 3: Tridirectional search
-# ------
-# 20 points
-#
-# Implement tridirectional search in the naive way: starting from each goal node, perform a uniform-cost search and keep expanding until two of the three searches meet. This should be one continuous path that connects all three nodes. You can return the path in any order. Eg. (1->2->3 == 3->2->1). You may also want to look at the Tri-city search challenge question on Udacity.
-#
-# tridirectional_search should return the path from the start node to the goal node (as a list of nodes).
-#
-# Notes:
-#
-#     1) You need to include start and goal in the path.
-#     2) If any goals are the same then just return [] as the path between them.
-#     3) We will provide some margin of error in grading the size of your 'Explored' set, but it should be close to the results provided by our reference implementation.
-#
-
-# In[ ]:
-
-
-def tridirectional_search(graph, goals):
-    """Run tridirectional uniform-cost search
-    between the goals and return the path."""
-    # TODO: finish this function
-    raise NotImplementedError
-    #return path
-
-
-# Exercise 4: Tridirectional search
-# ------
-# 15 points
-#
-# This is the heart of the assignment. Implement tridirectional search in such a way as to consistently improve on the performance of your previous implementation. This means consistently exploring fewer nodes during your search in order to reduce runtime.
-#
-# The specifics are up to you, but we have a few suggestions:
-# - Tridirectional A*
-# - choosing landmarks and precomputing reach values
-# - ATL (A\*, landmarks, and triangle-inequality)
-# - shortcuts (skipping nodes with low reach values)
-#
-# tridirectional_upgraded() should return a path between all three nodes.
-#
-# Notes:
-#
-#     1) You do need to include each goal in the path.
-#     2) If any two goals are the same then just return [] as the path between them
-#     3) We will provide some margin of error in grading the size of your 'Explored' set, but it should be close to the results provided by our reference implementation.
-
-# In[ ]:
-
-
-def tridirectional_upgraded(graph, goals, heuristic):
-    """Run an improved tridirectional search between
-    goals, and return the path."""
-    # TODO: finish this function
-    raise NotImplementedError
-    #return path
-
-
 # Race!
 # ---
 # Here's your chance to show us your best stuff. This part is mandatory if you want to compete in the race for extra credit. Implement custom_search() using whatever strategy you like. Your search should be tri-directional and it'll be tested on the Atlanta map only.

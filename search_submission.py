@@ -285,13 +285,6 @@ def bidirectional_a_star(graph, start, goal, heuristic):
     # TODO: finish this function
     raise NotImplementedError
 
-# Exercise 3: Tridirectional UCS Search
-def tridirectional_search(graph, goals):
-    raise NotImplementedError
-
-# Exercise 4: Present an improvement on tridirectional search in terms of nodes explored
-def tridirectional_upgraded(graph, goals, heuristic=euclidean_dist_heuristic):
-    raise NotImplementedError
 
 # Extra Credit: Your best search method for the race
 # Loads data from data.pickle and return the data object that is passed to the custom_search method. Will be called only once. Feel free to modify.
