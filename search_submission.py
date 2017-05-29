@@ -62,7 +62,7 @@ class PriorityQueue(object):
         raise NotImplementedError
 
     def __iter__(self):
-        return iter(self.queue)
+        return iter(sorted(self.queue))
 
     def __str__(self):
         return 'PQ:%s' % self.queue
