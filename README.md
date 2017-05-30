@@ -22,6 +22,11 @@ Search is an integral part of AI. It helps in problem solving across a wide vari
 
 **!!!** TODO: Description of assignment
 
+### Due Date
+
+This assignment is due on Bonnie and T-Square on June 11th by 11:59PM UTC-12 (Anywhere on Earth). The deliverables for the assignment are:
+• All functions completed in `search_submission.py`
+
 ### The Files
 
 While you'll only have to edit and submit **_search_submission.py_**, there are a number of notable files:
@@ -123,7 +128,7 @@ Implement bidirectional uniform-cost search. Remember that this requires startin
 > 2. If your start and goal are the same then just return []
 > 3. We will provide some margin of error in grading the size of your 'Explored' set, but it should be close to the results provided by our reference implementation.
 
-All of the above are just to keep your results consistent with our test cases.
+> The notes above are to keep your results consistent with our test cases.
 
 #### Exercise 2: Bidirectional A* search
 
