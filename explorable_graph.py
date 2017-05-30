@@ -4,9 +4,10 @@ from networkx import Graph
 
 class ExplorableGraph(object):
     """
-        Keeps track of "explored nodes" i.e. nodes that have been queried from the graph.
+    Keeps track of "explored nodes" i.e. nodes that have been queried from the
+    graph.
 
-        Delegates graph operations to a networkx.Graph
+    Delegates graph operations to a networkx.Graph
     """
 
     def __init__(self, graph):

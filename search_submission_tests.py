@@ -6,7 +6,7 @@ import unittest
 import matplotlib.pyplot as plt
 import networkx
 
-from ExplorableGraph import ExplorableGraph
+from explorable_graph import ExplorableGraph
 from search_submission import PriorityQueue, a_star, bidirectional_a_star, \
     bidirectional_ucs, breadth_first_search, uniform_cost_search
 from visualize_graph import plot_search
