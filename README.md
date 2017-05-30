@@ -49,10 +49,9 @@ In all searches that involve calculating path cost or heuristic (e.g. uniform-co
 
 To show this, you'll implement a priority queue and demonstrate its performance benefits. For large graphs, sorting all input to a priority queue is impractical. As such, the data structure you implement should have an amortized O(1) insertion and O(lg n) removal time. It should do better than the naive implementation in our tests (InsertionSortQueue), which sorts the entire list after every insertion.
 
-**Hint**:
-
-The heapq module has been imported for you.
-Each edge has an associated weight.
+> Hint:
+> The heapq module has been imported for you.
+> Each edge has an associated weight.
 
 #### Warmup 2: BFS
 
@@ -64,11 +63,11 @@ You'll do complete this by writing the "breadth_first_search" method. This retur
 
 For this part, it is optional to use the PriorityQueue as your frontier. You will require it from the next question onwards. You can use it here too if you want to be consistent.
 
-**Notes**:
-1. You need to include start and goal in the path.
-2. If your start and goal are the same then just return [].
-3. Both of the above are just to keep your results consistent with our test cases.
-4. You can access all the neighbors of a given node by calling `graph[node]`, or `graph.neighbors(node)` ONLY. To measure your search performance, the explorablegraph.py provided keeps track of which nodes you have accessed in this way (this is referred to as the set of 'Explored' nodes). To retrieve the set of nodes you've explored in this way, call `graph.get_explored_nodes()`. If you wish to perform multiple searches on the same graph instance, call `graph.reset_search()` to clear out the current set of 'Explored' nodes. Note however, that you will not have access to the explored set on the test server. Also, there is no need to reset the graph while submitting to the test server.
+> **Notes**:
+> 1. You need to include start and goal in the path.
+> 2. If your start and goal are the same then just return [].
+> 3. Both of the above are just to keep your results consistent with our test cases.
+> 4. You can access all the neighbors of a given node by calling `graph[node]`, or `graph.neighbors(node)` ONLY. To measure your search performance, the explorablegraph.py provided keeps track of which nodes you have accessed in this way (this is referred to as the set of 'Explored' nodes). To retrieve the set of nodes you've explored in this way, call `graph.get_explored_nodes()`. If you wish to perform multiple searches on the same graph instance, call `graph.reset_search()` to clear out the current set of 'Explored' nodes. Note however, that you will not have access to the explored set on the test server. Also, there is no need to reset the graph while submitting to the test server.
 
 #### Warmup 3: Uniform-cost search
 
@@ -78,11 +77,11 @@ Implement uniform-cost search, using PriorityQueue as your frontier. From now on
 
 `uniform_cost_search()` should return the same arguments as breadth-first search: the path to the goal node (as a list of nodes).
 
-**Notes**:
-1. You do need to include start and goal in the path.
-2. If your start and goal are the same then just return []
-3. We will provide some margin of error in grading the size of your 'Explored' set, but it should be close to the results provided by our reference implementation.
-4. The above are just to keep your results consistent with our test cases.
+> **Notes**:
+> 1. You do need to include start and goal in the path.
+> 2. If your start and goal are the same then just return []
+> 3. We will provide some margin of error in grading the size of your 'Explored' set, but it should be close to the results provided by our reference implementation.
+> 4. The above are just to keep your results consistent with our test cases.
 
 #### Warmup 4: A* search
 
@@ -90,16 +89,14 @@ _[15 points]_
 
 Implement A* search using Euclidean distance as your heuristic. You'll need to implement heuristic_euclid() then pass that function to a_star() as the heuristic parameter. We provide null_heuristic() as a baseline heuristic to test against when calling a_star tests.
 
-**Hint**:
+> **Hint**:
+> You can find a node's position by calling **!!!** `graph.node[n].get('position')` to check if the key is available.
 
-You can find a node's position by calling:
-**!!!** `graph.node[n].get('position')` to check if the key is available.
-
-**Notes**:
-1. You do need to include start and goal in the path.
-2. If your start and goal are the same then just return []
-3. We will provide some margin of error in grading the size of your 'Explored' set, but it should be close to the results provided by our reference implementation.
-4. The above are just to keep your results consistent with our test cases.
+> **Notes**:
+> 1. You do need to include start and goal in the path.
+> 2. If your start and goal are the same then just return []
+> 3. We will provide some margin of error in grading the size of your 'Explored' set, but it should be close to the results provided by our reference implementation.
+> 4. The above are just to keep your results consistent with our test cases.
 
 ### Exercises
 The following exercises will require you to implement several kinds of bidirectional searches. For these exercises, we recommend you take a look at the following resources.
@@ -121,10 +118,10 @@ Implement bidirectional uniform-cost search. Remember that this requires startin
 
 `bidirectional_ucs()` should return the path from the start node to the goal node (as a list of nodes).
 
-**Notes**:
-1. You do need to include start and goal in the path.
-2. If your start and goal are the same then just return []
-3. We will provide some margin of error in grading the size of your 'Explored' set, but it should be close to the results provided by our reference implementation.
+> **Notes**:
+> 1. You do need to include start and goal in the path.
+> 2. If your start and goal are the same then just return []
+> 3. We will provide some margin of error in grading the size of your 'Explored' set, but it should be close to the results provided by our reference implementation.
 
 All of the above are just to keep your results consistent with our test cases.
 
@@ -137,10 +134,10 @@ Implement bidirectional A* search. Remember that you need to calculate a heurist
 To test this function, as well as using the provided tests, you can compare the path computed by bidirectional A star to bidirectional ucs search above.
 bidirectional_a_star should return the path from the start node to the goal node, as a list of nodes.
 
-**Notes**:
-1. You do need to include start and goal in the path.
-2. If your start and goal are the same then just return []
-3. We will provide some margin of error in grading the size of your 'Explored' set, but it should be close to the results provided by our reference implementation.
+> **Notes**:
+> 1. You do need to include start and goal in the path.
+> 2. If your start and goal are the same then just return []
+> 3. We will provide some margin of error in grading the size of your 'Explored' set, but it should be close to the results provided by our reference implementation.
 
 ### The Race!
 
