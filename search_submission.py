@@ -14,7 +14,6 @@ import pickle
 import os
 
 
-
 class PriorityQueue(object):
     """A queue structure where each element is served in order of priority.
 
@@ -32,8 +31,6 @@ class PriorityQueue(object):
         queue (list): Nodes added to the priority queue.
         current (int): The index of the current node in the queue.
     """
-
-    # TODO: finish this class!
 
     def __init__(self):
         """Initialize a new Priority Queue.
@@ -150,6 +147,7 @@ def breadth_first_search(graph, start, goal):
 
     # TODO: finish this function!
     raise NotImplementedError
+
 
 def uniform_cost_search(graph, start, goal):
     """Warm-up exercise: Implement uniform_cost_search.
@@ -271,7 +269,8 @@ def load_data():
          The data loaded from the pickle file.
     """
 
-    data = pickle.load(open(os.path.join(os.path.dirname(os.path.realpath(__file__)), "data.pickle"), 'rb'))
+    pickle_file_path = os.path.join(os.path.dirname(os.path.realpath(__file__)), "data.pickle")
+    data = pickle.load(open(pickle_file_path, 'rb'))
     return data
 
 
