@@ -86,8 +86,6 @@ class PriorityQueue(object):
     def top(self):
         return self.queue[0]
 
-    __next__ = next
-
 
 # Warm-up 2: BFS
 # ----------
