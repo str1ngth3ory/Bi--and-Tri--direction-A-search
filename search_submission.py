@@ -1,21 +1,21 @@
-# This file is your main submission that will be graded against. Only copy-paste
-# code on the relevant classes included here from the IPython notebook. Do not
-# add any classes or functions to this file that are not part of the classes
-# that we want.
+# coding=utf-8
+"""
+This file is your main submission that will be graded against. Only copy-paste
+code on the relevant classes included here from the IPython notebook. Do not
+add any classes or functions to this file that are not part of the classes
+that we want.
+"""
+
 from __future__ import division
-import math
-from osm2networkx import *
-import random
-import pickle
-import sys
-import os
-# Comment the next line when submitting to bonnie
-# import matplotlib.pyplot as plt
 
 import heapq
+import pickle
+
+import os
 
 
-class PriorityQueue():
+
+class PriorityQueue(object):
     """A queue structure where each element is served in order of priority.
 
     Elements in the queue are popped based on the priority with higher priority
@@ -33,28 +33,13 @@ class PriorityQueue():
         current (int): The index of the current node in the queue.
     """
 
+    # TODO: finish this class!
+
     def __init__(self):
         """Initialize a new Priority Queue.
         """
 
         self.queue = []
-        self.current = 0        
-
-    def next(self):
-        """Get the next node in the Priority Queue.
-
-        Returns:
-            Next node in queue.
-        """
-
-        if self.current >=len(self.queue):
-            self.current
-            raise StopIteration
-    
-        out = self.queue[self.current]
-        self.current += 1
-
-        return out
 
     def pop(self):
         """Pop top priority node from queue.
@@ -63,10 +48,15 @@ class PriorityQueue():
             The node with the highest priority.
         """
 
+        # TODO: finish this function!
         raise NotImplementedError
 
     def remove(self, node_id):
         """Remove a node from the queue.
+
+        This is a hint, you might require this in ucs,
+        however, if you choose not to use it, you are free to
+        define your own method and not use it.
 
         Args:
             node_id (int): Index of node in queue.
@@ -78,13 +68,13 @@ class PriorityQueue():
         """Queue iterator.
         """
 
-        return self
+        return iter(sorted(self.queue))
 
     def __str__(self):
         """Priority Queuer to string.
         """
 
-        return 'PQ:[%s]'%(', '.join([str(i) for i in self.queue]))
+        return 'PQ:%s' % self.queue
 
     def append(self, node):
         """Append a node to the queue.
@@ -93,6 +83,7 @@ class PriorityQueue():
             node: Comparable Object to be added to the priority queue.
         """
 
+        # TODO: finish this function!
         raise NotImplementedError
 
     def __contains__(self, key):
@@ -105,8 +96,7 @@ class PriorityQueue():
             True if key is found in queue, False otherwise.
         """
 
-        self.current = 0
-        return key in [n for v,n in self.queue]
+        return key in [n for _, n in self.queue]
 
     def __eq__(self, other):
         """Compare this Priority Queue with another Priority Queue.
@@ -118,7 +108,6 @@ class PriorityQueue():
             True if the two priority queues are equivalent.
         """
 
-        self.current = 0
         return self == other
 
     def size(self):
@@ -144,8 +133,6 @@ class PriorityQueue():
         """
         return self.queue[0]
 
-    __next__ = next
-
 
 def breadth_first_search(graph, start, goal):
     """Warm-up exercise: Implement breadth-first-search.
@@ -161,8 +148,8 @@ def breadth_first_search(graph, start, goal):
         The best path as a list from the start and goal nodes (including both).
     """
 
+    # TODO: finish this function!
     raise NotImplementedError
-
 
 def uniform_cost_search(graph, start, goal):
     """Warm-up exercise: Implement uniform_cost_search.
@@ -178,6 +165,7 @@ def uniform_cost_search(graph, start, goal):
         The best path as a list from the start and goal nodes (including both).
     """
 
+    # TODO: finish this function!
     raise NotImplementedError
 
 
@@ -210,6 +198,7 @@ def euclidean_dist_heuristic(graph, v, goal):
         Euclidean distance between `v` node and `goal` node as a list.
     """
 
+    # TODO: finish this function!
     raise NotImplementedError
 
 
@@ -229,10 +218,11 @@ def a_star(graph, start, goal, heuristic=euclidean_dist_heuristic):
         The best path as a list from the start and goal nodes (including both).
     """
 
+    # TODO: finish this function!
     raise NotImplementedError
 
 
-def bidirectional_ucs(graph, start, goal):
+def bidirectional_ucs(graph, start, goal, heuristic=euclidean_dist_heuristic):
     """Exercise 1: Bidirectional Search.
 
     See README.md for exercise description.
@@ -246,6 +236,7 @@ def bidirectional_ucs(graph, start, goal):
         The best path as a list from the start and goal nodes (including both).
     """
 
+    # TODO: finish this function!
     raise NotImplementedError
 
 
