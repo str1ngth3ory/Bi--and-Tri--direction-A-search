@@ -18,10 +18,6 @@ Read [setup.md](./setup.md) for more information on how to effectively manage yo
 
 Search is an integral part of AI. It helps in problem solving across a wide variety of domains where a solution isn’t immediately clear.  You will implement several graph search algorithms with the goal of solving bi-directional search.
 
-### The Great Search
-
-**!!!** TODO: Description of assignment
-
 ### Due Date
 
 This assignment is due on Bonnie and T-Square on June 11th by 11:59PM UTC-12 (Anywhere on Earth). The deliverables for the assignment are:
@@ -33,13 +29,17 @@ While you'll only have to edit and submit **_search_submission.py_**, there are 
 
 1. **_search_submission.py_**: Where you will implement your _PriorityQueue_, _Breadth First Search_, _Uniform Cost Search_, _A* Search_, _Bi-directional Search_
 2. **_search_submission_tests.py_**: Sample tests to validate your searches locally.
-3. **!!!** **_TODO.pickle_**: Wikipedia search data.
+3. **_romania_graph.pickle_**: Serialized graph files for Romania.
+4. **_atlanta_osm.pickle_**: Serialized graph files for Atlanta (optional for robust testing for Race!).
 4. **_submit.py_**: A script to submit your work.
-5. **_explorablegraph.py_**: A subclass of `networkx.graph` that includes tracking of explored and neighbors.
+5. **_explorablegraph.py_**: A subclass of `networkx.graph` that includes tracking of explored and neighbor nodes.
+6. **_visualize_graph.py_**: Module to visualize search results.
+6. **_osm2networkx.py_**: Module used by visualize graph to read OSM networks.
 
 ## The Assignment
 
-The goal of the assignment will be create several graph search algorithms to traverse the connections between Wikipedia pages.
+Your task is to implement several informed search algorithms that will calculate a driving route between two points in Romania with a minimal time and space cost.
+There is a search_submission_tests file to help you along the way. Your searches should be executed with minimal runtime and memory overhead.
 
 We will be using an undirected network.  The graph consists of pages as nodes, and the edges are the links interconnecting them.
 
@@ -95,7 +95,9 @@ _[15 points]_
 Implement A* search using Euclidean distance as your heuristic. You'll need to implement heuristic_euclid() then pass that function to a_star() as the heuristic parameter. We provide null_heuristic() as a baseline heuristic to test against when calling a_star tests.
 
 > **Hint**:
-> You can find a node's position by calling **!!!** `graph.node[n].get('position')` to check if the key is available.
+> You can find a node's position by calling the following to check if the key is available.
+> * Romania Map - `graph.node[n]['pos']`
+> * Atlanta Map - `graph.node[n]['position']`
 
 > **Notes**:
 > 1. You do need to include start and goal in the path.
@@ -103,8 +105,11 @@ Implement A* search using Euclidean distance as your heuristic. You'll need to i
 > 3. We will provide some margin of error in grading the size of your 'Explored' set, but it should be close to the results provided by our reference implementation.
 > 4. The above are just to keep your results consistent with our test cases.
 
+---
 ### Exercises
-The following exercises will require you to implement several kinds of bidirectional searches. For these exercises, we recommend you take a look at the following resources.
+The following exercises will require you to implement several kinds of bidirectional searches. The benefits of these algorithms over uninformed or unidirectional search are more clearly seen on larger graphs. As such, during grading, we will evaluate your performance on the map of Atlanta [OpenStreetMap](http://wiki.openstreetmap.org) included in this assignment.
+
+For these exercises, we recommend you take a look at the following resources.
 
 1. [A Star meets Graph Theory](https://github.gatech.edu/omscs6601/assignment_2/raw/master/resources/A%20Star%20meets%20Graph%20Theory.pdf)
 2. [Applications of Search](https://github.gatech.edu/omscs6601/assignment_2/raw/master/resources/Applications%20of%20Search.pdf)
@@ -112,8 +117,6 @@ The following exercises will require you to implement several kinds of bidirecti
 4. [Bi Directional A Star with Additive Approx Bounds](https://github.gatech.edu/omscs6601/assignment_2/raw/master/resources/Bi%20Directional%20A%20Star%20with%20Additive%20Approx%20Bounds.pdf)
 5. [Bi Directional A Star](https://github.gatech.edu/omscs6601/assignment_2/raw/master/resources/Bi%20Directional%20A%20Star.pdf)
 6. [Search Algorithms Slide Deck](https://github.gatech.edu/omscs6601/assignment_2/raw/master/resources/Search%20Algorithms%20Slide%20Deck.pdf)
-
-The benefits of these algorithms over uninformed or unidirectional search are more clearly seen on larger graphs. As such, during grading, we will evaluate your performance on the wikipedia data set included in this assignment.
 
 #### Exercise 1: Bidirectional uniform-cost search
 
@@ -147,6 +150,8 @@ bidirectional_a_star should return the path from the start node to the goal node
 ### The Race!
 
 Here's your chance to show us your best stuff. This part is mandatory if you want to compete in the race for extra credit. Implement `custom_search()` using whatever strategy you like.
+
+Race will be based on Atlanta Pickle data.
 
 ## References
 
