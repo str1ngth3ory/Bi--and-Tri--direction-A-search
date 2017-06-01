@@ -65,7 +65,7 @@ _[10 pts]_
 
 To get you started with handling graphs, implement and test breadth-first search over the test network.
 
-You'll do complete this by writing the "breadth_first_search" method. This returns a path of nodes from a given start node to a given end node, as a list.
+You'll complete this by writing the "breadth_first_search" method. This returns a path of nodes from a given start node to a given end node, as a list.
 
 For this part, it is optional to use the PriorityQueue as your frontier. You will require it from the next question onwards. You can use it here too if you want to be consistent.
 
@@ -93,7 +93,7 @@ Implement uniform-cost search, using PriorityQueue as your frontier. From now on
 
 _[15 points]_
 
-Implement A* search using Euclidean distance as your heuristic. You'll need to implement heuristic_euclid() then pass that function to a_star() as the heuristic parameter. We provide null_heuristic() as a baseline heuristic to test against when calling a_star tests.
+Implement A* search using Euclidean distance as your heuristic. You'll need to implement euclidean_dist_heuristic() then pass that function to a_star() as the heuristic parameter. We provide null_heuristic() as a baseline heuristic to test against when calling a_star tests.
 
 > **Hint**:
 > You can find a node's position by calling the following to check if the key is available.
@@ -152,7 +152,7 @@ bidirectional_a_star should return the path from the start node to the goal node
 
 Here's your chance to show us your best stuff. This part is mandatory if you want to compete in the race for extra credit. Implement `custom_search()` using whatever strategy you like.
 
-Race will be based on Atlanta Pickle data.
+The Race! will be based on Atlanta Pickle data.
 
 ## References
 
