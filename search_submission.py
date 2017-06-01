@@ -128,6 +128,7 @@ class PriorityQueue(object):
         Returns:
             The first item stored in teh queue.
         """
+
         return self.queue[0]
 
 
@@ -254,6 +255,7 @@ def bidirectional_a_star(graph, start, goal, heuristic=euclidean_dist_heuristic)
         The best path as a list from the start and goal nodes (including both).
     """
 
+    # TODO: finish this function!
     raise NotImplementedError
 
 
@@ -291,4 +293,5 @@ def custom_search(graph, start, goal, data=None):
         The best path as a list from the start and goal nodes (including both).
     """
 
+    # TODO: finish this function!
     raise NotImplementedError
