@@ -32,7 +32,7 @@ While you'll only have to edit and submit **_search_submission.py_**, there are 
 3. **_romania_graph.pickle_**: Serialized graph files for Romania.
 4. **_atlanta_osm.pickle_**: Serialized graph files for Atlanta (optional for robust testing for Race!).
 4. **_submit.py_**: A script to submit your work.
-5. **_explorablegraph.py_**: A subclass of `networkx.graph` that includes tracking of explored and neighbor nodes.
+5. **_explorable_graph.py_**: A subclass of `networkx.graph` that includes tracking of explored and neighbor nodes.
 6. **_visualize_graph.py_**: Module to visualize search results.
 6. **_osm2networkx.py_**: Module used by visualize graph to read OSM networks.
 
@@ -72,7 +72,7 @@ For this part, it is optional to use the PriorityQueue as your frontier. You wil
 > 1. You need to include start and goal in the path.
 > 2. If your start and goal are the same then just return [].
 > 3. Both of the above are just to keep your results consistent with our test cases.
-> 4. You can access all the neighbors of a given node by calling `graph[node]`, or `graph.neighbors(node)` ONLY. To measure your search performance, the explorablegraph.py provided keeps track of which nodes you have accessed in this way (this is referred to as the set of 'Explored' nodes). To retrieve the set of nodes you've explored in this way, call `graph.get_explored_nodes()`. If you wish to perform multiple searches on the same graph instance, call `graph.reset_search()` to clear out the current set of 'Explored' nodes. Note however, that you will not have access to the explored set on the test server. Also, there is no need to reset the graph while submitting to the test server.
+> 4. You can access all the neighbors of a given node by calling `graph[node]`, or `graph.neighbors(node)` ONLY. To measure your search performance, the explorablegraph.py provided keeps track of which nodes you have accessed in this way (this is referred to as the set of 'Explored' nodes). To retrieve the set of nodes you've explored in this way, call `graph.explored_nodes`. If you wish to perform multiple searches on the same graph instance, call `graph.reset_search()` to clear out the current set of 'Explored' nodes. Note however, that you will not have access to the explored set on the test server. Also, there is no need to reset the graph while submitting to the test server.
 
 #### Warmup 3: Uniform-cost search
 
