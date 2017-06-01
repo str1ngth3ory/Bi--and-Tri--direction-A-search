@@ -21,6 +21,7 @@ Search is an integral part of AI. It helps in problem solving across a wide vari
 ### Due Date
 
 This assignment is due on Bonnie and T-Square on June 11th by 11:59PM UTC-12 (Anywhere on Earth). The deliverables for the assignment are:
+
 • All functions completed in `search_submission.py`
 
 ### The Files
@@ -41,7 +42,7 @@ While you'll only have to edit and submit **_search_submission.py_**, there are 
 Your task is to implement several informed search algorithms that will calculate a driving route between two points in Romania with a minimal time and space cost.
 There is a search_submission_tests file to help you along the way. Your searches should be executed with minimal runtime and memory overhead.
 
-We will be using an undirected network.  The graph consists of pages as nodes, and the edges are the links interconnecting them.
+We will be using an undirected network representing a map of Romania (and an optional Atlanta graph used for the Race!).
 
 ### Warmups
 We'll start by implementing some simpler optimization and search algorithms before the real exercises.
