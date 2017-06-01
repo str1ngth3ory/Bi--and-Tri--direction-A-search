@@ -1,9 +1,8 @@
 # coding=utf-8
 """
 This file is your main submission that will be graded against. Only copy-paste
-code on the relevant classes included here from the IPython notebook. Do not
-add any classes or functions to this file that are not part of the classes
-that we want.
+code on the relevant classes included here. Do not add any classes or functions 
+to this file that are not part of the classes that we want.
 """
 
 from __future__ import division
