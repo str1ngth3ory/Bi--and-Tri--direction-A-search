@@ -130,14 +130,14 @@ class TestBidirectionalSearch(unittest.TestCase):
 
     def test_bidirectional_ucs(self):
         """Test and generate GeoJSON for bidirectional UCS search"""
-        path = bidirectional_ucs(self.atlanta, '69244359', '557989279')
+        path = bidirectional_ucs(self.atlanta, '69581003', '69581000')
         all_explored = self.atlanta.explored_nodes
         plot_search(self.atlanta, 'atlanta_search_bidir_ucs.json', path,
                     all_explored)
 
     def test_bidirectional_a_star(self):
         """Test and generate GeoJSON for bidirectional A* search"""
-        path = bidirectional_a_star(self.atlanta, '69244359', '557989279')
+        path = bidirectional_a_star(self.atlanta, '69581003', '69581000')
         all_explored = self.atlanta.explored_nodes
         plot_search(self.atlanta, 'atlanta_search_bidir_a_star.json', path,
                     all_explored)
