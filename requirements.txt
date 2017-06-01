@@ -1,4 +1,4 @@
-future==0.16.0
+ÿþfuture==0.16.0
 matplotlib==2.0.2
 nelson==0.4.0
 networkx==1.11

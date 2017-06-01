@@ -14,296 +14,284 @@ import pickle
 import os
 
 
-# Warmups
-# ------
-# We'll start by implementing some simpler optimization and search algorithms
-# before the real exercises.
-
-# Warmup 1: Priority queue
-# ----------------------
-# 5 points
-#
-# In all searches that involve calculating path cost or heuristic (e.g.
-# uniform-cost), we have to order our search frontier. It turns out the way
-# that we do this can impact our overall search runtime.
-#
-# To show this, you'll implement a [priority queue](https://en.wikipedia.org/wiki/Priority_queue)
-# and demonstrate its performance benefits. For large graphs, sorting all input
-# to a priority queue is impractical. As such, the data structure you implement
-# should have an amortized O(1) insertion and O(lg n) removal time. It should
-# do better than the naive implementation in our tests (InsertionSortQueue),
-# which sorts the entire list after every insertion.
-#
-# Hints:
-# 1. The [heapq](https://docs.python.org/2/library/heapq.html) module has been
-#    imported for you.
-# 2. Each edge has an associated weight.
-# Implement a heapq backed priority queue (accompanying the relevant question)
 class PriorityQueue(object):
-    """
-    Implementation of a priority queue
-    to store nodes during search.
-    """
+    """A queue structure where each element is served in order of priority.
 
-    # TODO: finish this class
-    # HINT look up/use the module heapq.
+    Elements in the queue are popped based on the priority with higher priority
+    elements being served before lower priority elements.  If two elements have
+    the same priority, they will be served in the order they were added to the
+    queue.
+
+    Traditionally priority queues are implemented with heaps, but there are any
+    number of implementation options.
+
+    (Hint: take a look at the module heapq)
+
+    Attributes:
+        queue (list): Nodes added to the priority queue.
+        current (int): The index of the current node in the queue.
+    """
 
     def __init__(self):
+        """Initialize a new Priority Queue.
+        """
+
         self.queue = []
 
     def pop(self):
-        # TODO: finish this
+        """Pop top priority node from queue.
+
+        Returns:
+            The node with the highest priority.
+        """
+
+        # TODO: finish this function!
         raise NotImplementedError
 
-    # TODO: This is a hint, you might require this in ucs,
-    # however, if you choose not to use it, you are free to
-    # define your own method and not use it.
     def remove(self, node_id):
-        raise NotImplementedError
+        """Remove a node from the queue.
 
+        This is a hint, you might require this in ucs,
+        however, if you choose not to use it, you are free to
+        define your own method and not use it.
+
+        Args:
+            node_id (int): Index of node in queue.
+        """
+
+        raise NotImplementedError
+    
     def __iter__(self):
+        """Queue iterator.
+        """
+
         return iter(sorted(self.queue))
 
     def __str__(self):
+        """Priority Queuer to string.
+        """
+
         return 'PQ:%s' % self.queue
 
     def append(self, node):
-        # TODO: finish this
+        """Append a node to the queue.
+
+        Args:
+            node: Comparable Object to be added to the priority queue.
+        """
+
+        # TODO: finish this function!
         raise NotImplementedError
 
     def __contains__(self, key):
+        """Containment Check operator for 'in'
+
+        Args:
+            key: The key to check for in the queue.
+
+        Returns:
+            True if key is found in queue, False otherwise.
+        """
+
         return key in [n for _, n in self.queue]
 
     def __eq__(self, other):
+        """Compare this Priority Queue with another Priority Queue.
+
+        Args:
+            other (PriorityQueue): Priority Queue to compare against.
+
+        Returns:
+            True if the two priority queues are equivalent.
+        """
+
         return self == other
 
     def size(self):
+        """Get the current size of the queue.
+
+        Returns:
+            Integer of number of items in queue.
+        """
+
         return len(self.queue)
-
+    
     def clear(self):
-        self.queue = []
+        """Reset queue to empty (no nodes).
+        """
 
+        self.queue = []
+        
     def top(self):
+        """Get the top item in the queue.
+
+        Returns:
+            The first item stored in teh queue.
+        """
+
         return self.queue[0]
 
 
-# Warm-up 2: BFS
-# ----------
-# 5 pts
-#
-#
-# To get you started with handling graphs in networkx, implement and test
-# breadth-first search over the test network.
-#
-# You'll do complete this by writing the "breadth_first_search" method. This
-# returns a path of nodes from a given start node to a given end node, as a
-# list.
-#
-# For this part, it is optional to use the PriorityQueue as your frontier. You
-# will require it from the next question onwards. You can use it here too if
-# you want to be consistent.
-#
-# Notes:
-# 1. You need to include start and goal in the path.
-# 2. If your start and goal are the same then just return [].
-#
-# Both of the above are just to keep your results consistent with our test
-# cases.
-#
-# You can access all the neighbors of a given node by calling graph[node], or
-# graph.neighbors(node) ONLY. To measure your search performance, a modified
-# version of the networkx Graph class is provided. It keeps track of which
-# nodes you have accessed in this way (this is referred to as the set of
-# 'Explored' nodes). To retrieve the set of nodes you've explored in this way,
-# check the 'graph.explored_nodes' property. If you wish to perform multiple
-# searches on the same graph instance, call 'graph.reset_search()' to clear out
-# the current set of 'Explored' nodes. Note however, that you will not have
-# access to these modifications on the test server. Also, there is no need to
-# reset the graph while submitting to the test server.
 def breadth_first_search(graph, start, goal):
+    """Warm-up exercise: Implement breadth-first-search.
+
+    See README.md for exercise description.
+
+    Args:
+        graph (explorable_graph): Undirected graph to search.
+        start (str): Key for the start node.
+        goal (str): Key for the end node.
+
+    Returns:
+        The best path as a list from the start and goal nodes (including both).
     """
-    Run a breadth-first search from start
-    to goal and return the path.
-    """
+
     # TODO: finish this function!
     raise NotImplementedError
 
 
-# Warmup Examples
-# ----------
-#
-# Some examples of correct warmup searches can be found [here](https://docs.google.com/document/d/18Bl7awruAabUXAhMy-T88hWKTteueEb7hk6gA32GulQ/pub).
-
-
-# Warmup 3: Uniform-cost search
-# ----------------------------
-# 10 points
-#
-# Implement uniform-cost search, using PriorityQueue as your frontier. From now
-# on, PriorityQueue should be your default frontier.
-#
-# uniform_cost_search() should return the same arguments as breadth-first
-# search: the path to the goal node (as a list of nodes).
-#
-#
-# Notes:
-# 1. You do need to include start and goal in the path.
-# 2. If your start and goal are the same then just return []
-# 3. We will provide some margin of error in grading the size of your
-#    'Explored' set, but it should be close to the results provided by our
-#    reference implementation.
-#
-# The above are just to keep your results consistent with our test cases.
 def uniform_cost_search(graph, start, goal):
+    """Warm-up exercise: Implement uniform_cost_search.
+
+    See README.md for exercise description.
+
+    Args:
+        graph (explorable_graph): Undirected graph to search.
+        start (str): Key for the start node.
+        goal (str): Key for the end node.
+
+    Returns:
+        The best path as a list from the start and goal nodes (including both).
     """
-    Run uniform-cost search from start
-    to goal and return the path.
-    """
-    # TODO: finish this function
+
+    # TODO: finish this function!
     raise NotImplementedError
 
 
-# Warmup 4: A* search
-# ------------------
-# 10 points
-# Implement A* search using Euclidean distance as your heuristic. You'll need
-# to implement heuristic_euclid() then pass that function to a_star() as the
-# heuristic parameter. We provide null_heuristic() as a baseline heuristic to
-# test against when calling a_star tests.
-#
-# Hint: you can find a node's position by calling:
-#
-#      graph.node[n]['pos']      - Romania map
-#      graph.node[n]['position'] - Atlanta map
-#
-# Tip: use graph.node[n].get('position') or graph.node[n].get('pos') to check
-# if the key is available.
-#
-# Notes:
-# 1. You do need to include start and goal in the path.
-# 2. If your start and goal are the same then just return []
-# 3. We will provide some margin of error in grading the size of your
-#    'Explored' set, but it should be close to the results provided by our
-#    reference implementation.
-#
-# The above are just to keep your results consistent with our test cases.
-def null_heuristic(graph, v, goal):
-    """Return 0 for all nodes."""
+def null_heuristic(graph, v, goal ):
+    """Null heuristic used as a base line.
+
+    Args:
+        graph (explorable_graph): Undirected graph to search.
+        v (str): Key for the node to calculate from.
+        goal (str): Key for the end node to calculate to.
+
+    Returns:
+        0
+    """
+
     return 0
 
 
 def euclidean_dist_heuristic(graph, v, goal):
+    """Warm-up exercise: Implement the euclidean distance heuristic.
+
+    See README.md for exercise description.
+
+    Args:
+        graph (explorable_graph): Undirected graph to search.
+        v (str): Key for the node to calculate from.
+        goal (str): Key for the end node to calculate to.
+
+    Returns:
+        Euclidean distance between `v` node and `goal` node as a list.
     """
-    Return the Euclidean distance from
-    node v to the goal.
-    """
-    # TODO: finish this function
+
+    # TODO: finish this function!
     raise NotImplementedError
 
 
 def a_star(graph, start, goal, heuristic=euclidean_dist_heuristic):
+    """ Warm-up exercise: Implement A* algorithm.
+
+    See README.md for exercise description.
+
+    Args:
+        graph (explorable_graph): Undirected graph to search.
+        start (str): Key for the start node.
+        goal (str): Key for the end node.
+        heuristic: Function to determine distance heuristic.
+            Default: euclidean_dist_heuristic.
+
+    Returns:
+        The best path as a list from the start and goal nodes (including both).
     """
-    Run A* search from the start to
-    goal using the specified heuristic
-    function, and return the final path.
-    """
-    # TODO: finish this function
+
+    # TODO: finish this function!
     raise NotImplementedError
 
 
-# Exercises
-# -------
-#
-#
-# The following exercises will require you to implement several kinds of
-# bidirectional and tri-directional searches. For these exercises, we recommend
-# you take a look at the [resources](https://github.gatech.edu/omscs6601/assignment_2/tree/master/resources)
-# folder in the assignment repo and the notes linked in the assignment repo's
-# [README](https://github.gatech.edu/omscs6601/assignment_2/blob/master/README.md).
-#
-# The benefits of these algorithms over uninformed or unidirectional search are
-# more clearly seen on larger graphs. As such, during grading, we will evaluate
-# your performance on the map of Atlanta [OpenStreetMap](http://wiki.openstreetmap.org/)
-# included in this assignment. If you want to run tests using this data (rather
-# than just testing on the server), you'll need to load the data from the file.
-# If you're testing locally, be advised, not all nodes are connected.
+def bidirectional_ucs(graph, start, goal, heuristic=euclidean_dist_heuristic):
+    """Exercise 1: Bidirectional Search.
 
-# Exercise 1: Bidirectional uniform-cost search
-# -------
-# 15 points
-#
-# Implement bidirectional uniform-cost search. Remember that this requires
-# starting your search at both the start and end states.
-#
-# bidirectional_ucs() should return the path from the start node to the goal
-# node (as a list of nodes).
-#
-# Notes:
-#     1) You do need to include start and goal in the path.
-#     2) If your start and goal are the same then just return []
-#     3) We will provide some margin of error in grading the size of your
-#        'Explored' set, but it should be close to the results provided by our
-#        reference implementation.
-#
-#
-# All of the above are just to keep your results consistent with our test cases
-def bidirectional_ucs(graph, start, goal):
+    See README.md for exercise description.
+
+    Args:
+        graph (explorable_graph): Undirected graph to search.
+        start (str): Key for the start node.
+        goal (str): Key for the end node.
+
+    Returns:
+        The best path as a list from the start and goal nodes (including both).
     """
-    Run bidirectional uniform-cost search
-    between start and goal
-    """
-    # TODO: finish this function
+
+    # TODO: finish this function!
     raise NotImplementedError
 
 
-# Exercise 2: Bidirectional A* search
-# -------
-# 20 points
-#
-# Implement bidirectional A* search. Remember that you need to calculate a
-# heuristic for both the start-to-goal search and the goal-to-start search.
-#
-# To test this function, as well as using the provided tests, you can compare
-# the path computed by bidirectional A star to bidirectional ucs search above.
-#
-# bidirectional_a_star should return the path from the start node to the goal
-# node, as a list of nodes.
-#
-# Notes:
-#     1) You do need to include start and goal in the path.
-#     2) If your start and goal are the same then just return []
-#     3) We will provide some margin of error in grading the size of your
-#        'Explored' set, but it should be close to the results provided by our
-#        reference implementation.
-def bidirectional_a_star(graph, start, goal,
-                         heuristic=euclidean_dist_heuristic):
-    """
-    Run bidirectional A* search between
-    start and goal.
-    """
-    # TODO: finish this function
-    raise NotImplementedError
+def bidirectional_a_star(graph, start, goal, heuristic=euclidean_dist_heuristic):
+    """Exercise 2: Bidirectional A*.
 
+    See README.md for exercise description.
 
-# Race!
-# ---
-# Here's your chance to show us your best stuff. This part is mandatory if you
-# want to compete in the race for extra credit. Implement custom_search() using
-# whatever strategy you like. Your search should be tri-directional and it'll
-# be tested on the Atlanta map only.
-def custom_search(graph, goals):
+    Args:
+        graph (explorable_graph): Undirected graph to search.
+        start (str): Key for the start node.
+        goal (str): Key for the end node.
+        heuristic: Function to determine distance heuristic.
+            Default: euclidean_dist_heuristic.
+
+    Returns:
+        The best path as a list from the start and goal nodes (including both).
     """
-    Run your best tri-directional search between
-    goals, and return the path.
-    """
+
+    # TODO: finish this function!
     raise NotImplementedError
 
 
 # Extra Credit: Your best search method for the race
-# Loads data from data.pickle and return the data object that is passed to the
-# custom_search method. Will be called only once. Feel free to modify.
+#
 def load_data():
-    path = os.path.join(os.path.dirname(os.path.realpath(__file__)),
-                        "data.pickle")
-    data = pickle.load(open(path, 'rb'))
+    """Loads data from data.pickle and return the data object that is passed to
+    the custom_search method.
+
+    Will be called only once. Feel free to modify.
+
+    Returns:
+         The data loaded from the pickle file.
+    """
+
+    pickle_file_path = os.path.join(os.path.dirname(os.path.realpath(__file__)), "data.pickle")
+    data = pickle.load(open(pickle_file_path, 'rb'))
     return data
+
+
+def custom_search(graph, start, goal, data=None):
+    """Race!: Implement your best search algorithm here to compete against the
+    other student agents.
+
+    See README.md for exercise description.
+
+    Args:
+        graph (explorable_graph): Undirected graph to search.
+        start (str): Key for the start node.
+        goal (str): Key for the end node.
+        data :  Data used in the custom search.
+            Default: None.
+
+    Returns:
+        The best path as a list from the start and goal nodes (including both).
+    """
+
+    # TODO: finish this function!
+    raise NotImplementedError
