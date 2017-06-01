@@ -51,37 +51,28 @@ class SearchUnitTests(unittest.TestCase):
         pairs = zip(path, path[1:])
         return sum([g.get_edge_data(a, b)['weight'] for a, b in pairs])
 
-    def romania_test(self, ref_method, method, assert_explored=False, **kwargs):
+    def romania_test(self, ref_method, method, **kwargs):
         keys = self.romania.node.keys()
         pairs = zip(keys, keys[1:])
         for src, dst in pairs:
             self.romania.reset_search()
             path = method(self.romania, src, dst, **kwargs)
-            explored = len(self.romania.get_explored_nodes())
             ref_len, ref_path = ref_method(self.romania, src, dst)
-            ref_explored = len(self.romania.get_explored_nodes())
             if path != ref_path:
                 print src, dst
             assert path == ref_path
-            if assert_explored:
-                assert explored <= ref_explored
 
-    def atlanta_bi_test(self, method, n_test=10, assert_explored=False,
-                        **kwargs):
+    def atlanta_bi_test(self, method, n_test=10, **kwargs):
         keys = list(networkx.connected_components(self.atlanta).next())
         random.shuffle(keys)
         for src, dst in zip(keys, keys[1:])[::2]:
             self.atlanta.reset_search()
             path = method(self.atlanta, src, dst, **kwargs)
-            explored = len(self.atlanta.get_explored_nodes())
             path_len = self.sum_weight(self.atlanta, path)
             ref_len, ref_path = self.reference_path(self.atlanta, src, dst)
-            ref_explored = len(self.atlanta.get_explored_nodes())
             if abs(path_len - ref_len) > self.margin_of_error:
                 print src, dst
             assert abs(path_len - ref_len) <= self.margin_of_error
-            if assert_explored:
-                assert explored <= ref_explored
             n_test -= 1
             if n_test == 0:
                 break
