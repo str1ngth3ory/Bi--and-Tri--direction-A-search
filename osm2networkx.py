@@ -200,13 +200,12 @@ if __name__ == '__main__':
     new_edges = [(new_nodes[node1], new_nodes[node2], haversine(*rads(new_nodes[node1]['pos'], new_nodes[node2]['pos'])))  for node1, node2 in graph.edges()]
 
     new_graph = networkx.Graph()
-
     [new_graph.add_node(node, data.__dict__) for node, data in new_nodes.items()]
-    [new_graph.add_edge(s,t,weight=w) for s,t,w in new_edges]
+    [new_graph.add_edge(s.id,t.id,weight=w) for s,t,w in new_edges]
 
     for key in new_graph.node.keys():
         new_graph.node[node]['pos'] = (new_graph.node[node]['lat'], new_graph.node[node]['lon'])
-    
-    pickle.dump( new_graph , open( 'atlanta_osm.pickle' ,'w') )
+        new_graph.node[node]['position'] = (new_graph.node[node]['lat'], new_graph.node[node]['lon'])
+    pickle.dump( new_graph , open( 'atlanta_osm.pickle' ,'wb') )
 
     print('Done')
