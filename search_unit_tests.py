@@ -1,3 +1,4 @@
+# coding=utf-8
 import unittest
 import pickle
 import random
@@ -17,11 +18,11 @@ class SearchUnitTests(unittest.TestCase):
 
         If you failed on bonnie because of non-optimal path, make sure you pass
         all the local tests.
-        Change ntest=-1 if you failed the path test on bonnie, it will run tests
-        on atlanta until it finds a set of points that fail.
+        Change ntest=-1 if you failed the path test on bonnie, it will run
+        tests on atlanta until it finds a set of points that fail.
 
-        If you failed on bonnie because of your explored set is too large, there
-        is no easy way to test without a reference implementation.
+        If you failed on bonnie because of your explored set is too large,
+        there is no easy way to test without a reference implementation.
         But you can read the pdf slides for the optimized terminal condition.
 
         To run,
@@ -104,7 +105,8 @@ class SearchUnitTests(unittest.TestCase):
         self.romania_test(self.reference_path, uniform_cost_search)
 
     def test_a_star_null_romania(self):
-        self.romania_test(self.reference_path, a_star, heuristic=null_heuristic)
+        self.romania_test(self.reference_path, a_star,
+                          heuristic=null_heuristic)
 
     def test_a_star_euclidean_romania(self):
         self.romania_test(self.reference_path, a_star,
