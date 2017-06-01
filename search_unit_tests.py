@@ -1,12 +1,14 @@
 # coding=utf-8
-import unittest
 import pickle
 import random
+import unittest
+
 import networkx
 
-from search_submission import (breadth_first_search, uniform_cost_search,
-                               null_heuristic, euclidean_dist_heuristic,
-                               a_star, bidirectional_ucs, bidirectional_a_star)
+from explorable_graph import ExplorableGraph
+from search_submission import a_star, bidirectional_a_star, \
+    bidirectional_ucs, breadth_first_search, euclidean_dist_heuristic, \
+    null_heuristic, uniform_cost_search
 
 
 class SearchUnitTests(unittest.TestCase):
@@ -34,9 +36,12 @@ class SearchUnitTests(unittest.TestCase):
     margin_of_error = 1.0e-6
 
     def setUp(self):
-        self.romania = pickle.load(open('romania_graph.pickle', 'rb'))
+        romania = pickle.load(open('romania_graph.pickle', 'rb'))
+        self.romania = ExplorableGraph(romania)
         self.romania.reset_search()
-        self.atlanta = pickle.load(open('atlanta_osm.pickle', 'rb'))
+
+        atlanta = pickle.load(open('atlanta_osm.pickle', 'rb'))
+        self.atlanta = ExplorableGraph(atlanta)
         self.atlanta.reset_search()
 
     def reference_path(self, g, src, dst, weight='weight'):
@@ -91,8 +96,7 @@ class SearchUnitTests(unittest.TestCase):
         self.same_node_bi_test(self.romania, a_star, heuristic=null_heuristic)
         self.same_node_bi_test(self.romania, a_star,
                                heuristic=euclidean_dist_heuristic)
-        self.same_node_bi_test(self.romania, bidirectional_ucs,
-                               heuristic=euclidean_dist_heuristic)
+        self.same_node_bi_test(self.romania, bidirectional_ucs)
         self.same_node_bi_test(self.romania, bidirectional_a_star,
                                heuristic=null_heuristic)
         self.same_node_bi_test(self.romania, bidirectional_a_star,
