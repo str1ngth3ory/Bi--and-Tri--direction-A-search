@@ -4,7 +4,7 @@
 
 Clone this repository:
 
-`git clone https://github.gatech.edu/omscs6601/assignment_1.git`
+`git clone https://github.gatech.edu/omscs6601/assignment_2.git`
 
 The submission scripts depend on the presence of 3 python packages - `requests`, `future`, and `nelson`. Install them using the command below:
 
