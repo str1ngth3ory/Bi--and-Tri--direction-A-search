@@ -205,7 +205,7 @@ if __name__ == '__main__':
 
     for key in new_graph.node.keys():
         new_graph.node[node]['pos'] = (new_graph.node[node]['lat'], new_graph.node[node]['lon'])
-    
+        new_graph.node[node]['position'] = (new_graph.node[node]['lat'], new_graph.node[node]['lon'])
     pickle.dump( new_graph , open( 'atlanta_osm.pickle' ,'wb') )
 
     print('Done')
