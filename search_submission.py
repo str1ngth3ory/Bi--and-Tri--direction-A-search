@@ -269,6 +269,44 @@ def bidirectional_a_star(graph, start, goal,
     raise NotImplementedError
 
 
+def tridirectional_search(graph, goals):
+    """
+    Exercise 3: Tridirectional UCS Search
+
+    See README.MD for exercise description.
+
+    Args:
+        graph (ExplorableGraph): Undirected graph to search.
+        goals (list): Key values for the 3 goals
+
+    Returns:
+        The best path as a list from one of the goal nodes (including both of
+        the other goal nodes).
+    """
+    # TODO: finish this function
+    raise NotImplementedError
+
+
+def tridirectional_upgraded(graph, goals, heuristic=euclidean_dist_heuristic):
+    """
+    Exercise 3: Upgraded Tridirectional Search
+
+    See README.MD for exercise description.
+
+    Args:
+        graph (ExplorableGraph): Undirected graph to search.
+        goals (list): Key values for the 3 goals
+        heuristic: Function to determine distance heuristic.
+            Default: euclidean_dist_heuristic.
+
+    Returns:
+        The best path as a list from one of the goal nodes (including both of
+        the other goal nodes).
+    """
+    # TODO: finish this function
+    raise NotImplementedError
+
+
 def load_data():
     """
     Loads data from data.pickle and return the data object that is passed to
