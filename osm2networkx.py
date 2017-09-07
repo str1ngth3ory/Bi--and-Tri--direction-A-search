@@ -190,15 +190,14 @@ if __name__ == '__main__':
     import pickle
 
     graph = read_osm('atlanta.osm')
-    
 
-    new_nodes = {node:graph.node[node]['data'] for node in graph.nodes()[::20]}
+    new_nodes = {node:graph.node[node]['data'] for node in graph.nodes()}
 
     euclidean = lambda p1, p2: math.sqrt((p1[0]-p2[0])**2 + (p1[1] - p2[1])**2) * (1 + random.random())
     rads = lambda p1, p2: map(math.radians, [p1[0], p1[1], p2[0], p2[1]])
     haversine = lambda lat1, long1, lat2, long2: 6371.0 * 2*math.asin(math.sqrt(math.sin(lat2-lat1)**2 + math.cos(lat1) * math.cos(lat2) * math.sin(long2-long1)**2))
 
-    new_edges = [(new_nodes[node1], new_nodes[node2], haversine(*rads(new_nodes[node1]['pos'], new_nodes[node2]['pos'])))  for node1, node2 in graph.edges() if node1 in new_nodes.keys() and node2 in new_nodes.keys()]
+    new_edges = [(new_nodes[node1], new_nodes[node2], haversine(*rads(new_nodes[node1]['pos'], new_nodes[node2]['pos'])))  for node1, node2 in graph.edges()]
 
     new_graph = networkx.Graph()
     [new_graph.add_node(node, data.__dict__) for node, data in new_nodes.items()]
