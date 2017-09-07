@@ -1,20 +1,20 @@
 # coding=utf-8
 """
 This file is your main submission that will be graded against. Only copy-paste
-code on the relevant classes included here. Do not add any classes or functions 
+code on the relevant classes included here. Do not add any classes or functions
 to this file that are not part of the classes that we want.
 """
 
 from __future__ import division
 
 import heapq
-import pickle
-
 import os
+import pickle
 
 
 class PriorityQueue(object):
-    """A queue structure where each element is served in order of priority.
+    """
+    A queue structure where each element is served in order of priority.
 
     Elements in the queue are popped based on the priority with higher priority
     elements being served before lower priority elements.  If two elements have
@@ -32,13 +32,13 @@ class PriorityQueue(object):
     """
 
     def __init__(self):
-        """Initialize a new Priority Queue.
-        """
+        """Initialize a new Priority Queue."""
 
         self.queue = []
 
     def pop(self):
-        """Pop top priority node from queue.
+        """
+        Pop top priority node from queue.
 
         Returns:
             The node with the highest priority.
@@ -48,7 +48,8 @@ class PriorityQueue(object):
         raise NotImplementedError
 
     def remove(self, node_id):
-        """Remove a node from the queue.
+        """
+        Remove a node from the queue.
 
         This is a hint, you might require this in ucs,
         however, if you choose not to use it, you are free to
@@ -59,21 +60,20 @@ class PriorityQueue(object):
         """
 
         raise NotImplementedError
-    
+
     def __iter__(self):
-        """Queue iterator.
-        """
+        """Queue iterator."""
 
         return iter(sorted(self.queue))
 
     def __str__(self):
-        """Priority Queuer to string.
-        """
+        """Priority Queue to string."""
 
         return 'PQ:%s' % self.queue
 
     def append(self, node):
-        """Append a node to the queue.
+        """
+        Append a node to the queue.
 
         Args:
             node: Comparable Object to be added to the priority queue.
@@ -83,7 +83,8 @@ class PriorityQueue(object):
         raise NotImplementedError
 
     def __contains__(self, key):
-        """Containment Check operator for 'in'
+        """
+        Containment Check operator for 'in'
 
         Args:
             key: The key to check for in the queue.
@@ -95,7 +96,8 @@ class PriorityQueue(object):
         return key in [n for _, n in self.queue]
 
     def __eq__(self, other):
-        """Compare this Priority Queue with another Priority Queue.
+        """
+        Compare this Priority Queue with another Priority Queue.
 
         Args:
             other (PriorityQueue): Priority Queue to compare against.
@@ -107,22 +109,23 @@ class PriorityQueue(object):
         return self == other
 
     def size(self):
-        """Get the current size of the queue.
+        """
+        Get the current size of the queue.
 
         Returns:
             Integer of number of items in queue.
         """
 
         return len(self.queue)
-    
+
     def clear(self):
-        """Reset queue to empty (no nodes).
-        """
+        """Reset queue to empty (no nodes)."""
 
         self.queue = []
-        
+
     def top(self):
-        """Get the top item in the queue.
+        """
+        Get the top item in the queue.
 
         Returns:
             The first item stored in teh queue.
@@ -132,12 +135,13 @@ class PriorityQueue(object):
 
 
 def breadth_first_search(graph, start, goal):
-    """Warm-up exercise: Implement breadth-first-search.
+    """
+    Warm-up exercise: Implement breadth-first-search.
 
     See README.md for exercise description.
 
     Args:
-        graph (explorable_graph): Undirected graph to search.
+        graph (ExplorableGraph): Undirected graph to search.
         start (str): Key for the start node.
         goal (str): Key for the end node.
 
@@ -150,12 +154,13 @@ def breadth_first_search(graph, start, goal):
 
 
 def uniform_cost_search(graph, start, goal):
-    """Warm-up exercise: Implement uniform_cost_search.
+    """
+    Warm-up exercise: Implement uniform_cost_search.
 
     See README.md for exercise description.
 
     Args:
-        graph (explorable_graph): Undirected graph to search.
+        graph (ExplorableGraph): Undirected graph to search.
         start (str): Key for the start node.
         goal (str): Key for the end node.
 
@@ -167,11 +172,12 @@ def uniform_cost_search(graph, start, goal):
     raise NotImplementedError
 
 
-def null_heuristic(graph, v, goal ):
-    """Null heuristic used as a base line.
+def null_heuristic(graph, v, goal):
+    """
+    Null heuristic used as a base line.
 
     Args:
-        graph (explorable_graph): Undirected graph to search.
+        graph (ExplorableGraph): Undirected graph to search.
         v (str): Key for the node to calculate from.
         goal (str): Key for the end node to calculate to.
 
@@ -183,12 +189,13 @@ def null_heuristic(graph, v, goal ):
 
 
 def euclidean_dist_heuristic(graph, v, goal):
-    """Warm-up exercise: Implement the euclidean distance heuristic.
+    """
+    Warm-up exercise: Implement the euclidean distance heuristic.
 
     See README.md for exercise description.
 
     Args:
-        graph (explorable_graph): Undirected graph to search.
+        graph (ExplorableGraph): Undirected graph to search.
         v (str): Key for the node to calculate from.
         goal (str): Key for the end node to calculate to.
 
@@ -201,12 +208,13 @@ def euclidean_dist_heuristic(graph, v, goal):
 
 
 def a_star(graph, start, goal, heuristic=euclidean_dist_heuristic):
-    """ Warm-up exercise: Implement A* algorithm.
+    """
+    Warm-up exercise: Implement A* algorithm.
 
     See README.md for exercise description.
 
     Args:
-        graph (explorable_graph): Undirected graph to search.
+        graph (ExplorableGraph): Undirected graph to search.
         start (str): Key for the start node.
         goal (str): Key for the end node.
         heuristic: Function to determine distance heuristic.
@@ -221,12 +229,13 @@ def a_star(graph, start, goal, heuristic=euclidean_dist_heuristic):
 
 
 def bidirectional_ucs(graph, start, goal, heuristic=euclidean_dist_heuristic):
-    """Exercise 1: Bidirectional Search.
+    """
+    Exercise 1: Bidirectional Search.
 
     See README.md for exercise description.
 
     Args:
-        graph (explorable_graph): Undirected graph to search.
+        graph (ExplorableGraph): Undirected graph to search.
         start (str): Key for the start node.
         goal (str): Key for the end node.
 
@@ -238,13 +247,15 @@ def bidirectional_ucs(graph, start, goal, heuristic=euclidean_dist_heuristic):
     raise NotImplementedError
 
 
-def bidirectional_a_star(graph, start, goal, heuristic=euclidean_dist_heuristic):
-    """Exercise 2: Bidirectional A*.
+def bidirectional_a_star(graph, start, goal,
+                         heuristic=euclidean_dist_heuristic):
+    """
+    Exercise 2: Bidirectional A*.
 
     See README.md for exercise description.
 
     Args:
-        graph (explorable_graph): Undirected graph to search.
+        graph (ExplorableGraph): Undirected graph to search.
         start (str): Key for the start node.
         goal (str): Key for the end node.
         heuristic: Function to determine distance heuristic.
@@ -258,10 +269,9 @@ def bidirectional_a_star(graph, start, goal, heuristic=euclidean_dist_heuristic)
     raise NotImplementedError
 
 
-# Extra Credit: Your best search method for the race
-#
 def load_data():
-    """Loads data from data.pickle and return the data object that is passed to
+    """
+    Loads data from data.pickle and return the data object that is passed to
     the custom_search method.
 
     Will be called only once. Feel free to modify.
@@ -270,19 +280,22 @@ def load_data():
          The data loaded from the pickle file.
     """
 
-    pickle_file_path = os.path.join(os.path.dirname(os.path.realpath(__file__)), "data.pickle")
+    dir_name = os.path.dirname(os.path.realpath(__file__))
+    pickle_file_path = os.path.join(dir_name, "data.pickle")
     data = pickle.load(open(pickle_file_path, 'rb'))
     return data
 
 
+# Extra Credit: Your best search method for the race
 def custom_search(graph, start, goal, data=None):
-    """Race!: Implement your best search algorithm here to compete against the
+    """
+    Race!: Implement your best search algorithm here to compete against the
     other student agents.
 
     See README.md for exercise description.
 
     Args:
-        graph (explorable_graph): Undirected graph to search.
+        graph (ExplorableGraph): Undirected graph to search.
         start (str): Key for the start node.
         goal (str): Key for the end node.
         data :  Data used in the custom search.

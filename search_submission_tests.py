@@ -84,7 +84,8 @@ class TestBasicSearch(unittest.TestCase):
                         start=start, goal=goal, path=path)
 
     @staticmethod
-    def draw_graph(graph, node_positions={}, start=None, goal=None, path=[]):
+    def draw_graph(graph, node_positions=None, start=None, goal=None,
+                   path=None):
         """Visualize results of graph search"""
         explored = list(graph.explored_nodes)
 
@@ -92,7 +93,7 @@ class TestBasicSearch(unittest.TestCase):
         for node in graph:
             labels[node] = node
 
-        if not node_positions:
+        if node_positions is None:
             node_positions = networkx.spring_layout(graph)
 
         networkx.draw_networkx_nodes(graph, node_positions)
@@ -102,7 +103,7 @@ class TestBasicSearch(unittest.TestCase):
         networkx.draw_networkx_nodes(graph, node_positions, nodelist=explored,
                                      node_color='g')
 
-        if path:
+        if path is not None:
             edges = [(path[i], path[i + 1]) for i in range(0, len(path) - 1)]
             networkx.draw_networkx_edges(graph, node_positions, edgelist=edges,
                                          edge_color='b')
