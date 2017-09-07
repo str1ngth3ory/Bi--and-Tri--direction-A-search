@@ -149,6 +149,45 @@ bidirectional_a_star should return the path from the start node to the goal node
 > 2. If your start and goal are the same then just return []
 > 3. We will provide some margin of error in grading the size of your 'Explored' set, but it should be close to the results provided by our reference implementation.
 
+#### Exercise 3: Tridirectional UCS search
+
+_[20 points]_
+
+Implement tridirectional search in the naive way: starting from each goal node, perform a uniform-cost search and keep
+expanding until two of the three searches meet. This should be one continuous path that connects all three nodes.
+
+`tridirectional_search()` should return a path between all three nodes. You can return the path in any order. Eg.
+(1->2->3 == 3->2->1). You may also want to look at the Tri-city
+search challenge question on Udacity.
+
+> **Notes**:
+> 1. You need to include start and goal in the path.
+> 2. If any goals are the same then just return [] as the path between them.
+> 3. We will provide some margin of error in grading the size of your 'Explored' set, but it should be close to the
+     results provided by our reference implementation.
+
+#### Exercise 4: Upgraded Tridirectional search
+
+_[15 points]_
+
+This is the heart of the assignment. Implement tridirectional search in such a way as to consistently improve on the
+performance of your previous implementation. This means consistently exploring fewer nodes during your search in order
+to reduce runtime.
+
+The specifics are up to you, but we have a few suggestions:
+ * Tridirectional A*
+ * choosing landmarks and pre-computing reach values
+ * ATL (A\*, landmarks, and triangle-inequality)
+ * shortcuts (skipping nodes with low reach values)
+
+`tridirectional_upgraded()` should return a path between all three nodes.
+
+> **Notes**:
+> 1. You do need to include each goal in the path.
+> 2. If any two goals are the same then just return [] as the path between them
+> 3. We will provide some margin of error in grading the size of your 'Explored' set, but it should be close to the
+     results provided by our reference implementation.
+
 ### The Race!
 
 Here's your chance to show us your best stuff. This part is mandatory if you want to compete in the race for extra credit. Implement `custom_search()` using whatever strategy you like.
