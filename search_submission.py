@@ -307,23 +307,6 @@ def tridirectional_upgraded(graph, goals, heuristic=euclidean_dist_heuristic):
     raise NotImplementedError
 
 
-def load_data():
-    """
-    Loads data from data.pickle and return the data object that is passed to
-    the custom_search method.
-
-    Will be called only once. Feel free to modify.
-
-    Returns:
-         The data loaded from the pickle file.
-    """
-
-    dir_name = os.path.dirname(os.path.realpath(__file__))
-    pickle_file_path = os.path.join(dir_name, "data.pickle")
-    data = pickle.load(open(pickle_file_path, 'rb'))
-    return data
-
-
 # Extra Credit: Your best search method for the race
 def custom_search(graph, start, goal, data=None):
     """
@@ -345,3 +328,20 @@ def custom_search(graph, start, goal, data=None):
 
     # TODO: finish this function!
     raise NotImplementedError
+
+
+def load_data():
+    """
+    Loads data from data.pickle and return the data object that is passed to
+    the custom_search method.
+
+    Will be called only once. Feel free to modify.
+
+    Returns:
+         The data loaded from the pickle file.
+    """
+
+    dir_name = os.path.dirname(os.path.realpath(__file__))
+    pickle_file_path = os.path.join(dir_name, "data.pickle")
+    data = pickle.load(open(pickle_file_path, 'rb'))
+    return data
