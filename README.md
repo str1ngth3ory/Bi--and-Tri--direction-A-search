@@ -40,7 +40,7 @@ While you'll only have to edit and submit **_search_submission.py_**, there are 
 ## The Assignment
 
 Your task is to implement several informed search algorithms that will calculate a driving route between two points in Romania with a minimal time and space cost.
-There is a search_submission_tests file to help you along the way. Your searches should be executed with minimal runtime and memory overhead.
+There is a `search_submission_tests.py` file to help you along the way. Your searches should be executed with minimal runtime and memory overhead.
 
 We will be using an undirected network representing a map of Romania (and an optional Atlanta graph used for the Race!).
 
@@ -49,7 +49,7 @@ We'll start by implementing some simpler optimization and search algorithms befo
 
 #### Warmup 1: Priority queue
 
-_[10 points]_
+_[5 points]_
 
 In all searches that involve calculating path cost or heuristic (e.g. uniform-cost), we have to order our search frontier. It turns out the way that we do this can impact our overall search runtime.
 
@@ -61,11 +61,11 @@ To show this, you'll implement a priority queue and demonstrate its performance 
 
 #### Warmup 2: BFS
 
-_[10 pts]_
+_[5 pts]_
 
 To get you started with handling graphs, implement and test breadth-first search over the test network.
 
-You'll complete this by writing the "breadth_first_search" method. This returns a path of nodes from a given start node to a given end node, as a list.
+You'll complete this by writing the `breadth_first_search()` method. This returns a path of nodes from a given start node to a given end node, as a list.
 
 For this part, it is optional to use the PriorityQueue as your frontier. You will require it from the next question onwards. You can use it here too if you want to be consistent.
 
@@ -74,11 +74,11 @@ For this part, it is optional to use the PriorityQueue as your frontier. You wil
 > 2. If your start and goal are the same then just return [].
 > 3. Both of the above are just to keep your results consistent with our test cases.
 > 4. You can access all the neighbors of a given node by calling `graph[node]`, or `graph.neighbors(node)` ONLY. 
-> 5. To measure your search performance, the explorable_graph.py provided keeps track of which nodes you have accessed in this way (this is referred to as the set of 'Explored' nodes). To retrieve the set of nodes you've explored in this way, call `graph.explored_nodes`. If you wish to perform multiple searches on the same graph instance, call `graph.reset_search()` to clear out the current set of 'Explored' nodes. **WARNING**, these functions are intended for debugging purposes only. Calls to these functions are strictly prohibited in _search_submission.py_.
+> 5. To measure your search performance, the `explorable_graph.py` provided keeps track of which nodes you have accessed in this way (this is referred to as the set of 'Explored' nodes). To retrieve the set of nodes you've explored in this way, call `graph.explored_nodes`. If you wish to perform multiple searches on the same graph instance, call `graph.reset_search()` to clear out the current set of 'Explored' nodes. **WARNING**, these functions are intended for debugging purposes only. Calls to these functions will fail on Bonnie.
 
 #### Warmup 3: Uniform-cost search
 
-_[15 points]_
+_[10 points]_
 
 Implement uniform-cost search, using PriorityQueue as your frontier. From now on, PriorityQueue should be your default frontier.
 
@@ -92,9 +92,9 @@ Implement uniform-cost search, using PriorityQueue as your frontier. From now on
 
 #### Warmup 4: A* search
 
-_[15 points]_
+_[10 points]_
 
-Implement A* search using Euclidean distance as your heuristic. You'll need to implement euclidean_dist_heuristic() then pass that function to a_star() as the heuristic parameter. We provide null_heuristic() as a baseline heuristic to test against when calling a_star tests.
+Implement A* search using Euclidean distance as your heuristic. You'll need to implement `euclidean_dist_heuristic()` then pass that function to `a_star()` as the heuristic parameter. We provide `null_heuristic()` as a baseline heuristic to test against when calling a_star tests.
 
 > **Hint**:
 > You can find a node's position by calling the following to check if the key is available.
@@ -122,7 +122,7 @@ For these exercises, we recommend you take a look at the following resources.
 
 #### Exercise 1: Bidirectional uniform-cost search
 
-_[20 points]_
+_[15 points]_
 
 Implement bidirectional uniform-cost search. Remember that this requires starting your search at both the start and end states.
 
@@ -137,12 +137,12 @@ Implement bidirectional uniform-cost search. Remember that this requires startin
 
 #### Exercise 2: Bidirectional A* search
 
-_[30 points]_
+_[20 points]_
 
 Implement bidirectional A* search. Remember that you need to calculate a heuristic for both the start-to-goal search and the goal-to-start search.
 
 To test this function, as well as using the provided tests, you can compare the path computed by bidirectional A star to bidirectional ucs search above.
-bidirectional_a_star should return the path from the start node to the goal node, as a list of nodes.
+`bidirectional_a_star()` should return the path from the start node to the goal node, as a list of nodes.
 
 > **Notes**:
 > 1. You do need to include start and goal in the path.
