@@ -1,4 +1,5 @@
 # coding=utf-8
+import itertools
 import pickle
 import random
 import unittest
@@ -8,33 +9,32 @@ import networkx
 from explorable_graph import ExplorableGraph
 from search_submission import a_star, bidirectional_a_star, \
     bidirectional_ucs, breadth_first_search, euclidean_dist_heuristic, \
-    null_heuristic, uniform_cost_search
+    null_heuristic, tridirectional_search, tridirectional_upgraded, \
+    uniform_cost_search
 
 
 class SearchUnitTests(unittest.TestCase):
     """
     Error Diagnostic code courtesy one of our former students -  Mac Chan
 
-        The following unit tests will check for all pairs on romania and random
-        points on atlanta.
-        Comment out any tests that you haven't implemented yet.
+    The following unit tests will check for all pairs on romania and random
+    points on atlanta.
+    Comment out any tests that you haven't implemented yet.
 
-        If you failed on bonnie because of non-optimal path, make sure you pass
-        all the local tests.
-        Change ntest=-1 if you failed the path test on bonnie, it will run
-        tests on atlanta until it finds a set of points that fail.
+    If you failed on bonnie because of non-optimal path, make sure you pass
+    all the local tests.
+    Change test_count=-1 if you failed the path test on bonnie, it will run
+    tests on atlanta until it finds a set of points that fail.
 
-        If you failed on bonnie because of your explored set is too large,
-        there is no easy way to test without a reference implementation.
-        But you can read the pdf slides for the optimized terminal condition.
+    If you failed on bonnie because of your explored set is too large,
+    there is no easy way to test without a reference implementation.
+    But you can read the pdf slides for the optimized terminal condition.
 
-        To run,
-        nosetests --nocapture -v search_unit_tests.py:SearchUnitTests
-        nosetests --nocapture -v
-            search_unit_tests.py:SearchUnitTests.test_tucs_romania
+    To run,
+    nosetests --nocapture -v search_unit_tests.py:SearchUnitTests
+    nosetests --nocapture -v
+                        search_unit_tests.py:SearchUnitTests.test_bfs_romania
     """
-
-    margin_of_error = 1.0e-6
 
     def setUp(self):
         """Setup both atlanta and romania graph data."""
@@ -46,6 +46,8 @@ class SearchUnitTests(unittest.TestCase):
         atlanta = pickle.load(open('atlanta_osm.pickle', 'rb'))
         self.atlanta = ExplorableGraph(atlanta)
         self.atlanta.reset_search()
+
+        self.margin_of_error = 1.0e-6
 
     def reference_path(self, graph, src_node, dst_node, weight='weight'):
         """
@@ -126,9 +128,42 @@ class SearchUnitTests(unittest.TestCase):
 
             self.assertEqual(path, ref_path)
 
+    def run_romania_tri(self, method, **kwargs):
+        """
+        Run the tridirectional test search against the Romania data.
+
+        Args:
+            method (func): Test search function.
+            kwargs: Keyword arguments.
+
+        Asserts:
+            True if the path from the test search is equivalent to the
+            reference search.
+        """
+
+        keys = self.romania.node.keys()
+        triplets = zip(keys, keys[1:], keys[2:])
+        for goals in triplets:
+            for all_combo in itertools.permutations(goals):
+                self.romania.reset_search()
+                path = method(self.romania, all_combo, **kwargs)
+                path_len = self.sum_weight(self.romania, path)
+                s1len, _ = self.reference_path(self.romania, all_combo[0],
+                                               all_combo[1])
+                s2len, _ = self.reference_path(self.romania, all_combo[2],
+                                               all_combo[1])
+                s3len, _ = self.reference_path(self.romania, all_combo[0],
+                                               all_combo[2])
+                min_len = min(s1len + s2len, s1len + s3len, s3len + s2len)
+
+                if path_len != min_len:
+                    print all_combo
+
+                self.assertEqual(path_len, min_len)
+
     def run_atlanta_data(self, method, test_count=10, **kwargs):
         """
-        Run the a bidirectional test search against the Atlanta data.
+        Run the bidirectional test search against the Atlanta data.
 
         Args:
             method (func): Test search function.
@@ -155,6 +190,39 @@ class SearchUnitTests(unittest.TestCase):
                                    delta=self.margin_of_error)
             test_count -= 1
 
+            if test_count == 0:
+                break
+
+    def run_atlanta_tri(self, method, test_count=10, **kwargs):
+        """
+        Run the tridirectional test search against the Atlanta data.
+
+        Args:
+            method (func): Test search function.
+            test_count (int): Number of tests to run. Default is 10.
+            kwargs: Keyword arguments.
+
+        Asserts:
+            True if the path from the test search is equivalent to the
+            reference search.
+        """
+
+        keys = list(next(networkx.connected_components(self.atlanta)))
+        random.shuffle(keys)
+        for goals in zip(keys, keys[1:], keys[2:])[::3]:
+            self.atlanta.reset_search()
+            path = method(self.atlanta, goals, **kwargs)
+            path_len = self.sum_weight(self.atlanta, path)
+            s1len, _ = self.reference_path(self.atlanta, goals[0], goals[1])
+            s2len, _ = self.reference_path(self.atlanta, goals[2], goals[1])
+            s3len, _ = self.reference_path(self.atlanta, goals[0], goals[2])
+            min_len = min(s1len + s2len, s1len + s3len, s3len + s2len)
+
+            if abs(path_len - min_len) > self.margin_of_error:
+                print goals
+            self.assertAlmostEqual(path_len, min_len,
+                                   delta=self.margin_of_error)
+            test_count -= 1
             if test_count == 0:
                 break
 
@@ -204,6 +272,42 @@ class SearchUnitTests(unittest.TestCase):
                           heuristic=null_heuristic)
         self.same_node_bi(self.romania, bidirectional_a_star,
                           heuristic=euclidean_dist_heuristic)
+
+    def same_node_tri_test(self, graph, method, test_count=10, **kwargs):
+        """
+        Run the tridirectional test search using same start and end nodes
+
+        Args:
+            graph (ExplorableGraph): Graph that contains path.
+            method (func): Test search function.
+            test_count (int): Number of tests to run. Default is 10.
+            kwargs: Keyword arguments.
+
+        Asserts:
+            True if the path between the same start and end node is empty.
+        """
+
+        keys = list(next(networkx.connected_components(graph)))
+        random.shuffle(keys)
+        for i in range(test_count):
+            path = method(graph, [keys[i], keys[i], keys[i]], **kwargs)
+            self.assertFalse(path)
+
+    def test_same_node_tri(self):
+        """
+        Test bidirectional search using the same start and end nodes.
+
+        Searches Tested:
+            tridirectional_search
+            tridirectional_upgraded, null_heuristic
+            tridirectional_upgraded, euclidean_dist_heuristic
+        """
+
+        self.same_node_tri_test(self.romania, tridirectional_search)
+        self.same_node_tri_test(self.romania, tridirectional_upgraded,
+                                heuristic=null_heuristic)
+        self.same_node_tri_test(self.romania, tridirectional_upgraded,
+                                heuristic=euclidean_dist_heuristic)
 
     def test_bfs_romania(self):
         """Test breadth first search with Romania data."""
@@ -273,6 +377,55 @@ class SearchUnitTests(unittest.TestCase):
         self.run_atlanta_data(bidirectional_a_star,
                               heuristic=euclidean_dist_heuristic,
                               test_count=10)
+
+    def test_tri_ucs_romania(self):
+        """Test Tri-UC search with Romania data."""
+
+        self.run_romania_tri(tridirectional_search)
+
+    def test_tri_ucs_atlanta(self):
+        """
+        Test Tri-UC search with Atlanta data.
+
+        To loop test forever, set test_count to -1
+        """
+
+        self.run_atlanta_tri(tridirectional_search, test_count=10)
+
+    def test_tri_upgraded_null_romania(self):
+        """
+        Test upgraded tri search with Romania data and the Null heuristic.
+        """
+
+        self.run_romania_tri(tridirectional_upgraded, heuristic=null_heuristic)
+
+    def test_tri_upgraded_null_atlanta(self):
+        """
+        Test upgraded tri search with Atlanta data and the Null heuristic.
+
+        To loop test forever, set test_count to -1
+        """
+
+        self.run_atlanta_tri(tridirectional_upgraded, test_count=10,
+                             heuristic=null_heuristic)
+
+    def test_tri_upgraded_euclidean_romania(self):
+        """
+        Test upgraded tri search with Romania data and the Euclidean heuristic.
+        """
+
+        self.run_romania_tri(tridirectional_upgraded,
+                             heuristic=euclidean_dist_heuristic)
+
+    def test_tri_upgraded_euclidean_atlanta(self):
+        """
+        Test upgraded tri search with Atlanta data and the Euclidean heuristic.
+
+        To loop test forever, set test_count to -1
+        """
+
+        self.run_atlanta_tri(tridirectional_upgraded, test_count=10,
+                             heuristic=euclidean_dist_heuristic)
 
 
 if __name__ == '__main__':
