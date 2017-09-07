@@ -124,7 +124,7 @@ class SearchUnitTests(unittest.TestCase):
             if path != ref_path:
                 print src, dst
 
-            assert path == ref_path
+            self.assertEqual(path, ref_path)
 
     def run_atlanta_data(self, method, test_count=10, **kwargs):
         """
@@ -151,7 +151,8 @@ class SearchUnitTests(unittest.TestCase):
             if abs(path_len - ref_len) > self.margin_of_error:
                 print src, dst
 
-            assert abs(path_len - ref_len) <= self.margin_of_error
+            self.assertAlmostEqual(path_len, ref_len,
+                                   delta=self.margin_of_error)
             test_count -= 1
 
             if test_count == 0:
@@ -177,7 +178,7 @@ class SearchUnitTests(unittest.TestCase):
         for i in range(test_count):
             path = method(graph, keys[i], keys[i], **kwargs)
 
-            assert path == []
+            self.assertFalse(path)
 
     def test_same_node_bi(self):
         """
