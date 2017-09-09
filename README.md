@@ -97,9 +97,7 @@ _[10 points]_
 Implement A* search using Euclidean distance as your heuristic. You'll need to implement `euclidean_dist_heuristic()` then pass that function to `a_star()` as the heuristic parameter. We provide `null_heuristic()` as a baseline heuristic to test against when calling a_star tests.
 
 > **Hint**:
-> You can find a node's position by calling the following to check if the key is available.
-> * Romania Map - `graph.node[n]['pos']`
-> * Atlanta Map - `graph.node[n]['position']`
+> You can find a node's position by calling the following to check if the key is available: `graph.node[n]['pos']`
 
 > **Notes**:
 > 1. You do need to include start and goal in the path.
