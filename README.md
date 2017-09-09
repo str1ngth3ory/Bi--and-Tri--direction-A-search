@@ -30,12 +30,13 @@ While you'll only have to edit and submit **_search_submission.py_**, there are 
 
 1. **_search_submission.py_**: Where you will implement your _PriorityQueue_, _Breadth First Search_, _Uniform Cost Search_, _A* Search_, _Bi-directional Search_
 2. **_search_submission_tests.py_**: Sample tests to validate your searches locally.
-3. **_romania_graph.pickle_**: Serialized graph files for Romania.
-4. **_atlanta_osm.pickle_**: Serialized graph files for Atlanta (optional for robust testing for Race!).
-4. **_submit.py_**: A script to submit your work.
-5. **_explorable_graph.py_**: A subclass of `networkx` with explored and neighbor nodes. **FOR DEBUGGING ONLY**
-6. **_visualize_graph.py_**: Module to visualize search results.
-6. **_osm2networkx.py_**: Module used by visualize graph to read OSM networks.
+3. **_search_unit_test.py_**: More detailed tests that run searches from all possible pairs of nodes in the graph
+4. **_romania_graph.pickle_**: Serialized graph files for Romania.
+5. **_atlanta_osm.pickle_**: Serialized graph files for Atlanta (optional for robust testing for Race!).
+6. **_submit.py_**: A script to submit your work.
+7. **_explorable_graph.py_**: A wrapper around `networkx` that tracks explored nodes. **FOR DEBUGGING ONLY**
+8. **_visualize_graph.py_**: Module to visualize search results.
+9. **_osm2networkx.py_**: Module used by visualize graph to read OSM networks.
 
 ## The Assignment
 
