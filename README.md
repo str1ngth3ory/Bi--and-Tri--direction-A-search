@@ -50,7 +50,7 @@ We'll start by implementing some simpler optimization and search algorithms befo
 
 #### Warmup 1: Priority queue
 
-_[5 points]_
+_[4 points]_
 
 In all searches that involve calculating path cost or heuristic (e.g. uniform-cost), we have to order our search frontier. It turns out the way that we do this can impact our overall search runtime.
 
@@ -186,6 +186,12 @@ The specifics are up to you, but we have a few suggestions:
 > 2. If any two goals are the same then just return [] as the path between them
 > 3. We will provide some margin of error in grading the size of your 'Explored' set, but it should be close to the
      results provided by our reference implementation.
+     
+#### Final Task: Return your name
+_[1 point]_
+
+A simple task to wind down the assignment. Return you name from the function aptly called `return_your_name()`.
+
 
 ### The Race!
 
