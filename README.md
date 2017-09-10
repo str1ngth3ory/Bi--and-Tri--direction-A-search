@@ -50,7 +50,7 @@ We'll start by implementing some simpler optimization and search algorithms befo
 
 #### Warmup 1: Priority queue
 
-_[4 points]_
+_[5 points]_
 
 In all searches that involve calculating path cost or heuristic (e.g. uniform-cost), we have to order our search frontier. It turns out the way that we do this can impact our overall search runtime.
 
