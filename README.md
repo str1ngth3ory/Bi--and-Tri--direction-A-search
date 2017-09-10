@@ -150,7 +150,7 @@ To test this function, as well as using the provided tests, you can compare the 
 
 #### Exercise 3: Tridirectional UCS search
 
-_[20 points]_
+_[19 points]_
 
 Implement tridirectional search in the naive way: starting from each goal node, perform a uniform-cost search and keep
 expanding until two of the three searches meet. This should be one continuous path that connects all three nodes.
