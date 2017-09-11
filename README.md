@@ -20,7 +20,7 @@ Search is an integral part of AI. It helps in problem solving across a wide vari
 
 ### Due Date
 
-This assignment is due on Bonnie and T-Square on June 11th by 11:59PM UTC-12 (Anywhere on Earth). The deliverables for the assignment are:
+This assignment is due on Bonnie and T-Square on September 24th, 2017 by 11:59PM UTC-12 (Anywhere on Earth). The deliverables for the assignment are:
 
 • All functions completed in `search_submission.py`
 
