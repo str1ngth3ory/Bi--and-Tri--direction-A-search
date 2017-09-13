@@ -86,10 +86,11 @@ Implement uniform-cost search, using PriorityQueue as your frontier. From now on
 `uniform_cost_search()` should return the same arguments as breadth-first search: the path to the goal node (as a list of nodes).
 
 > **Notes**:
-> 1. You do need to include start and goal in the path.
-> 2. If your start and goal are the same then just return []
-> 3. We will provide some margin of error in grading the size of your 'Explored' set, but it should be close to the results provided by our reference implementation.
-> 4. The above are just to keep your results consistent with our test cases.
+> 1. You can access the weight of an edge using: `graph[node_1][node_2]['weight']`
+> 2. You do need to include start and goal in the path.
+> 3. If your start and goal are the same then just return []
+> 4. We will provide some margin of error in grading the size of your 'Explored' set, but it should be close to the results provided by our reference implementation.
+> 5. The above are just to keep your results consistent with our test cases.
 
 #### Warmup 4: A* search
 
