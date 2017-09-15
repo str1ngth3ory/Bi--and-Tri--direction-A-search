@@ -228,7 +228,7 @@ def a_star(graph, start, goal, heuristic=euclidean_dist_heuristic):
     raise NotImplementedError
 
 
-def bidirectional_ucs(graph, start, goal, heuristic=euclidean_dist_heuristic):
+def bidirectional_ucs(graph, start, goal):
     """
     Exercise 1: Bidirectional Search.
 
