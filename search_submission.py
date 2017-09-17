@@ -200,7 +200,7 @@ def euclidean_dist_heuristic(graph, v, goal):
         goal (str): Key for the end node to calculate to.
 
     Returns:
-        Euclidean distance between `v` node and `goal` node as a list.
+        Euclidean distance between `v` node and `goal` node
     """
 
     # TODO: finish this function!
