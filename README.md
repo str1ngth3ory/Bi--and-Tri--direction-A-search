@@ -35,8 +35,18 @@ While you'll only have to edit and submit **_search_submission.py_**, there are 
 5. **_atlanta_osm.pickle_**: Serialized graph files for Atlanta (optional for robust testing for Race!).
 6. **_submit.py_**: A script to submit your work.
 7. **_explorable_graph.py_**: A wrapper around `networkx` that tracks explored nodes. **FOR DEBUGGING ONLY**
-8. **_visualize_graph.py_**: Module to visualize search results.
+8. **_visualize_graph.py_**: Module to visualize search results. See below on how to use it.
 9. **_osm2networkx.py_**: Module used by visualize graph to read OSM networks.
+
+
+> A note on visualizing results for the Atlanta graph:
+>  
+> The Atlanta graph is too big to display within a Python window like Romania. As a result, when you run the
+> bidirectional tests in **_search_submission_tests.py_**, it generates a JSON file in the GeoJSON format. To see the
+> graph, you can upload it to a private GitHub Gist or use [this](http://geojson.io/) site.
+>  
+> If you want to see how **_visualize_graph.py_** is used, take a look at the class TestBidirectionalSearch in
+> **_search_submission_tests.py_**
 
 ## The Assignment
 
