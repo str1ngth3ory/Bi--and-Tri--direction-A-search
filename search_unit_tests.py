@@ -117,7 +117,7 @@ class SearchUnitTests(unittest.TestCase):
         """
 
         keys = self.romania.node.keys()
-        pairs = zip(keys, keys[1:])
+        pairs = itertools.permutations(keys, 2)
         for src, dst in pairs:
             self.romania.reset_search()
             path = method(self.romania, src, dst, **kwargs)
@@ -142,28 +142,27 @@ class SearchUnitTests(unittest.TestCase):
         """
 
         keys = self.romania.node.keys()
-        triplets = zip(keys, keys[1:], keys[2:])
+        triplets = itertools.permutations(keys, 3)
         for goals in triplets:
-            for all_combo in itertools.permutations(goals):
-                self.romania.reset_search()
-                path = method(self.romania, all_combo, **kwargs)
-                path_len = self.sum_weight(self.romania, path)
-                s1len, _ = self.reference_path(self.romania, all_combo[0],
-                                               all_combo[1])
-                s2len, _ = self.reference_path(self.romania, all_combo[2],
-                                               all_combo[1])
-                s3len, _ = self.reference_path(self.romania, all_combo[0],
-                                               all_combo[2])
-                min_len = min(s1len + s2len, s1len + s3len, s3len + s2len)
+            self.romania.reset_search()
+            path = method(self.romania, goals, **kwargs)
+            path_len = self.sum_weight(self.romania, path)
+            s1len, _ = self.reference_path(self.romania, goals[0], goals[1])
+            s2len, _ = self.reference_path(self.romania, goals[2], goals[1])
+            s3len, _ = self.reference_path(self.romania, goals[0], goals[2])
+            min_len = min(s1len + s2len, s1len + s3len, s3len + s2len)
 
-                if path_len != min_len:
-                    print all_combo
+            if path_len != min_len:
+                print goals
 
-                self.assertEqual(path_len, min_len)
+            self.assertEqual(path_len, min_len)
 
     def run_atlanta_data(self, method, test_count=10, **kwargs):
         """
         Run the bidirectional test search against the Atlanta data.
+
+        In the interest of time and memory, this is not an exhaustive search of
+        all possible pairs in the graph.
 
         Args:
             method (func): Test search function.
@@ -196,6 +195,9 @@ class SearchUnitTests(unittest.TestCase):
     def run_atlanta_tri(self, method, test_count=10, **kwargs):
         """
         Run the tridirectional test search against the Atlanta data.
+
+        In the interest of time and memory, this is not an exhaustive search of
+        all possible triplets in the graph.
 
         Args:
             method (func): Test search function.
