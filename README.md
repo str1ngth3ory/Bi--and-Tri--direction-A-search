@@ -18,11 +18,15 @@ Read [setup.md](./setup.md) for more information on how to effectively manage yo
 
 Search is an integral part of AI. It helps in problem solving across a wide variety of domains where a solution isn’t immediately clear.  You will implement several graph search algorithms with the goal of solving bi-directional search.
 
-### Due Date
+### Submission and Due Date
 
-This assignment is due on Bonnie and T-Square on September 24th, 2017 by 11:59PM UTC-12 (Anywhere on Earth). The deliverables for the assignment are:
+Submit your code to bonnie for grading by running `submit.py`. **As per very assignment, you can find the output of all of your submissions on bonnie.udacity.com**
+
+This assignment is due on Bonnie and T-Square on February 11th, 2017 by 11:59PM UTC-12 (Anywhere on Earth). The deliverables for the assignment are:
 
 • All functions completed in `search_submission.py`
+
+Only the final submission will be used for grading purposes. We cannot use your "best" submission out of all submissions.
 
 ### The Files
 
@@ -47,6 +51,25 @@ While you'll only have to edit and submit **_search_submission.py_**, there are 
 >  
 > If you want to see how **_visualize_graph.py_** is used, take a look at the class TestBidirectionalSearch in
 > **_search_submission_tests.py_**
+
+## Resources
+
+### Provide Resources
+Udacity, [Lesson 2: Search](https://classroom.udacity.com/courses/ud954/lessons/6375179396/concepts/68711451400923)
+R&N slides on [Uninformed Search](https://www.cc.gatech.edu/~thad/6601-gradAI-fall2015/chapter03-clean.pdf) and [Informed Search](https://www.cc.gatech.edu/~thad/6601-gradAI-fall2015/chapter04a.pdf)
+
+Links from Udacity, below the videos:
+[Finding Optimal Solutions to Rubik's Cube Using Pattern Databases](https://www.cs.princeton.edu/courses/archive/fall06/cos402/papers/korfrubik.pdf)
+[God's Number is 26 in the Quarter-Turn Metric](http://www.cube20.org/qtm/)
+[Reach for A∗: An Efficient Point-to-Point Shortest Path Algorithm](http://www.cc.gatech.edu/~thad/6601-gradAI-fall2015/02-search-01-Astart-ALT-Reach.pdf)
+[Computing the Shortest Path: A∗ Search Meets Graph Theory](http://www.cc.gatech.edu/~thad/6601-gradAI-fall2015/02-search-Goldberg03tr.pdf)
+[Reach-based Routing: A New Approach to Shortest Path Algorithms Optimized for Road Networks](http://www.cc.gatech.edu/~thad/6601-gradAI-fall2015/02-search-Gutman04siam.pdf)
+
+### Relavent Challenge Questions
+_These will be updated as they are added._
+
+### Other Resources
+[Introduction to A*](https://www.redblobgames.com/pathfinding/a-star/introduction.html)
 
 ## The Assignment
 
@@ -207,6 +230,8 @@ A simple task to wind down the assignment. Return you name from the function apt
 ### The Race!
 
 Here's your chance to show us your best stuff. This part is mandatory if you want to compete in the race for extra credit. Implement `custom_search()` using whatever strategy you like.
+
+**Bonus points are added to the grade for this assignment, not to your overall grade.**
 
 The Race! will be based on Atlanta Pickle data.
 
