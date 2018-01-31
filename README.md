@@ -22,6 +22,8 @@ Search is an integral part of AI. It helps in problem solving across a wide vari
 
 Submit your code to bonnie for grading by running `submit.py`. **As per every assignment, you can find the output of all of your submissions on bonnie.udacity.com**
 
+You are allowed **two submissions every thirty minutes**.
+
 This assignment is due on Bonnie and T-Square on February 11th, 2017 by 11:59PM UTC-12 (Anywhere on Earth). The deliverables for the assignment are:
 
 • All functions completed in `search_submission.py`
