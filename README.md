@@ -28,7 +28,7 @@ This assignment is due on Bonnie and T-Square on February 11th, 2017 by 11:59PM 
 
 • All functions completed in `search_submission.py`
 
-Only the final submission will be used for grading purposes. We cannot use your "best" submission out of all submissions.
+**Only the final submission will be used for grading purposes. We cannot use your "best" submission out of all submissions.**
 
 ### The Files
 
