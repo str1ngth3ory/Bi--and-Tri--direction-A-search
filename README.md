@@ -68,8 +68,9 @@ Links from Udacity, below the videos:
 * [Computing the Shortest Path: A∗ Search Meets Graph Theory](http://www.cc.gatech.edu/~thad/6601-gradAI-fall2015/02-search-Goldberg03tr.pdf)
 * [Reach-based Routing: A New Approach to Shortest Path Algorithms Optimized for Road Networks](http://www.cc.gatech.edu/~thad/6601-gradAI-fall2015/02-search-Gutman04siam.pdf)
 
-### Relavent Challenge Questions
-_These will be updated as they are added._
+### Relevant Challenge Questions
+Challenge Question 4 - Search on Grid [ https://piazza.com/class/jc6w44hrp9v2ki?cid=321 ]
+_Others will be updated as they are added._
 
 ### Other Resources
 [Introduction to A*](https://www.redblobgames.com/pathfinding/a-star/introduction.html)
