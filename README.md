@@ -69,8 +69,8 @@ Links from Udacity, below the videos:
 * [Reach-based Routing: A New Approach to Shortest Path Algorithms Optimized for Road Networks](http://www.cc.gatech.edu/~thad/6601-gradAI-fall2015/02-search-Gutman04siam.pdf)
 
 ### Relevant Challenge Questions
-Challenge Question 4 - Search on Grid [ https://piazza.com/class/jc6w44hrp9v2ki?cid=321 ]
-Challenge Question 5 - Word Morphing [ https://piazza.com/class/jc6w44hrp9v2ki?cid=387 ]
+Challenge Question 4 - Search on Grid [ https://piazza.com/class/jc6w44hrp9v2ki?cid=321 ]  
+Challenge Question 5 - Word Morphing [ https://piazza.com/class/jc6w44hrp9v2ki?cid=387 ]  
 Challenge Question 6 - Puzzle 8 & Rubik's Cube [ https://piazza.com/class/jc6w44hrp9v2ki?cid=389 ]
 
 _Others will be updated as they are added._
