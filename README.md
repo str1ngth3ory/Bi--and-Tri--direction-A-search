@@ -96,7 +96,9 @@ In all searches that involve calculating path cost or heuristic (e.g. uniform-co
 To show this, you'll implement a priority queue and demonstrate its performance benefits. For large graphs, sorting all input to a priority queue is impractical. As such, the data structure you implement should have an amortized O(1) insertion and O(lg n) removal time. It should do better than the naive implementation in our tests (InsertionSortQueue), which sorts the entire list after every insertion.
 
 > Hint:
-> The heapq module has been imported for you.
+
+> The heapq module has been imported for you. Feel free to use it
+
 > Each edge has an associated weight.
 
 #### Warmup 2: BFS
