@@ -1,6 +1,7 @@
 # CS 6601: Artificial Intelligence - Assignment 2 - Search - Online students
 
-* Warning: this repo is for online students only. The link to the repo for on campus students is available on Canvas.
+**Warning: this repo is for online students only. The link to the repo for on campus students is available on Canvas.**
+
 ## Setup
 
 Clone this repository:
