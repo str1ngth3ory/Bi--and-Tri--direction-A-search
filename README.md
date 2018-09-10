@@ -6,7 +6,7 @@
 
 Clone this repository:
 
-`git clone https://github.gatech.edu/omscs6601/assignment_2.git`
+`git clone https://github.gatech.edu/omscs6601/assignment_2_online.git`
 
 The submission scripts depend on the presence of 3 python packages - `requests`, `future`, and `nelson`. Install them using the command below:
 
@@ -152,12 +152,11 @@ The following exercises will require you to implement several kinds of bidirecti
 
 For these exercises, we recommend you take a look at the following resources.
 
-1. [A Star meets Graph Theory](https://github.gatech.edu/omscs6601/assignment_2/raw/master/resources/A%20Star%20meets%20Graph%20Theory.pdf)
-2. [Applications of Search](https://github.gatech.edu/omscs6601/assignment_2/raw/master/resources/Applications%20of%20Search.pdf)
-3. [Bi Directional A Star - Slides](https://github.gatech.edu/omscs6601/assignment_2/raw/master/resources/Bi%20Directional%20A%20Star%20-%20Slides.pdf)
-4. [Bi Directional A Star with Additive Approx Bounds](https://github.gatech.edu/omscs6601/assignment_2/raw/master/resources/Bi%20Directional%20A%20Star%20with%20Additive%20Approx%20Bounds.pdf)
-5. [Bi Directional A Star](https://github.gatech.edu/omscs6601/assignment_2/raw/master/resources/Bi%20Directional%20A%20Star.pdf)
-6. [Search Algorithms Slide Deck](https://github.gatech.edu/omscs6601/assignment_2/raw/master/resources/Search%20Algorithms%20Slide%20Deck.pdf)
+1. [A Star meets Graph Theory](https://github.gatech.edu/omscs6601/assignment_2_online/raw/master/resources/A%20Star%20meets%20Graph%20Theory.pdf)
+2. [Bi Directional A Star - Slides](https://github.gatech.edu/omscs6601/assignment_2_online/raw/master/resources/Bi%20Directional%20A%20Star%20-%20Slides.pdf)
+3. [Bi Directional A Star with Additive Approx Bounds](https://github.gatech.edu/omscs6601/assignment_2_online/raw/master/resources/Bi%20Directional%20A%20Star%20with%20Additive%20Approx%20Bounds.pdf)
+4. [Bi Directional A Star](https://github.gatech.edu/omscs6601/assignment_2_online/raw/master/resources/Bi%20Directional%20A%20Star.pdf)
+5. [Search Algorithms Slide Deck](https://github.gatech.edu/omscs6601/assignment_2_online/raw/master/resources/Search%20Algorithms%20Slide%20Deck.pdf)
 
 #### Exercise 1: Bidirectional uniform-cost search
 
