@@ -331,12 +331,15 @@ class SearchUnitTests(unittest.TestCase):
 
         keys = self.romania.node.keys()
         pairs = itertools.permutations(keys, 2)
-        for src, dst in pairs:
-            self.romania.reset_search()
-            path = breadth_first_search(self.romania, src, dst)
-            ref_len, ref_path = self.reference_bfs_path(self.romania, src, dst)
-            self.assertTrue(is_valid(self.romania, path, src, dst))
-            self.assertTrue(len(path) == len(ref_path), msg="Path is too long")
+        for src in keys:
+            for dst in keys:
+                self.romania.reset_search()
+                path = breadth_first_search(self.romania, src, dst)
+                ref_len, ref_path = self.reference_bfs_path(self.romania, src, dst)
+                self.assertTrue(is_valid(self.romania, path, src, dst),
+                     msg="path for start '%s' and goal '%s' is not valid" % (src, dst))
+                if src != dst: # we want path == [] if src == dst
+                    self.assertTrue(len(path) == len(ref_path), msg="Path is too long. Real path: %s, your path: %s" % (ref_path, path))
 
     def test_ucs_romania(self):
         """Test uniform cost search with Romania data."""
