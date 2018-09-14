@@ -347,12 +347,13 @@ def load_data(graph, time_left):
     at the beginning of the Race, and we'll pass the output to your custom_search function.
     graph: a networkx graph
     time_left: function you can call to keep track of your remaining time.
-        usage: time_left()
+        usage: time_left() returns the time left in milliseconds.
         the max time will be 10 minutes.
 
     * To get a list of nodes, use graph.nodes()
     * To get node neighbors, use graph.neighbors(node)
     * To get edge weight, use graph[node1][node2]['weight']
     """
-    nodes = graph.nodes()
+
+    # nodes = graph.nodes()
     return None
