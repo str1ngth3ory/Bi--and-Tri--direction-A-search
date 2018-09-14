@@ -319,6 +319,9 @@ def custom_search(graph, start, goal, data=None):
     Race!: Implement your best search algorithm here to compete against the
     other student agents.
 
+    If you implement this function and submit your code to bonnie, you'll be
+    registered for the Race!
+
     See README.md for exercise description.
 
     Args:
@@ -326,6 +329,7 @@ def custom_search(graph, start, goal, data=None):
         start (str): Key for the start node.
         goal (str): Key for the end node.
         data :  Data used in the custom search.
+            Will be passed your data from load_data(graph).
             Default: None.
 
     Returns:
@@ -336,18 +340,19 @@ def custom_search(graph, start, goal, data=None):
     raise NotImplementedError
 
 
-def load_data():
+
+def load_data(graph, time_left):
     """
-    Loads data from data.pickle and return the data object that is passed to
-    the custom_search method.
+    Feel free to implement this method. We'll call it only once 
+    at the beginning of the Race, and we'll pass the output to your custom_search function.
+    graph: a networkx graph
+    time_left: function you can call to keep track of your remaining time.
+        usage: time_left()
+        the max time will be 10 minutes.
 
-    Will be called only once. Feel free to modify.
-
-    Returns:
-         The data loaded from the pickle file.
+    * To get a list of nodes, use graph.nodes()
+    * To get node neighbors, use graph.neighbors(node)
+    * To get edge weight, use graph[node1][node2]['weight']
     """
-
-    dir_name = os.path.dirname(os.path.realpath(__file__))
-    pickle_file_path = os.path.join(dir_name, "data.pickle")
-    data = pickle.load(open(pickle_file_path, 'rb'))
-    return data
+    nodes = graph.nodes()
+    return None
