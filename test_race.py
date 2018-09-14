@@ -36,7 +36,7 @@ class TestRace(unittest.TestCase):
         start_time_ms = get_time_milliseconds()
 
         def time_left():
-            return max_time - (curr_time_millis() - start_time_ms)
+            return max_time - (get_time_milliseconds() - start_time_ms)
         
         data = load_data(self.romania, time_left)
 
