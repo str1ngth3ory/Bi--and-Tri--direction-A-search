@@ -10,6 +10,7 @@ from __future__ import division
 import heapq
 import os
 import pickle
+import math
 
 
 class PriorityQueue(object):
@@ -361,8 +362,6 @@ def load_data(graph, time_left):
  def haversine_dist_heuristic(graph, v, goal):
     """
     Note: This provided heuristic is for the Atlanta race.
-
-    See README.md for exercise description.
 
     Args:
         graph (ExplorableGraph): Undirected graph to search.
