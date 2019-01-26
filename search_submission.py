@@ -357,3 +357,28 @@ def load_data(graph, time_left):
 
     # nodes = graph.nodes()
     return None
+ 
+ def haversine_dist_heuristic(graph, v, goal):
+    """
+    Note: This provided heuristic is for the Atlanta race.
+
+    See README.md for exercise description.
+
+    Args:
+        graph (ExplorableGraph): Undirected graph to search.
+        v (str): Key for the node to calculate from.
+        goal (str): Key for the end node to calculate to.
+
+    Returns:
+        Haversine distance between `v` node and `goal` node
+    """
+
+    #Load latitude and longitude coordinates in radians:
+    vLatLong = (math.radians(graph.node[v]["pos"][0]), math.radians(graph.node[v]["pos"][1]))
+    goalLatLong = (math.radians(graph.node[goal]["pos"][0]), math.radians(graph.node[goal]["pos"][1]))
+
+    #Now we want to execute portions of the formula:
+    constOutFront = 2*6371 #Radius of Earth is 6,371 kilometers
+    term1InSqrt = (math.sin((goalLatLong[0]-vLatLong[0])/2))**2 #First term inside sqrt
+    term2InSqrt = math.cos(vLatLong[0])*math.cos(goalLatLong[0])*((math.sin((goalLatLong[1]-vLatLong[1])/2))**2) #Second term
+    return constOutFront*math.asin(math.sqrt(term1InSqrt+term2InSqrt)) #Straight application of formula
