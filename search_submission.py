@@ -290,7 +290,7 @@ def tridirectional_search(graph, goals):
 
 def tridirectional_upgraded(graph, goals, heuristic=euclidean_dist_heuristic):
     """
-    Exercise 3: Upgraded Tridirectional Search
+    Exercise 4: Upgraded Tridirectional Search
 
     See README.MD for exercise description.
 
@@ -316,8 +316,7 @@ def return_your_name():
 
 def custom_heuristic(graph, v, goal):
     """
-       Exercise 5: Use this to test out any custom heuristic for comparing Tridirectional vs 3 Bidirectional Searches for the report.
-       See README.md for exercise description.
+       Feel free to use this method to try and work with different heuristics and come up with a better search algorithm.
        Args:
            graph (ExplorableGraph): Undirected graph to search.
            v (str): Key for the node to calculate from.
