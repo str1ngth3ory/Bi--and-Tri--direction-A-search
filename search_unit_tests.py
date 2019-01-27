@@ -9,8 +9,8 @@ import networkx
 from explorable_graph import ExplorableGraph
 from search_submission import a_star, bidirectional_a_star, \
     bidirectional_ucs, breadth_first_search, euclidean_dist_heuristic, \
-    null_heuristic, tridirectional_search, tridirectional_upgraded, \
-    uniform_cost_search
+    null_heuristic, haversine_dist_heuristic, tridirectional_search, tridirectional_upgraded, \
+    uniform_cost_search, custom_heuristic
 
 
 def is_valid(graph, path, start, goal):
@@ -53,11 +53,13 @@ class SearchUnitTests(unittest.TestCase):
     def setUp(self):
         """Setup both atlanta and romania graph data."""
 
-        romania = pickle.load(open('romania_graph.pickle', 'rb'))
+        with (open("romania_graph.pickle", "rb")) as romFile:
+            romania = pickle.load(romFile)
         self.romania = ExplorableGraph(romania)
         self.romania.reset_search()
 
-        atlanta = pickle.load(open('atlanta_osm.pickle', 'rb'))
+        with (open("atlanta_osm.pickle", "rb")) as atlFile:
+            atlanta = pickle.load(atlFile)
         self.atlanta = ExplorableGraph(atlanta)
         self.atlanta.reset_search()
 
@@ -138,7 +140,7 @@ class SearchUnitTests(unittest.TestCase):
             ref_len, ref_path = ref_method(self.romania, src, dst)
 
             if path != ref_path:
-                print src, dst
+                print (src, dst)
 
             self.assertEqual(path, ref_path)
 
@@ -167,7 +169,7 @@ class SearchUnitTests(unittest.TestCase):
             min_len = min(s1len + s2len, s1len + s3len, s3len + s2len)
 
             if path_len != min_len:
-                print goals
+                print (goals)
 
             self.assertEqual(path_len, min_len)
 
@@ -188,16 +190,15 @@ class SearchUnitTests(unittest.TestCase):
             reference search.
         """
 
-        keys = list(networkx.connected_components(self.atlanta).next())
+        keys = list(networkx.connected_components(self.atlanta).__next__())
         random.shuffle(keys)
-        for src, dst in zip(keys, keys[1:])[::2]:
+        for src, dst in list(zip(keys, keys[1:]))[::2]:
             self.atlanta.reset_search()
             path = method(self.atlanta, src, dst, **kwargs)
             path_len = self.sum_weight(self.atlanta, path)
             ref_len, ref_path = self.reference_path(self.atlanta, src, dst)
-
             if abs(path_len - ref_len) > self.margin_of_error:
-                print src, dst
+                print (src, dst)
 
             self.assertAlmostEqual(path_len, ref_len,
                                    delta=self.margin_of_error)
@@ -225,7 +226,7 @@ class SearchUnitTests(unittest.TestCase):
 
         keys = list(next(networkx.connected_components(self.atlanta)))
         random.shuffle(keys)
-        for goals in zip(keys, keys[1:], keys[2:])[::3]:
+        for goals in list(zip(keys, keys[1:], keys[2:]))[::3]:
             self.atlanta.reset_search()
             path = method(self.atlanta, goals, **kwargs)
             path_len = self.sum_weight(self.atlanta, path)
@@ -235,7 +236,7 @@ class SearchUnitTests(unittest.TestCase):
             min_len = min(s1len + s2len, s1len + s3len, s3len + s2len)
 
             if abs(path_len - min_len) > self.margin_of_error:
-                print goals
+                print (goals)
             self.assertAlmostEqual(path_len, min_len,
                                    delta=self.margin_of_error)
             test_count -= 1
@@ -256,7 +257,7 @@ class SearchUnitTests(unittest.TestCase):
             True if the path between the same start and end node is empty.
         """
 
-        keys = list(networkx.connected_components(graph).next())
+        keys = list(networkx.connected_components(graph).__next__())
         random.shuffle(keys)
 
         for i in range(test_count):
@@ -337,7 +338,7 @@ class SearchUnitTests(unittest.TestCase):
                 path = breadth_first_search(self.romania, src, dst)
                 ref_len, ref_path = self.reference_bfs_path(self.romania, src, dst)
                 self.assertTrue(is_valid(self.romania, path, src, dst),
-                     msg="path for start '%s' and goal '%s' is not valid" % (src, dst))
+                     msg="path %s for start '%s' and goal '%s' is not valid" % (path, src, dst))
                 if src != dst: # we want path == [] if src == dst
                     self.assertTrue(len(path) == len(ref_path), msg="Path is too long. Real path: %s, your path: %s" % (ref_path, path))
 
@@ -405,6 +406,17 @@ class SearchUnitTests(unittest.TestCase):
                               heuristic=euclidean_dist_heuristic,
                               test_count=10)
 
+    def test_bi_a_star_haversine_atlanta(self):
+        """
+        Test Bi-A* search with Atlanta data and the Haversine heuristic.
+
+        To loop test forever, set test_count to -1
+        """
+
+        self.run_atlanta_data(bidirectional_a_star,
+                              heuristic=haversine_dist_heuristic,
+                              test_count=10)
+
     def test_tri_ucs_romania(self):
         """Test Tri-UC search with Romania data."""
 
@@ -454,6 +466,15 @@ class SearchUnitTests(unittest.TestCase):
         self.run_atlanta_tri(tridirectional_upgraded, test_count=10,
                              heuristic=euclidean_dist_heuristic)
 
+    def test_tri_upgraded_haversine_atlanta(self):
+        """
+        Test upgraded tri search with Atlanta data and the Haversine heuristic.
+
+        To loop test forever, set test_count to -1
+        """
+
+        self.run_atlanta_tri(tridirectional_upgraded, test_count=10,
+                             heuristic=haversine_dist_heuristic)
 
 if __name__ == '__main__':
     unittest.main()

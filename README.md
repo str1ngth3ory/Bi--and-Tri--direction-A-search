@@ -1,18 +1,16 @@
-# CS 6601: Artificial Intelligence - Assignment 2 - Search - Online students
-
-**Warning: this repo is for online students only. The link to the repo for on campus students is available on Canvas.**
+# CS 6601: Artificial Intelligence - Assignment 2 - Search
 
 ## Setup
 
 Clone this repository:
 
-`git clone https://github.gatech.edu/omscs6601/assignment_2_online.git`
+`git clone https://github.gatech.edu/omscs6601/assignment_2.git`
 
-The submission scripts depend on the presence of 3 python packages - `requests`, `future`, and `nelson`. Install them using the command below:
+The submission scripts depend on the presence of 5 python packages - `requests`, `future`, `nelson`, `networkx`, and `matplotlib`. Install them using the command below:
 
 `pip install -r requirements.txt`
 
-Python 2.7 is recommended and has been tested.
+Python 3.7 is recommended and has been tested.
 
 Read [setup.md](./setup.md) for more information on how to effectively manage your git repository and troubleshooting information.
 
@@ -26,9 +24,7 @@ Submit your code to bonnie for grading by running `submit.py`. **As per every as
 
 You are allowed **two submissions every thirty minutes**.
 
-This assignment is due on Bonnie and Canvas on September 23th, 2018 by 11:59PM UTC-12 (Anywhere on Earth). The deliverables for the assignment are:
-
-• All functions completed in `search_submission.py`
+This assignment is due on Bonnie and Canvas on February 11th, 2019 by 11:59PM UTC-12 (Anywhere on Earth). The deliverable for the assignment is a 'search_submission.py' file with all the functions/methods completed.
 
 **Only the final submission will be used for grading purposes. We cannot use your "best" submission out of all submissions.**
 
@@ -71,7 +67,6 @@ Links from Udacity, below the videos:
 * [Reach-based Routing: A New Approach to Shortest Path Algorithms Optimized for Road Networks](http://www.cc.gatech.edu/~thad/6601-gradAI-fall2015/02-search-Gutman04siam.pdf)
 
 ### Relevant Challenge Questions
-
 _Questions will be updated as they are added._
 
 ### Other Resources
@@ -84,6 +79,21 @@ There is a `search_submission_tests.py` file to help you along the way. Your sea
 
 We will be using an undirected network representing a map of Romania (and an optional Atlanta graph used for the Race!).
 
+**Frequently Asked Questions Along with Issues and Solutions**
+Also, as an extra note, there are a few things that are among our most common questions:
+
+* Remember that if start and goal are the same, you should return []. This keeps your results consistent with ours and avoids some headache.
+	 * Make sure you break ties using FIFO in your priority queue implementation.
+     * There is a little more to this when you get to tridirectional, so read those Notes especially carefully as well
+* **Do not** use graph.explored_nodes for anything in regard to what you want Bonnie to grade. This can be used for debugging, but you need to keep track of your explored nodes for the code you want Bonnie to grade.
+* If you are stuck, check out the resources! We recognize this is a hard assignment and tri-directional search is a more research-oriented topic than the other search algorithms. Many previous students have found it useful to go through the resources in this README if they are having difficulty understanding the algorithms. Hopefully they are of some use to you all as well! :)
+* We have included the "haversine" heuristic in the `search_submission_tests.py` file. This is for use during the race, where we would like you to use this heuristic for the Atlanta race.
+* Make sure you clean up any changes/modifications/additions you make to the networkx graph structure before you exit the search function. Depending on your changes, the auto grader might face difficulties while testing. The best alternative is to create your own data structure(s).
+* If you're having problems (exploring too many nodes) with your Breadth first search implementation, one thing many students have found useful is to re-watch the Udacity videos for an optimization trick mentioned.
+* While submitting to Bonnie, many times the submission goes through even if you get an error on the terminal. You should check the web interface to make sure it’s not gone through before re-submitting. On the other hand, make sure your final submission goes through with Bonnie.
+* Most 'NoneType object ...' errors are because the path you return is not completely connected (a pair of successive nodes in the path are not connected). Or because the path variable itself is empty.
+* Adding unit tests to your code may cause your Bonnie submission to fail. It is best to comment them out when you submit to Bonnie.
+
 ### Warmups
 We'll start by implementing some simpler optimization and search algorithms before the real exercises.
 
@@ -93,13 +103,11 @@ _[5 points]_
 
 In all searches that involve calculating path cost or heuristic (e.g. uniform-cost), we have to order our search frontier. It turns out the way that we do this can impact our overall search runtime.
 
-To show this, you'll implement a priority queue and demonstrate its performance benefits. For large graphs, sorting all input to a priority queue is impractical. As such, the data structure you implement should have an amortized O(1) insertion (or at most O(log n)) and O(log n) removal time. It should do better than the naive implementation in our tests (InsertionSortQueue), which sorts the entire list after every insertion.
+To show this, you'll implement a priority queue which will help you in understanding its performance benefits. For large graphs, sorting all input to a priority queue is impractical. As such, the data structure you implement should have an amortized O(1) insertion and O(lg n) removal time. It should do better than the naive implementation in our tests (InsertionSortQueue), which sorts the entire list after every insertion.
 
-> Hint:
-
-> The heapq module has been imported for you. Feel free to use it
-
-> Each edge has an associated weight.
+> **Hint:**
+> **The heapq module has been imported for you. Feel free to use it**
+> **Each edge has an associated weight.**
 
 #### Warmup 2: BFS
 
@@ -113,7 +121,7 @@ For this part, it is optional to use the PriorityQueue as your frontier. You wil
 
 > **Notes**:
 > 1. You need to include start and goal in the path.
-> 2. If your start and goal are the same then just return [].
+> 2. **If your start and goal are the same then just return [].**
 > 3. Both of the above are just to keep your results consistent with our test cases.
 > 4. You can access all the neighbors of a given node by calling `graph[node]`, or `graph.neighbors(node)` ONLY. 
 > 5. To measure your search performance, the `explorable_graph.py` provided keeps track of which nodes you have accessed in this way (this is referred to as the set of 'Explored' nodes). To retrieve the set of nodes you've explored in this way, call `graph.explored_nodes`. If you wish to perform multiple searches on the same graph instance, call `graph.reset_search()` to clear out the current set of 'Explored' nodes. **WARNING**, these functions are intended for debugging purposes only. Calls to these functions will fail on Bonnie.
@@ -128,8 +136,8 @@ Implement uniform-cost search, using PriorityQueue as your frontier. From now on
 
 > **Notes**:
 > 1. You can access the weight of an edge using: `graph[node_1][node_2]['weight']`
-> 2. You do need to include start and goal in the path.
-> 3. If your start and goal are the same then just return []
+> 2. You need to include start and goal in the path.
+> 3. **If your start and goal are the same then just return [].**
 > 4. We will provide some margin of error in grading the size of your 'Explored' set, but it should be close to the results provided by our reference implementation.
 > 5. The above are just to keep your results consistent with our test cases.
 
@@ -143,8 +151,8 @@ Implement A* search using Euclidean distance as your heuristic. You'll need to i
 > You can find a node's position by calling the following to check if the key is available: `graph.node[n]['pos']`
 
 > **Notes**:
-> 1. You do need to include start and goal in the path.
-> 2. If your start and goal are the same then just return []
+> 1. You need to include start and goal in the path.
+> 2. **If your start and goal are the same then just return [].**
 > 3. We will provide some margin of error in grading the size of your 'Explored' set, but it should be close to the results provided by our reference implementation.
 > 4. The above are just to keep your results consistent with our test cases.
 
@@ -170,11 +178,10 @@ Implement bidirectional uniform-cost search. Remember that this requires startin
 `bidirectional_ucs()` should return the path from the start node to the goal node (as a list of nodes).
 
 > **Notes**:
-> 1. You do need to include start and goal in the path.
-> 2. If your start and goal are the same then just return []
+> 1. You need to include start and goal in the path.
+> 2. **If your start and goal are the same then just return [].**
 > 3. We will provide some margin of error in grading the size of your 'Explored' set, but it should be close to the results provided by our reference implementation.
-
-> The notes above are to keep your results consistent with our test cases.
+> 4. The above are just to keep your results consistent with our test cases.
 
 #### Exercise 2: Bidirectional A* search
 
@@ -182,13 +189,14 @@ _[20 points]_
 
 Implement bidirectional A* search. Remember that you need to calculate a heuristic for both the start-to-goal search and the goal-to-start search.
 
-To test this function, as well as using the provided tests, you can compare the path computed by bidirectional A star to bidirectional ucs search above.
+To test this function, as well as using the provided tests, you can compare the path computed by bidirectional A* to bidirectional UCS search above.
 `bidirectional_a_star()` should return the path from the start node to the goal node, as a list of nodes.
 
 > **Notes**:
-> 1. You do need to include start and goal in the path.
-> 2. If your start and goal are the same then just return []
+> 1. You need to include start and goal in the path.
+> 2. **If your start and goal are the same then just return [].**
 > 3. We will provide some margin of error in grading the size of your 'Explored' set, but it should be close to the results provided by our reference implementation.
+> 4. The above are just to keep your results consistent with our test cases.
 
 #### Exercise 3: Tridirectional UCS search
 
@@ -197,15 +205,17 @@ _[19 points]_
 Implement tridirectional search in the naive way: starting from each goal node, perform a uniform-cost search and keep
 expanding until two of the three searches meet. This should be one continuous path that connects all three nodes.
 
+For example, suppose we have goal nodes [a,b,c]. Then what we want you to do is to start at node a and expand like in a normal search. However, notice that you will be searching for both nodes b and c during this search and a similar search will start from nodes b and c. Finally, please note that this is a problem that can be accomplished without using 6 frontiers, which is why we stress that **this is not the same as 3 bi-directional searches.**
+
 `tridirectional_search()` should return a path between all three nodes. You can return the path in any order. Eg.
-(1->2->3 == 3->2->1). You may also want to look at the Tri-city
-search challenge question on Udacity.
+(1->2->3 == 3->2->1). You may also want to look at the [Tri-city search challenge question on Udacity](https://classroom.udacity.com/courses/ud954/lessons/6375179396/concepts/65019286790923).
 
 > **Notes**:
 > 1. You need to include start and goal in the path.
-> 2. If any goals are the same then just return [] as the path between them.
-> 3. We will provide some margin of error in grading the size of your 'Explored' set, but it should be close to the
-     results provided by our reference implementation.
+> 2. **If your start and goal are the same then just return [].**
+> 3. **If there are 2 identical goals (i.e. a,b,b) then return the path [a...b] (i.e. just the path from a to b).**
+> 4. We will provide some margin of error in grading the size of your 'Explored' set, but it should be close to the results provided by our reference implementation.
+> 5. The above are just to keep your results consistent with our test cases.
 
 #### Exercise 4: Upgraded Tridirectional search
 
@@ -213,7 +223,7 @@ _[15 points]_
 
 This is the heart of the assignment. Implement tridirectional search in such a way as to consistently improve on the
 performance of your previous implementation. This means consistently exploring fewer nodes during your search in order
-to reduce runtime.
+to reduce runtime. Keep in mind, we are not performing 3 bidirectional A* searches. We are searching from each of the goals towards the other two goals, in the direction that seems most promising.
 
 The specifics are up to you, but we have a few suggestions:
  * Tridirectional A*
@@ -224,10 +234,12 @@ The specifics are up to you, but we have a few suggestions:
 `tridirectional_upgraded()` should return a path between all three nodes.
 
 > **Notes**:
-> 1. You do need to include each goal in the path.
-> 2. If any two goals are the same then just return [] as the path between them
-> 3. We will provide some margin of error in grading the size of your 'Explored' set, but it should be close to the
-     results provided by our reference implementation.
+> 1. You need to include start and goal in the path.
+> 2. **If your start and goal are the same then just return [].**
+> 3. **If there are 2 identical goals (i.e. a,b,b) then return the path [a...b] (i.e. just the path from a to b).**
+> 4. We will provide some margin of error in grading the size of your 'Explored' set, but it should be close to the results provided by our reference implementation.
+> 5. The above are just to keep your results consistent with our test cases.
+     
      
 #### Final Task: Return your name
 _[1 point]_
@@ -250,12 +262,3 @@ Here are some notes you might find useful.
 1. [Bonnie: Error Messages](https://docs.google.com/document/d/1hykYneVoV_JbwBjVz9ayFTA6Yr3pgw6JBvzrCgM0vyY/pub)
 2. [Bi-directional Search](https://docs.google.com/document/d/14Wr2SeRKDXFGdD-qNrBpXjW8INCGIfiAoJ0UkZaLWto/pub)
 3. [Using Landmarks](https://docs.google.com/document/d/1YEptGbSYUtu180MfvmrmA4B6X9ImdI4oOmLaaMRHiCA/pub)
-
-## Frequent Issues and Solutions
-1. Make sure you clean up any changes/modifications/additions you make to the networkx graph structure before you exit the search function. Depending on your changes, the auto grader might face difficulties while testing. The best alternative is to create your own data structure(s).
-2. If you're having problems (exploring too many nodes) with your Breadth first search implementation, one thing many students have found useful is to re-watch the Udacity videos for an optimization trick mentioned.
-3. While submitting to Bonnie, many times the submission goes through even if you get an error on the terminal. You should check the web interface to make sure it’s not gone through before re-submitting. On the other hand, make sure your final submission goes through with Bonnie.
-4. Most 'NoneType object ...' errors are because the path you return is not completely connected (a pair of successive nodes in the path are not connected). Or because the path variable itself is empty.
-5. Adding unit tests to your code may cause your Bonnie submission to fail. It is best to comment them out when you submit to Bonnie.
-6. Make sure you're returning [] for when the source and destination points are the same.
-7. Make sure you break ties using FIFO in your priority queue implementation.

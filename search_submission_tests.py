@@ -8,7 +8,8 @@ import networkx
 
 from explorable_graph import ExplorableGraph
 from search_submission import PriorityQueue, a_star, bidirectional_a_star, \
-    bidirectional_ucs, breadth_first_search, uniform_cost_search
+    bidirectional_ucs, breadth_first_search, uniform_cost_search, haversine_dist_heuristic, \
+    tridirectional_upgraded, custom_heuristic
 from visualize_graph import plot_search
 
 
@@ -20,7 +21,7 @@ class TestPriorityQueue(unittest.TestCase):
         queue = PriorityQueue()
         temp_list = []
 
-        for _ in xrange(10):
+        for _ in range(10):
             a = random.randint(0, 10000)
             queue.append((a, 'a'))
             temp_list.append(a)
@@ -37,7 +38,8 @@ class TestBasicSearch(unittest.TestCase):
 
     def setUp(self):
         """Romania map data from Russell and Norvig, Chapter 3."""
-        romania = pickle.load(open('romania_graph.pickle', 'rb'))
+        with open('romania_graph.pickle', 'rb') as rom:
+            romania = pickle.load(rom)
         self.romania = ExplorableGraph(romania)
         self.romania.reset_search()
 
@@ -131,7 +133,8 @@ class TestBidirectionalSearch(unittest.TestCase):
 
     def setUp(self):
         """Load Atlanta map data"""
-        atlanta = pickle.load(open('atlanta_osm.pickle', 'rb'))
+        with open('atlanta_osm.pickle', 'rb') as atl:
+            atlanta = pickle.load(atl)
         self.atlanta = ExplorableGraph(atlanta)
         self.atlanta.reset_search()
 
@@ -144,11 +147,10 @@ class TestBidirectionalSearch(unittest.TestCase):
 
     def test_bidirectional_a_star(self):
         """Test and generate GeoJSON for bidirectional A* search"""
-        path = bidirectional_a_star(self.atlanta, '69581003', '69581000')
+        path = bidirectional_a_star(self.atlanta, '69581003', '69581000', heuristic=haversine_dist_heuristic)
         all_explored = self.atlanta.explored_nodes
         plot_search(self.atlanta, 'atlanta_search_bidir_a_star.json', path,
                     all_explored)
-
 
 if __name__ == '__main__':
     unittest.main()

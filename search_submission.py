@@ -314,6 +314,20 @@ def return_your_name():
     raise NotImplementedError
 
 
+def custom_heuristic(graph, v, goal):
+    """
+       Exercise 5: Use this to test out any custom heuristic for comparing Tridirectional vs 3 Bidirectional Searches for the report.
+       See README.md for exercise description.
+       Args:
+           graph (ExplorableGraph): Undirected graph to search.
+           v (str): Key for the node to calculate from.
+           goal (str): Key for the end node to calculate to.
+       Returns:
+           Custom heuristic distance between `v` node and `goal` node
+       """
+
+pass
+
 # Extra Credit: Your best search method for the race
 def custom_search(graph, start, goal, data=None):
     """
@@ -359,7 +373,7 @@ def load_data(graph, time_left):
     # nodes = graph.nodes()
     return None
  
- def haversine_dist_heuristic(graph, v, goal):
+def haversine_dist_heuristic(graph, v, goal):
     """
     Note: This provided heuristic is for the Atlanta race.
 
