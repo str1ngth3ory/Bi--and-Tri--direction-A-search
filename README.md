@@ -79,8 +79,8 @@ There is a `search_submission_tests.py` file to help you along the way. Your sea
 
 We will be using an undirected network representing a map of Romania (and an optional Atlanta graph used for the Race!).
 
-**Frequently Asked Questions Along with Issues and Solutions**
-Also, as an extra note, there are a few things that are among our most common questions:
+**Frequently Asked Questions Along with Issues and Solutions**<br />
+Also, as an extra note, there are some things that are among our most common questions:
 
 * Remember that if start and goal are the same, you should return []. This keeps your results consistent with ours and avoids some headache.
 	 * Make sure you break ties using FIFO in your priority queue implementation.
