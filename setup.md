@@ -6,7 +6,7 @@ If you run across certificate authentication issues during the clone, set the gi
 
 ## Python Dependencies
 
-The submission scripts depend on the presence of 3 python packages - `requests`, `future`, and `nelson`. If you are missing any of these packages, install them from the online Python registries. The easiest way to do this is through pip:
+The submission scripts depend on the presence of 5 python packages - `requests`, `future`, `nelson`, `networkx`, and `matplotlib`. If you are missing any of these packages, install them from the online Python registries. The easiest way to do this is through pip:
 
 `pip install -r requirements.txt`
 
@@ -43,17 +43,7 @@ Finally, commit the new updates to your branch and continue developing:
 
 `git commit -am "<funny message vilifying TAs for the update>"`
 
-## Using Vagrant
-You have the option of using vagrant to make sure that your local code runs in the same environment as the servers on Bonnie (make sure you have [Vagrant](https://www.vagrantup.com/) and [Virtualbox](https://www.virtualbox.org/wiki/Downloads) installed).  To use this option run the following commands in the root directory of your assignment:
-
-```
-vagrant up --provider virtualbox
-vagrant ssh
-```
-
-Your code lives in the `/vagrant` folder within this virtual machine. Changes made to files in your assignment folder will automatically be reflected within the machine.
-
 # Submit your code
 A friendly reminder: please ensure that your submission is in `search_submission.py`. The script described in the following section automatically sends that file to the servers for processing.
 
-To submit your code and have it evaluated for a grade, use `python submit.py assignment_2`. We are going to limit you to 2 submissions per half hour(Subjected to change depending on load on servers) and the last submission before the deadline will be used to determine your grade.
+To submit your code and have it evaluated for a grade, use `python submit.py`. We are going to limit you to 2 submissions per half hour (subject to change depending on load on servers), and the last submission before the deadline will be used to determine your grade.
