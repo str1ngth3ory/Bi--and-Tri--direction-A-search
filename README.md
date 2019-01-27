@@ -44,6 +44,11 @@ While you'll only have to edit and submit **_search_submission.py_**, there are 
 10. **_osm2networkx.py_**: Module used by visualize graph to read OSM networks.
 
 
+> A note on using the graph and grading
+> 
+> Points for each section are awarded based on finding the correct path and by evaluating the number of nodes explored. To track the number of times a node is explored during the search, the ExplorableGraph wrapper is used on the networkx Graph class. Every time you process a node, by calling graph[node] or graph.neighbors(node), the count for that node increases by one. You will need to use one of these methods to add a node's neighbors to the search queue, just be careful not to call it unnecessarily throughout your code. We have created the graph.get_edge_weight(u, v) method to be used to access edge weights between two nodes, u and v. All other normal networkx Graph operations can be performed.  
+
+
 > A note on visualizing results for the Atlanta graph:
 >  
 > The Atlanta graph is too big to display within a Python window like Romania. As a result, when you run the
@@ -84,11 +89,11 @@ We will be using an undirected network representing a map of Romania (and an opt
 Also, as an extra note, there are some things that are among our most common questions:
 
 * Remember that if start and goal are the same, you should return []. This keeps your results consistent with ours and avoids some headache.
-	 * Make sure you break ties using FIFO in your priority queue implementation.
-     * There is a little more to this when you get to tridirectional, so read those Notes especially carefully as well
-* **Do not** use graph.explored_nodes for anything in regard to what you want Bonnie to grade. This can be used for debugging, but you need to keep track of your explored nodes for the code you want Bonnie to grade.
+	* Make sure you break ties using FIFO in your priority queue implementation.
+	* There is a little more to this when you get to tridirectional, so read those Notes especially carefully as well
+* **Do not** use graph.explored_nodes for anything in regard to what you want Bonnie to grade. This can be used for debugging, but you should not be calling this in your code.
 * If you are stuck, check out the resources! We recognize this is a hard assignment and tri-directional search is a more research-oriented topic than the other search algorithms. Many previous students have found it useful to go through the resources in this README if they are having difficulty understanding the algorithms. Hopefully they are of some use to you all as well! :)
-* We have included the "haversine" heuristic in the `search_submission_tests.py` file. This is for use during the race, where we would like you to use this heuristic for the Atlanta race.
+* We have included the "Haversine" heuristic in the `search_submission_tests.py` file. All of the local tests on the Atlanta map use this method. For the race, you can use whatever you choose, but know that the Atlanta map positions are (latitude, longitude).
 * Make sure you clean up any changes/modifications/additions you make to the networkx graph structure before you exit the search function. Depending on your changes, the auto grader might face difficulties while testing. The best alternative is to create your own data structure(s).
 * If you're having problems (exploring too many nodes) with your Breadth first search implementation, one thing many students have found useful is to re-watch the Udacity videos for an optimization trick mentioned.
 * While submitting to Bonnie, many times the submission goes through even if you get an error on the terminal. You should check the web interface to make sure it’s not gone through before re-submitting. On the other hand, make sure your final submission goes through with Bonnie.
@@ -136,7 +141,7 @@ Implement uniform-cost search, using PriorityQueue as your frontier. From now on
 `uniform_cost_search()` should return the same arguments as breadth-first search: the path to the goal node (as a list of nodes).
 
 > **Notes**:
-> 1. You can access the weight of an edge using: `graph[node_1][node_2]['weight']`
+> 1. You can access the weight of an edge using: `graph.get_edge_weight(node_1, node_2)`. Not using this method will result in your explored nodes count being higher than it should be.
 > 2. You need to include start and goal in the path.
 > 3. **If your start and goal are the same then just return [].**
 > 4. We will provide some margin of error in grading the size of your 'Explored' set, but it should be close to the results provided by our reference implementation.
@@ -152,10 +157,11 @@ Implement A* search using Euclidean distance as your heuristic. You'll need to i
 > You can find a node's position by calling the following to check if the key is available: `graph.node[n]['pos']`
 
 > **Notes**:
-> 1. You need to include start and goal in the path.
-> 2. **If your start and goal are the same then just return [].**
-> 3. We will provide some margin of error in grading the size of your 'Explored' set, but it should be close to the results provided by our reference implementation.
-> 4. The above are just to keep your results consistent with our test cases.
+> 1. You can access the weight of an edge using: `graph.get_edge_weight(node_1, node_2)`. Not using this method will result in your explored nodes count being higher than it should be.
+> 2. You need to include start and goal in the path.
+> 3. **If your start and goal are the same then just return [].**
+> 4. We will provide some margin of error in grading the size of your 'Explored' set, but it should be close to the results provided by our reference implementation.
+> 5. The above are just to keep your results consistent with our test cases.
 
 ---
 ### Exercises
@@ -179,10 +185,11 @@ Implement bidirectional uniform-cost search. Remember that this requires startin
 `bidirectional_ucs()` should return the path from the start node to the goal node (as a list of nodes).
 
 > **Notes**:
-> 1. You need to include start and goal in the path.
-> 2. **If your start and goal are the same then just return [].**
-> 3. We will provide some margin of error in grading the size of your 'Explored' set, but it should be close to the results provided by our reference implementation.
-> 4. The above are just to keep your results consistent with our test cases.
+> 1. You can access the weight of an edge using: `graph.get_edge_weight(node_1, node_2)`. Not using this method will result in your explored nodes count being higher than it should be.
+> 2. You need to include start and goal in the path.
+> 3. **If your start and goal are the same then just return [].**
+> 4. We will provide some margin of error in grading the size of your 'Explored' set, but it should be close to the results provided by our reference implementation.
+> 5. The above are just to keep your results consistent with our test cases.
 
 #### Exercise 2: Bidirectional A* search
 
@@ -194,10 +201,11 @@ To test this function, as well as using the provided tests, you can compare the 
 `bidirectional_a_star()` should return the path from the start node to the goal node, as a list of nodes.
 
 > **Notes**:
-> 1. You need to include start and goal in the path.
-> 2. **If your start and goal are the same then just return [].**
-> 3. We will provide some margin of error in grading the size of your 'Explored' set, but it should be close to the results provided by our reference implementation.
-> 4. The above are just to keep your results consistent with our test cases.
+> 1. You can access the weight of an edge using: `graph.get_edge_weight(node_1, node_2)`. Not using this method will result in your explored nodes count being higher than it should be.
+> 2. You need to include start and goal in the path.
+> 3. **If your start and goal are the same then just return [].**
+> 4. We will provide some margin of error in grading the size of your 'Explored' set, but it should be close to the results provided by our reference implementation.
+> 5. The above are just to keep your results consistent with our test cases.
 
 #### Exercise 3: Tridirectional UCS search
 
@@ -212,11 +220,12 @@ For example, suppose we have goal nodes [a,b,c]. Then what we want you to do is 
 (1->2->3 == 3->2->1). You may also want to look at the [Tri-city search challenge question on Udacity](https://classroom.udacity.com/courses/ud954/lessons/6375179396/concepts/65019286790923).
 
 > **Notes**:
-> 1. You need to include start and goal in the path.
-> 2. **If your start and goal are the same then just return [].**
-> 3. **If there are 2 identical goals (i.e. a,b,b) then return the path [a...b] (i.e. just the path from a to b).**
-> 4. We will provide some margin of error in grading the size of your 'Explored' set, but it should be close to the results provided by our reference implementation.
-> 5. The above are just to keep your results consistent with our test cases.
+> 1. You can access the weight of an edge using: `graph.get_edge_weight(node_1, node_2)`. Not using this method will result in your explored nodes count being higher than it should be.
+> 2. You need to include start and goal in the path.
+> 3. **If your start and goal are the same then just return [].**
+> 4. **If there are 2 identical goals (i.e. a,b,b) then return the path [a...b] (i.e. just the path from a to b).**
+> 5. We will provide some margin of error in grading the size of your 'Explored' set, but it should be close to the results provided by our reference implementation.
+> 6. The above are just to keep your results consistent with our test cases.
 
 #### Exercise 4: Upgraded Tridirectional search
 
@@ -235,11 +244,12 @@ The specifics are up to you, but we have a few suggestions:
 `tridirectional_upgraded()` should return a path between all three nodes.
 
 > **Notes**:
-> 1. You need to include start and goal in the path.
-> 2. **If your start and goal are the same then just return [].**
-> 3. **If there are 2 identical goals (i.e. a,b,b) then return the path [a...b] (i.e. just the path from a to b).**
-> 4. We will provide some margin of error in grading the size of your 'Explored' set, but it should be close to the results provided by our reference implementation.
-> 5. The above are just to keep your results consistent with our test cases.
+> 1. You can access the weight of an edge using: `graph.get_edge_weight(node_1, node_2)`. Not using this method will result in your explored nodes count being higher than it should be.
+> 2. You need to include start and goal in the path.
+> 3. **If your start and goal are the same then just return [].**
+> 4. **If there are 2 identical goals (i.e. a,b,b) then return the path [a...b] (i.e. just the path from a to b).**
+> 5. We will provide some margin of error in grading the size of your 'Explored' set, but it should be close to the results provided by our reference implementation.
+> 6. The above are just to keep your results consistent with our test cases.
      
      
 #### Final Task: Return your name
