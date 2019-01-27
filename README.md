@@ -16,11 +16,11 @@ Read [setup.md](./setup.md) for more information on how to effectively manage yo
 
 ## Overview
 
-Search is an integral part of AI. It helps in problem solving across a wide variety of domains where a solution isn’t immediately clear.  You will implement several graph search algorithms with the goal of solving bi-directional search.
+Search is an integral part of AI. It helps in problem solving across a wide variety of domains where a solution isn’t immediately clear.  You will implement several graph search algorithms with the goal of solving bi-directional and tri-directional search.
 
 ### Submission and Due Date
 
-Submit your code to bonnie for grading by running `submit.py`. **As per every assignment, you can find the output of all of your submissions on bonnie.udacity.com**
+Submit your code to Bonnie for grading by running `submit.py`. **As per every assignment, you can find the output of all of your submissions on bonnie.udacity.com**
 
 You are allowed **two submissions every thirty minutes**.
 
@@ -32,15 +32,16 @@ This assignment is due on Bonnie and Canvas on February 11th, 2019 by 11:59PM UT
 
 While you'll only have to edit and submit **_search_submission.py_**, there are a number of notable files:
 
-1. **_search_submission.py_**: Where you will implement your _PriorityQueue_, _Breadth First Search_, _Uniform Cost Search_, _A* Search_, _Bi-directional Search_
+1. **_search_submission.py_**: Where you will implement your _PriorityQueue_, _Breadth First Search_, _Uniform Cost Search_, _A* Search_, _Bi-directional Search_, Tri-directional Search_
 2. **_search_submission_tests.py_**: Sample tests to validate your searches locally.
-3. **_search_unit_test.py_**: More detailed tests that run searches from all possible pairs of nodes in the graph
-4. **_romania_graph.pickle_**: Serialized graph files for Romania.
-5. **_atlanta_osm.pickle_**: Serialized graph files for Atlanta (optional for robust testing for Race!).
-6. **_submit.py_**: A script to submit your work.
-7. **_explorable_graph.py_**: A wrapper around `networkx` that tracks explored nodes. **FOR DEBUGGING ONLY**
-8. **_visualize_graph.py_**: Module to visualize search results. See below on how to use it.
-9. **_osm2networkx.py_**: Module used by visualize graph to read OSM networks.
+3. **_search_unit_tests.py_**: More detailed tests that run searches from all possible pairs of nodes in the graph
+4. **_search_submission_tests_grid.py_**: Tests searches on uniform grid and highlights path and explored nodes.
+5. **_romania_graph.pickle_**: Serialized graph files for Romania.
+6. **_atlanta_osm.pickle_**: Serialized graph files for Atlanta (optional for robust testing for Race!).
+7. **_submit.py_**: A script to submit your work.
+8. **_explorable_graph.py_**: A wrapper around `networkx` that tracks explored nodes. **FOR DEBUGGING ONLY**
+9. **_visualize_graph.py_**: Module to visualize search results. See below on how to use it.
+10. **_osm2networkx.py_**: Module used by visualize graph to read OSM networks.
 
 
 > A note on visualizing results for the Atlanta graph:
