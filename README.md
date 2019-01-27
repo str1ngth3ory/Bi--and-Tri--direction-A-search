@@ -43,20 +43,16 @@ While you'll only have to edit and submit **_search_submission.py_**, there are 
 9. **_visualize_graph.py_**: Module to visualize search results. See below on how to use it.
 10. **_osm2networkx.py_**: Module used by visualize graph to read OSM networks.
 
+### Notes
+A note on using the graph and grading
 
-> A note on using the graph and grading
-> 
-> Points for each section are awarded based on finding the correct path and by evaluating the number of nodes explored. To track the number of times a node is explored during the search, the ExplorableGraph wrapper is used on the networkx Graph class. Every time you process a node, by calling graph[node] or graph.neighbors(node), the count for that node increases by one. You will need to use one of these methods to add a node's neighbors to the search queue, just be careful not to call it unnecessarily throughout your code. We have created the graph.get_edge_weight(u, v) method to be used to access edge weights between two nodes, u and v. All other normal networkx Graph operations can be performed.  
+Points for each section are awarded based on finding the correct path and by evaluating the number of nodes explored. To track the number of times a node is explored during the search, the ExplorableGraph wrapper is used on the networkx Graph class. Every time you process a node, by calling graph[node] or graph.neighbors(node), the count for that node increases by one. You will need to use one of these methods to add a node's neighbors to the search queue, just be careful not to call it unnecessarily throughout your code. We have created the graph.get_edge_weight(u, v) method to be used to access edge weights between two nodes, u and v. All other normal networkx Graph operations can be performed.  
 
 
-> A note on visualizing results for the Atlanta graph:
->  
-> The Atlanta graph is too big to display within a Python window like Romania. As a result, when you run the
-> bidirectional tests in **_search_submission_tests.py_**, it generates a JSON file in the GeoJSON format. To see the
-> graph, you can upload it to a private GitHub Gist or use [this](http://geojson.io/) site.
->  
-> If you want to see how **_visualize_graph.py_** is used, take a look at the class TestBidirectionalSearch in
-> **_search_submission_tests.py_**
+A note on visualizing results for the Atlanta graph:
+
+The Atlanta graph is too big to display within a Python window like Romania. As a result, when you run the bidirectional tests in **_search_submission_tests.py_**, it generates a JSON file in the GeoJSON format. To see the graph, you can upload it to a private GitHub Gist or use [this](http://geojson.io/) site.
+If you want to see how **_visualize_graph.py_** is used, take a look at the class TestBidirectionalSearch in **_search_submission_tests.py_**
 
 ## Resources
 
