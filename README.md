@@ -24,7 +24,7 @@ Submit your code to Bonnie for grading by running `submit.py`. **As per every as
 
 You are allowed **two submissions every thirty minutes**.
 
-This assignment is due on Bonnie and Canvas on February 11th, 2019 by 11:59PM UTC-12 (Anywhere on Earth). The deliverable for the assignment is a 'search_submission.py' file with all the functions/methods completed.
+This assignment is due on Bonnie and Canvas on February 10th, 2019 by 11:59PM UTC-12 (Anywhere on Earth). The deliverable for the assignment is a 'search_submission.py' file with all the functions/methods completed.
 
 **Only the final submission will be used for grading purposes. We cannot use your "best" submission out of all submissions.**
 
