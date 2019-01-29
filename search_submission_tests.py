@@ -95,7 +95,7 @@ class TestBasicSearch(unittest.TestCase):
     def draw_graph(graph, node_positions=None, start=None, goal=None,
                    path=None):
         """Visualize results of graph search"""
-        explored = list(graph.explored_nodes)
+        explored = [key for key in graph.explored_nodes if graph.explored_nodes[key] > 0]
 
         labels = {}
         for node in graph:
@@ -147,7 +147,7 @@ class TestBidirectionalSearch(unittest.TestCase):
 
     def test_bidirectional_a_star(self):
         """Test and generate GeoJSON for bidirectional A* search"""
-        path = bidirectional_a_star(self.atlanta, '69581003', '69581000', heuristic=haversine_dist_heuristic)
+        path = bidirectional_a_star(self.atlanta, '69581003', '69581000', heuristic_fn=haversine_dist_heuristic)
         all_explored = self.atlanta.explored_nodes
         plot_search(self.atlanta, 'atlanta_search_bidir_a_star.json', path,
                     all_explored)
