@@ -107,7 +107,7 @@ class PriorityQueue(object):
             True if the two priority queues are equivalent.
         """
 
-        return self == other
+        return self.queue == other.queue
 
     def size(self):
         """
