@@ -111,6 +111,11 @@ To show this, you'll implement a priority queue which will help you in understan
 > **The heapq module has been imported for you. Feel free to use it**
 > **Each edge has an associated weight.**
 
+> **Hint 2:**
+> **While the idea of amortization is quite an interesting one that you may want to think about, please note that this is not the focus
+> of this assignment. The heapq library should be enough for this assignment. If you want to optimize further, you can always come back to
+> this section.**
+
 #### Warmup 2: BFS
 
 _[5 pts]_
