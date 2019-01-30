@@ -29,7 +29,6 @@ class PriorityQueue(object):
 
     Attributes:
         queue (list): Nodes added to the priority queue.
-        current (int): The index of the current node in the queue.
     """
 
     def __init__(self):
