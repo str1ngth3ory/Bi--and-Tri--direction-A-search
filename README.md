@@ -124,7 +124,7 @@ For this part, it is optional to use the PriorityQueue as your frontier. You wil
 > **Notes**:
 > 1. You need to include start and goal in the path.
 > 2. **If your start and goal are the same then just return [].**
-> 3. Both of the above are just to keep your results consistent with our test cases.
+> 3. The above are just to keep your results consistent with our test cases.
 > 4. You can access all the neighbors of a given node by calling `graph[node]`, or `graph.neighbors(node)` ONLY. 
 > 5. To measure your search performance, the `explorable_graph.py` provided keeps track of which nodes you have accessed in this way (this is referred to as the set of 'Explored' nodes). To retrieve the set of nodes you've explored in this way, call `graph.explored_nodes`. If you wish to perform multiple searches on the same graph instance, call `graph.reset_search()` to clear out the current set of 'Explored' nodes. **WARNING**, these functions are intended for debugging purposes only. Calls to these functions will fail on Bonnie.
 
@@ -137,11 +137,12 @@ Implement uniform-cost search, using PriorityQueue as your frontier. From now on
 `uniform_cost_search()` should return the same arguments as breadth-first search: the path to the goal node (as a list of nodes).
 
 > **Notes**:
-> 1. You can access the weight of an edge using: `graph.get_edge_weight(node_1, node_2)`. Not using this method will result in your explored nodes count being higher than it should be.
-> 2. You need to include start and goal in the path.
-> 3. **If your start and goal are the same then just return [].**
-> 4. We will provide some margin of error in grading the size of your 'Explored' set, but it should be close to the results provided by our reference implementation.
-> 5. The above are just to keep your results consistent with our test cases.
+> 1. You need to include start and goal in the path.
+> 2. **If your start and goal are the same then just return [].**
+> 3. The above are just to keep your results consistent with our test cases.
+> 4. You can access all the neighbors of a given node by calling `graph[node]`, or `graph.neighbors(node)` ONLY. 
+> 5. You can access the weight of an edge using: `graph.get_edge_weight(node_1, node_2)`. Not using this method will result in your explored nodes count being higher than it should be.
+> 6. We will provide some margin of error in grading the size of your 'Explored' set, but it should be close to the results provided by our reference implementation.
 
 #### Warmup 4: A* search
 
@@ -153,11 +154,13 @@ Implement A* search using Euclidean distance as your heuristic. You'll need to i
 > You can find a node's position by calling the following to check if the key is available: `graph.node[n]['pos']`
 
 > **Notes**:
-> 1. You can access the weight of an edge using: `graph.get_edge_weight(node_1, node_2)`. Not using this method will result in your explored nodes count being higher than it should be.
-> 2. You need to include start and goal in the path.
-> 3. **If your start and goal are the same then just return [].**
-> 4. We will provide some margin of error in grading the size of your 'Explored' set, but it should be close to the results provided by our reference implementation.
-> 5. The above are just to keep your results consistent with our test cases.
+> 1. You need to include start and goal in the path.
+> 2. **If your start and goal are the same then just return [].**
+> 3. The above are just to keep your results consistent with our test cases.
+> 4. You can access all the neighbors of a given node by calling `graph[node]`, or `graph.neighbors(node)` ONLY. 
+> 5. You can access the weight of an edge using: `graph.get_edge_weight(node_1, node_2)`. Not using this method will result in your explored nodes count being higher than it should be.
+> 6. You can access the (x, y) position of a node use: `graph.node[n]['pos']`. You will need this for calculating the heuristic distance.
+> 7. We will provide some margin of error in grading the size of your 'Explored' set, but it should be close to the results provided by our reference implementation.
 
 ---
 ### Exercises
@@ -181,11 +184,13 @@ Implement bidirectional uniform-cost search. Remember that this requires startin
 `bidirectional_ucs()` should return the path from the start node to the goal node (as a list of nodes).
 
 > **Notes**:
-> 1. You can access the weight of an edge using: `graph.get_edge_weight(node_1, node_2)`. Not using this method will result in your explored nodes count being higher than it should be.
-> 2. You need to include start and goal in the path.
-> 3. **If your start and goal are the same then just return [].**
-> 4. We will provide some margin of error in grading the size of your 'Explored' set, but it should be close to the results provided by our reference implementation.
-> 5. The above are just to keep your results consistent with our test cases.
+> 1. You need to include start and goal in the path.
+> 2. **If your start and goal are the same then just return [].**
+> 3. The above are just to keep your results consistent with our test cases.
+> 4. You can access all the neighbors of a given node by calling `graph[node]`, or `graph.neighbors(node)` ONLY. 
+> 5. You can access the weight of an edge using: `graph.get_edge_weight(node_1, node_2)`. Not using this method will result in your explored nodes count being higher than it should be.
+> 6. You can access the (x, y) position of a node use: `graph.node[n]['pos']`. You will need this for calculating the heuristic distance.
+> 7. We will provide some margin of error in grading the size of your 'Explored' set, but it should be close to the results provided by our reference implementation.
 
 #### Exercise 2: Bidirectional A* search
 
@@ -197,11 +202,13 @@ To test this function, as well as using the provided tests, you can compare the 
 `bidirectional_a_star()` should return the path from the start node to the goal node, as a list of nodes.
 
 > **Notes**:
-> 1. You can access the weight of an edge using: `graph.get_edge_weight(node_1, node_2)`. Not using this method will result in your explored nodes count being higher than it should be.
-> 2. You need to include start and goal in the path.
-> 3. **If your start and goal are the same then just return [].**
-> 4. We will provide some margin of error in grading the size of your 'Explored' set, but it should be close to the results provided by our reference implementation.
-> 5. The above are just to keep your results consistent with our test cases.
+> 1. You need to include start and goal in the path.
+> 2. **If your start and goal are the same then just return [].**
+> 3. The above are just to keep your results consistent with our test cases.
+> 4. You can access all the neighbors of a given node by calling `graph[node]`, or `graph.neighbors(node)` ONLY. 
+> 5. You can access the weight of an edge using: `graph.get_edge_weight(node_1, node_2)`. Not using this method will result in your explored nodes count being higher than it should be.
+> 6. You can access the (x, y) position of a node use: `graph.node[n]['pos']`. You will need this for calculating the heuristic distance.
+> 7. We will provide some margin of error in grading the size of your 'Explored' set, but it should be close to the results provided by our reference implementation.
 
 #### Exercise 3: Tridirectional UCS search
 
@@ -216,12 +223,14 @@ For example, suppose we have goal nodes [a,b,c]. Then what we want you to do is 
 (1->2->3 == 3->2->1). You may also want to look at the [Tri-city search challenge question on Udacity](https://classroom.udacity.com/courses/ud954/lessons/6375179396/concepts/65019286790923).
 
 > **Notes**:
-> 1. You can access the weight of an edge using: `graph.get_edge_weight(node_1, node_2)`. Not using this method will result in your explored nodes count being higher than it should be.
-> 2. You need to include start and goal in the path.
-> 3. **If your start and goal are the same then just return [].**
-> 4. **If there are 2 identical goals (i.e. a,b,b) then return the path [a...b] (i.e. just the path from a to b).**
-> 5. We will provide some margin of error in grading the size of your 'Explored' set, but it should be close to the results provided by our reference implementation.
-> 6. The above are just to keep your results consistent with our test cases.
+> 1. You need to include start and goal in the path.
+> 2. **If your start and goal are the same then just return [].**
+> 3. **If there are 2 identical goals (i.e. a,b,b) then return the path [a...b] (i.e. just the path from a to b).**
+> 4. The above are just to keep your results consistent with our test cases.
+> 5. You can access all the neighbors of a given node by calling `graph[node]`, or `graph.neighbors(node)` ONLY. 
+> 6. You can access the weight of an edge using: `graph.get_edge_weight(node_1, node_2)`. Not using this method will result in your explored nodes count being higher than it should be.
+> 7. You can access the (x, y) position of a node use: `graph.node[n]['pos']`. You will need this for calculating the heuristic distance.
+> 8. We will provide some margin of error in grading the size of your 'Explored' set, but it should be close to the results provided by our reference implementation.
 
 #### Exercise 4: Upgraded Tridirectional search
 
@@ -240,12 +249,14 @@ The specifics are up to you, but we have a few suggestions:
 `tridirectional_upgraded()` should return a path between all three nodes.
 
 > **Notes**:
-> 1. You can access the weight of an edge using: `graph.get_edge_weight(node_1, node_2)`. Not using this method will result in your explored nodes count being higher than it should be.
-> 2. You need to include start and goal in the path.
-> 3. **If your start and goal are the same then just return [].**
-> 4. **If there are 2 identical goals (i.e. a,b,b) then return the path [a...b] (i.e. just the path from a to b).**
-> 5. We will provide some margin of error in grading the size of your 'Explored' set, but it should be close to the results provided by our reference implementation.
-> 6. The above are just to keep your results consistent with our test cases.
+> 1. You need to include start and goal in the path.
+> 2. **If your start and goal are the same then just return [].**
+> 3. **If there are 2 identical goals (i.e. a,b,b) then return the path [a...b] (i.e. just the path from a to b).**
+> 4. The above are just to keep your results consistent with our test cases.
+> 5. You can access all the neighbors of a given node by calling `graph[node]`, or `graph.neighbors(node)` ONLY. 
+> 6. You can access the weight of an edge using: `graph.get_edge_weight(node_1, node_2)`. Not using this method will result in your explored nodes count being higher than it should be.
+> 7. You can access the (x, y) position of a node use: `graph.node[n]['pos']`. You will need this for calculating the heuristic distance.
+> 8. We will provide some margin of error in grading the size of your 'Explored' set, but it should be close to the results provided by our reference implementation.
      
      
 #### Final Task: Return your name
