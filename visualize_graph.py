@@ -128,7 +128,7 @@ def plot_search(graph, outfile_name, path_nodes, explored_nodes):
         # explored nodes (non-path ones)
         # plot them as black
         if explored_nodes:
-            explored_nodes = set(explored_nodes)
+            explored_nodes = set([key for key in explored_nodes.keys() if explored_nodes[key] > 0])
             explored_nodes = explored_nodes.difference(set(path_nodes))
             if len(explored_nodes) > 0:
                 outfile.write(',\n')
