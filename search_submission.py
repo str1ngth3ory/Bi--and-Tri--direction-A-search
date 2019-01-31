@@ -365,7 +365,7 @@ def load_data(graph, time_left):
 
     * To get a list of nodes, use graph.nodes()
     * To get node neighbors, use graph.neighbors(node)
-    * To get edge weight, use graph[node1][node2]['weight']
+    * To get edge weight, use graph.get_edge_weight(node1, node2)
     """
 
     # nodes = graph.nodes()
