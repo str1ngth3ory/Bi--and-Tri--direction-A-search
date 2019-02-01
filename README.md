@@ -71,9 +71,6 @@ Links from Udacity, below the videos:
 ### Relevant Challenge Questions
 _Questions will be updated as they are added._
 
-### Other Resources
-[Introduction to A*](https://www.redblobgames.com/pathfinding/a-star/introduction.html)
-
 ## The Assignment
 
 Your task is to implement several informed search algorithms that will calculate a driving route between two points in Romania with a minimal time and space cost.
