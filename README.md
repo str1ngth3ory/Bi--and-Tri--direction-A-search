@@ -227,7 +227,7 @@ For example, suppose we have goal nodes [a,b,c]. Then what we want you to do is 
 
 > **Notes**:
 > 1. You need to include start and goal in the path.
-> 2. **If your start and goal are the same then just return [].**
+> 2. **If all three nodes are the same then just return [].**
 > 3. **If there are 2 identical goals (i.e. a,b,b) then return the path [a...b] (i.e. just the path from a to b).**
 > 4. The above are just to keep your results consistent with our test cases.
 > 5. You can access all the neighbors of a given node by calling `graph[node]`, or `graph.neighbors(node)` ONLY. 
@@ -253,7 +253,7 @@ The specifics are up to you, but we have a few suggestions:
 
 > **Notes**:
 > 1. You need to include start and goal in the path.
-> 2. **If your start and goal are the same then just return [].**
+> 2. **If all three nodes are the same then just return [].**
 > 3. **If there are 2 identical goals (i.e. a,b,b) then return the path [a...b] (i.e. just the path from a to b).**
 > 4. The above are just to keep your results consistent with our test cases.
 > 5. You can access all the neighbors of a given node by calling `graph[node]`, or `graph.neighbors(node)` ONLY. 
