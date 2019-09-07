@@ -32,6 +32,17 @@ class TestPriorityQueue(unittest.TestCase):
             popped = queue.pop()
             self.assertEqual(item, popped[0])
 
+    def test_fifo_property(self):
+        "Test the fifo property for nodes with same priority"
+        queue = PriorityQueue()
+        temp_list = [(1,'b'), (1, 'c'), (1, 'a')]
+
+        for node in temp_list:
+            queue.append(node)
+        
+        for expected_node in temp_list:
+            actual_node = queue.pop()
+            self.assertEqual(expected_node[-1], actual_node[-1])
 
 class TestBasicSearch(unittest.TestCase):
     """Test the simple search algorithms: BFS, UCS, A*"""
