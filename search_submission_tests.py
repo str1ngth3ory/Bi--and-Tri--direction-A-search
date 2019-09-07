@@ -110,7 +110,9 @@ class TestBasicSearch(unittest.TestCase):
 
         networkx.draw_networkx_nodes(graph, node_positions, nodelist=explored,
                                      node_color='g')
-
+        edge_labels = networkx.get_edge_attributes(graph, 'weight')
+        networkx.draw_networkx_edge_labels(graph, node_positions, edge_labels=edge_labels)
+        
         if path is not None:
             edges = [(path[i], path[i + 1]) for i in range(0, len(path) - 1)]
             networkx.draw_networkx_edges(graph, node_positions, edgelist=edges,
