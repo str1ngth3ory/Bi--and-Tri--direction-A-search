@@ -7,7 +7,7 @@ import unittest
 import networkx
 
 from explorable_graph import ExplorableGraph
-from search_submission import a_star, bidirectional_a_star, \
+from submission import a_star, bidirectional_a_star, \
     bidirectional_ucs, breadth_first_search, euclidean_dist_heuristic, \
     null_heuristic, haversine_dist_heuristic, tridirectional_search, tridirectional_upgraded, \
     uniform_cost_search, custom_heuristic

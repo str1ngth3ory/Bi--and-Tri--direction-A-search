@@ -7,7 +7,7 @@ import matplotlib.pyplot as plt
 import networkx
 
 from explorable_graph import ExplorableGraph
-from search_submission import PriorityQueue, a_star, bidirectional_a_star, \
+from submission import PriorityQueue, a_star, bidirectional_a_star, \
     bidirectional_ucs, breadth_first_search, uniform_cost_search, haversine_dist_heuristic, \
     tridirectional_upgraded, custom_heuristic
 from visualize_graph import plot_search
@@ -32,6 +32,17 @@ class TestPriorityQueue(unittest.TestCase):
             popped = queue.pop()
             self.assertEqual(item, popped[0])
 
+    def test_fifo_property(self):
+        "Test the fifo property for nodes with same priority"
+        queue = PriorityQueue()
+        temp_list = [(1,'b'), (1, 'c'), (1, 'a')]
+
+        for node in temp_list:
+            queue.append(node)
+        
+        for expected_node in temp_list:
+            actual_node = queue.pop()
+            self.assertEqual(expected_node[-1], actual_node[-1])
 
 class TestBasicSearch(unittest.TestCase):
     """Test the simple search algorithms: BFS, UCS, A*"""
@@ -110,7 +121,9 @@ class TestBasicSearch(unittest.TestCase):
 
         networkx.draw_networkx_nodes(graph, node_positions, nodelist=explored,
                                      node_color='g')
-
+        edge_labels = networkx.get_edge_attributes(graph, 'weight')
+        networkx.draw_networkx_edge_labels(graph, node_positions, edge_labels=edge_labels)
+        
         if path is not None:
             edges = [(path[i], path[i + 1]) for i in range(0, len(path) - 1)]
             networkx.draw_networkx_edges(graph, node_positions, edgelist=edges,
