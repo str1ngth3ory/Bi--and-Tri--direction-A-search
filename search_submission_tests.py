@@ -7,7 +7,7 @@ import matplotlib.pyplot as plt
 import networkx
 
 from explorable_graph import ExplorableGraph
-from search_submission import PriorityQueue, a_star, bidirectional_a_star, \
+from submission import PriorityQueue, a_star, bidirectional_a_star, \
     bidirectional_ucs, breadth_first_search, uniform_cost_search, haversine_dist_heuristic, \
     tridirectional_upgraded, custom_heuristic
 from visualize_graph import plot_search

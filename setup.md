@@ -44,6 +44,6 @@ Finally, commit the new updates to your branch and continue developing:
 `git commit -am "<funny message vilifying TAs for the update>"`
 
 # Submit your code
-A friendly reminder: please ensure that your submission is in `search_submission.py`. The script described in the following section automatically sends that file to the servers for processing.
+A friendly reminder: please ensure that your submission is in `submission.py`. The script described in the following section automatically sends that file to the servers for processing.
 
 To submit your code and have it evaluated for a grade, use `python submit.py`. We are going to limit you to 2 submissions per half hour (subject to change depending on load on servers), and the last submission before the deadline will be used to determine your grade.

@@ -36,7 +36,7 @@ def require_pledges():
 
 
 def main():
-    filenames = ["search_submission.py"]
+    filenames = ["submission.py"]
     require_pledges()
 
     submit('cs6601', 'assignment_2', filenames)

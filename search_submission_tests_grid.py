@@ -9,7 +9,7 @@ import networkx as nx
 
 #from explorable_graph_modified import ExplorableGraph
 from explorable_graph import ExplorableGraph
-from search_submission import tridirectional_search, bidirectional_ucs, tridirectional_upgraded, bidirectional_a_star
+from submission import tridirectional_search, bidirectional_ucs, tridirectional_upgraded, bidirectional_a_star
 
 def save_graph(graph, file_name, show_edge_labels=False, show_node_labels=False, color_values=None):
     """

@@ -3,7 +3,7 @@ import pickle
 import unittest
 import time
 
-from search_submission import load_data, custom_search
+from submission import load_data, custom_search
 from explorable_graph import ExplorableGraph
 
 def get_time_milliseconds():
