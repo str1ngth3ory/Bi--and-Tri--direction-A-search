@@ -61,7 +61,7 @@ class TestBasicSearch(unittest.TestCase):
         start = "a"
         goal = "a"
         path = breadth_first_search(self.romania, start, goal)
-        self.assertEqual(path, [])
+        self.assertEqual([], path)
 
     def test_ucs(self):
         """TTest and visualize uniform-cost search"""

@@ -142,7 +142,7 @@ class SearchUnitTests(unittest.TestCase):
             if path != ref_path:
                 print (src, dst)
 
-            self.assertEqual(path, ref_path)
+            self.assertEqual(ref_path, path)
 
     def run_romania_tri(self, method, **kwargs):
         """
@@ -171,7 +171,7 @@ class SearchUnitTests(unittest.TestCase):
             if path_len != min_len:
                 print (goals)
 
-            self.assertEqual(path_len, min_len)
+            self.assertEqual(min_len, path_len)
 
     def run_atlanta_data(self, method, test_count=10, **kwargs):
         """
