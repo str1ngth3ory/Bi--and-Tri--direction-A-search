@@ -21,7 +21,7 @@ Submit the `submission.py` file to Gradescope for grading.
 
 You are allowed **two submissions every thirty minutes**.
 
-This assignment is due on Gradescope on **September 22nd, 2019 by 11:59PM UTC-12 (Anywhere on Earth)**. The deliverable for the assignment is a 'submission.py' file with all the functions/methods completed.
+The deliverable for the assignment is a 'submission.py' file with all the functions/methods completed.
 
 **In your Gradescope submission history, you can mark a certain submission as 'Active'.**
 
