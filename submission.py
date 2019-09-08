@@ -81,7 +81,7 @@ class PriorityQueue(object):
 
         # TODO: finish this function!
         raise NotImplementedError
-
+        
     def __contains__(self, key):
         """
         Containment Check operator for 'in'
@@ -93,7 +93,7 @@ class PriorityQueue(object):
             True if key is found in queue, False otherwise.
         """
 
-        return key in [n for _, n in self.queue]
+        return key in [n[-1] for n in self.queue]
 
     def __eq__(self, other):
         """
