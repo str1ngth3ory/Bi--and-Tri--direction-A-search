@@ -9,6 +9,7 @@ Clone this repository:
 Activate the environment you had created during Assignment 0:
 
 `conda activate ai_env`
+
 In case you used a different environment name, to list of all environments you have on your machine you can run `conda env list`.
 
 ## Overview
