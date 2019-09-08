@@ -56,6 +56,7 @@ If you want to see how **_visualize_graph.py_** is used, take a look at the clas
 * Udacity, [Lesson 2: Search](https://classroom.udacity.com/courses/ud954/lessons/6375179396/concepts/68711451400923)
 * R&N slides on [Uninformed Search](https://www.cc.gatech.edu/~thad/6601-gradAI-fall2015/chapter03-clean.pdf)
 * [Informed Search](https://www.cc.gatech.edu/~thad/6601-gradAI-fall2015/chapter04a.pdf)
+* A wonderful site depicting different types of search algorithms: [Graph Search Algorithms](https://cs.stanford.edu/people/abisee/tutorial/)
 
 Links from Udacity, below the videos:
 * [Finding Optimal Solutions to Rubik's Cube Using Pattern Databases](https://www.cs.princeton.edu/courses/archive/fall06/cos402/papers/korfrubik.pdf)
