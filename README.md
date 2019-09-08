@@ -6,7 +6,7 @@ Clone this repository:
 
 `git clone https://github.gatech.edu/omscs6601/assignment_2.git`
 
-Activate the environment:
+Activate the environment you had created during Assignment 0:
 
 `conda activate ai_env`
 In case you used a different environment name, to list of all environments you have on your machine you can run `conda env list`.
@@ -21,7 +21,7 @@ Submit the `submission.py` file to Gradescope for grading.
 
 You are allowed **two submissions every thirty minutes**.
 
-This assignment is due on Gradescope on September 22nd, 2019 by 11:59PM UTC-12 (Anywhere on Earth). The deliverable for the assignment is a 'submission.py' file with all the functions/methods completed.
+The deliverable for the assignment is a 'submission.py' file with all the functions/methods completed.
 
 **In your Gradescope submission history, you can mark a certain submission as 'Active'.**
 
@@ -40,12 +40,12 @@ While you'll only have to edit and submit **__submission.py__**, there are a num
 10. **_osm2networkx.py_**: Module used by visualize graph to read OSM networks.
 
 ### Notes
-####A note on using the graph and grading
+#### A note on using the graph and grading
 
 Points for each section are awarded based on finding the correct path and by evaluating the number of nodes explored. To track the number of times a node is explored during the search, the ExplorableGraph wrapper is used on the networkx Graph class. Every time you process a node, by calling graph[node] or graph.neighbors(node), the count for that node increases by one. You will need to use one of these methods to add a node's neighbors to the search queue, just be careful not to call it unnecessarily throughout your code. We have created the graph.get_edge_weight(u, v) method to be used to access edge weights between two nodes, u and v. All other normal networkx Graph operations can be performed.  
 
 
-####A note on visualizing results for the Atlanta graph:
+#### A note on visualizing results for the Atlanta graph:
 
 The Atlanta graph is too big to display within a Python window like Romania. As a result, when you run the bidirectional tests in **_search_submission_tests.py_**, it generates a JSON file in the GeoJSON format. To see the graph, you can upload it to a private GitHub Gist or use [this](http://geojson.io/) site.
 If you want to see how **_visualize_graph.py_** is used, take a look at the class TestBidirectionalSearch in **_search_submission_tests.py_**
@@ -74,8 +74,8 @@ We will be using an undirected network representing a map of Romania (and an opt
 Also, as an extra note, there are some things that are among our most common questions:
 
 * Remember that if start and goal are the same, you should return []. This keeps your results consistent with ours and avoids some headache.
-	* Make sure you break ties using FIFO in your priority queue implementation. Hint: https://docs.python.org/2/library/heapq.html#priority-queue-implementation-notes
-	* There is a little more to this when you get to tridirectional, so read those Notes especially carefully as well
+* Make sure you break ties using FIFO in your priority queue implementation. Hint: https://docs.python.org/2/library/heapq.html#priority-queue-implementation-notes
+* There is a little more to this when you get to tridirectional, so read those Notes especially carefully as well
 * **Do not** use graph.explored_nodes for anything that you submit to Gradescope. This can be used for debugging, but you should not be calling this in your code. **Additionally, please make sure you read the "Notes" section above.**
 * If you are stuck, check out the resources! We recognize this is a hard assignment and tri-directional search is a more research-oriented topic than the other search algorithms. Many previous students have found it useful to go through the resources in this README if they are having difficulty understanding the algorithms. Hopefully they are of some use to you all as well! :)
 * We have included the "Haversine" heuristic in the `search_submission_tests.py` file. All of the local tests on the Atlanta map use this method. For the race, you can use whatever you choose, but know that the Atlanta map positions are (latitude, longitude). If you would like to learn more about this formula, here is a link: https://en.wikipedia.org/wiki/Haversine_formula
