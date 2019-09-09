@@ -160,7 +160,7 @@ Implement A* search using Euclidean distance as your heuristic. You'll need to i
 > 3. The above are just to keep your results consistent with our test cases.
 > 4. You can access all the neighbors of a given node by calling `graph[node]`, or `graph.neighbors(node)` ONLY. 
 > 5. You can access the weight of an edge using: `graph.get_edge_weight(node_1, node_2)`. Not using this method will result in your explored nodes count being higher than it should be.
-> 6. You can access the (x, y) position of a node use: `graph.node[n]['pos']`. You will need this for calculating the heuristic distance.
+> 6. You can access the (x, y) position of a node using: `graph.node[n]['pos']`. You will need this for calculating the heuristic distance.
 > 7. We will provide some margin of error in grading the size of your 'Explored' set, but it should be close to the results provided by our reference implementation.
 
 ---
@@ -190,8 +190,7 @@ Implement bidirectional uniform-cost search. Remember that this requires startin
 > 3. The above are just to keep your results consistent with our test cases.
 > 4. You can access all the neighbors of a given node by calling `graph[node]`, or `graph.neighbors(node)` ONLY. 
 > 5. You can access the weight of an edge using: `graph.get_edge_weight(node_1, node_2)`. Not using this method will result in your explored nodes count being higher than it should be.
-> 6. You can access the (x, y) position of a node use: `graph.node[n]['pos']`. You will need this for calculating the heuristic distance.
-> 7. We will provide some margin of error in grading the size of your 'Explored' set, but it should be close to the results provided by our reference implementation.
+> 6. We will provide some margin of error in grading the size of your 'Explored' set, but it should be close to the results provided by our reference implementation.
 
 #### Exercise 2: Bidirectional A* search
 
@@ -208,7 +207,7 @@ To test this function, as well as using the provided tests, you can compare the 
 > 3. The above are just to keep your results consistent with our test cases.
 > 4. You can access all the neighbors of a given node by calling `graph[node]`, or `graph.neighbors(node)` ONLY. 
 > 5. You can access the weight of an edge using: `graph.get_edge_weight(node_1, node_2)`. Not using this method will result in your explored nodes count being higher than it should be.
-> 6. You can access the (x, y) position of a node use: `graph.node[n]['pos']`. You will need this for calculating the heuristic distance.
+> 6. You can access the (x, y) position of a node using: `graph.node[n]['pos']`. You will need this for calculating the heuristic distance.
 > 7. We will provide some margin of error in grading the size of your 'Explored' set, but it should be close to the results provided by our reference implementation.
 
 #### Exercise 3: Tridirectional UCS search
@@ -230,8 +229,7 @@ For example, suppose we have goal nodes [a,b,c]. Then what we want you to do is 
 > 4. The above are just to keep your results consistent with our test cases.
 > 5. You can access all the neighbors of a given node by calling `graph[node]`, or `graph.neighbors(node)` ONLY. 
 > 6. You can access the weight of an edge using: `graph.get_edge_weight(node_1, node_2)`. Not using this method will result in your explored nodes count being higher than it should be.
-> 7. You can access the (x, y) position of a node use: `graph.node[n]['pos']`. You will need this for calculating the heuristic distance.
-> 8. We will provide some margin of error in grading the size of your 'Explored' set, but it should be close to the results provided by our reference implementation.
+> 7. We will provide some margin of error in grading the size of your 'Explored' set, but it should be close to the results provided by our reference implementation.
 
 #### Exercise 4: Upgraded Tridirectional search
 
@@ -256,7 +254,7 @@ The specifics are up to you, but we have a few suggestions:
 > 4. The above are just to keep your results consistent with our test cases.
 > 5. You can access all the neighbors of a given node by calling `graph[node]`, or `graph.neighbors(node)` ONLY. 
 > 6. You can access the weight of an edge using: `graph.get_edge_weight(node_1, node_2)`. Not using this method will result in your explored nodes count being higher than it should be.
-> 7. You can access the (x, y) position of a node use: `graph.node[n]['pos']`. You will need this for calculating the heuristic distance.
+> 7. You can access the (x, y) position of a node using: `graph.node[n]['pos']`. You will need this for calculating the heuristic distance.
 > 8. We will provide some margin of error in grading the size of your 'Explored' set, but it should be close to the results provided by our reference implementation.
      
      
