@@ -5,8 +5,6 @@ code on the relevant classes included here. Do not add any classes or functions
 to this file that are not part of the classes that we want.
 """
 
-from __future__ import division
-
 import heapq
 import os
 import pickle
