@@ -261,7 +261,7 @@ The specifics are up to you, but we have a few suggestions:
 #### Final Task: Return your name
 _[1 point]_
 
-A simple task to wind down the assignment. Return you name from the function aptly called `return_your_name()`.
+A simple task to wind down the assignment. Return your name from the function aptly called `return_your_name()`.
 
 
 ### The Race!
