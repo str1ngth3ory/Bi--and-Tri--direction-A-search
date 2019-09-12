@@ -16,7 +16,7 @@ In case you used a different environment name, to list of all environments you h
 
 Search is an integral part of AI. It helps in problem solving across a wide variety of domains where a solution isn’t immediately clear.  You will implement several graph search algorithms with the goal of solving bi-directional and tri-directional search.
 
-### Submission and Due Date
+### Submission
 
 Submit the `submission.py` file to Gradescope for grading.
 
