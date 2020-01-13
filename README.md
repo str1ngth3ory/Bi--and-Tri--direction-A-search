@@ -172,7 +172,7 @@ Implement A* search using Euclidean distance as your heuristic. You'll need to i
 
 ---
 ### Exercises
-The following exercises will require you to implement several kinds of bidirectional searches. The benefits of these algorithms over uninformed or unidirectional search are more clearly seen on larger graphs. As such, during grading, we will evaluate your performance on the map of Atlanta [OpenStreetMap](http://wiki.openstreetmap.org) included in this assignment.
+The following exercises will require you to implement several kinds of bidirectional searches. The benefits of these algorithms over uninformed or unidirectional search are more clearly seen on larger graphs. As such, during grading, we will evaluate your performance on the map of Romania included in this assignment.
 
 For these exercises, we recommend you take a look at the following resources.
 
