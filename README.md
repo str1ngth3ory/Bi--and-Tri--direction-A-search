@@ -79,7 +79,8 @@ We will be using an undirected network representing a map of Romania (and an opt
 Also, as an extra note, there are some things that are among our most common questions:
 
 * Remember that if start and goal are the same, you should return []. This keeps your results consistent with ours and avoids some headache.
-* Make sure you break ties using FIFO in your priority queue implementation. Hint: https://docs.python.org/2/library/heapq.html#priority-queue-implementation-notes
+* When nodes in the priority queue have the same priority value, break ties according to FIFO. Hint: A counter can be used to track when nodes enter the priority queue.
+* Your priority queue implementation should allow for duplicate nodes to enter the queue.
 * There is a little more to this when you get to tridirectional, so read those Notes especially carefully as well
 * **Do not** use graph.explored_nodes for anything that you submit to Gradescope. This can be used for debugging, but you should not be calling this in your code. **Additionally, please make sure you read the "Notes" section above.**
 * If you are stuck, check out the resources! We recognize this is a hard assignment and tri-directional search is a more research-oriented topic than the other search algorithms. Many previous students have found it useful to go through the resources in this README if they are having difficulty understanding the algorithms. Hopefully they are of some use to you all as well! :)
