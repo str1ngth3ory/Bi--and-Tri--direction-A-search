@@ -89,6 +89,18 @@ Also, as an extra note, there are some things that are among our most common que
 * If you're having problems (exploring too many nodes) with your Breadth first search implementation, one thing many students have found useful is to re-watch the Udacity videos for an optimization trick mentioned.
 * Most 'NoneType object ...' errors are because the path you return is not completely connected (a pair of successive nodes in the path are not connected). Or because the path variable itself is empty.
 * Adding unit tests to your code may cause your submission to fail. It is best to comment them out when you submit.
+* Individual tests can be run using the following:
+```python
+import search_submission_tests as tests
+tests.TestPriorityQueue().test_append_and_pop()
+```
+* For running the search tests, use this:
+``` python
+import search_submission_tests as tests
+testclass = tests.TestBasicSearch()
+testclass.setUp()
+testclass.test_bfs()
+```
 
 ### Warmups
 We'll start by implementing some simpler optimization and search algorithms before the real exercises.
