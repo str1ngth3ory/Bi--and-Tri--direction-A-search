@@ -383,8 +383,8 @@ def haversine_dist_heuristic(graph, v, goal):
     """
 
     #Load latitude and longitude coordinates in radians:
-    vLatLong = (math.radians(graph.node[v]["pos"][0]), math.radians(graph.node[v]["pos"][1]))
-    goalLatLong = (math.radians(graph.node[goal]["pos"][0]), math.radians(graph.node[goal]["pos"][1]))
+    vLatLong = (math.radians(graph.nodes[v]["pos"][0]), math.radians(graph.nodes[v]["pos"][1]))
+    goalLatLong = (math.radians(graph.nodes[goal]["pos"][0]), math.radians(graph.nodes[goal]["pos"][1]))
 
     #Now we want to execute portions of the formula:
     constOutFront = 2*6371 #Radius of Earth is 6,371 kilometers
