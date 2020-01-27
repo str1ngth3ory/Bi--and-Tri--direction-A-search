@@ -59,8 +59,8 @@ class TestBasicSearch(unittest.TestCase):
         start = 'a'
         goal = 'u'
 
-        node_positions = {n: self.romania.node[n]['pos'] for n in
-                          self.romania.node.keys()}
+        node_positions = {n: self.romania.nodes[n]['pos'] for n in
+                          self.romania.nodes.keys()}
 
         self.romania.reset_search()
         path = breadth_first_search(self.romania, start, goal)
@@ -79,8 +79,8 @@ class TestBasicSearch(unittest.TestCase):
         start = 'a'
         goal = 'u'
 
-        node_positions = {n: self.romania.node[n]['pos'] for n in
-                          self.romania.node.keys()}
+        node_positions = {n: self.romania.nodes[n]['pos'] for n in
+                          self.romania.nodes.keys()}
 
         self.romania.reset_search()
         path = uniform_cost_search(self.romania, start, goal)
@@ -92,10 +92,10 @@ class TestBasicSearch(unittest.TestCase):
         """Test and visualize A* search"""
         start = 'a'
         goal = 'u'
-
-        node_positions = {n: self.romania.node[n]['pos'] for n in
-                          self.romania.node.keys()}
-
+        
+        node_positions = {n: self.romania.nodes[n]['pos'] for n in
+                          self.romania.nodes.keys()}
+        
         self.romania.reset_search()
         path = a_star(self.romania, start, goal)
 

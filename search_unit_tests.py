@@ -132,7 +132,7 @@ class SearchUnitTests(unittest.TestCase):
             reference search.
         """
 
-        keys = self.romania.node.keys()
+        keys = self.romania.nodes.keys()
         pairs = itertools.permutations(keys, 2)
         for src, dst in pairs:
             self.romania.reset_search()
@@ -157,7 +157,7 @@ class SearchUnitTests(unittest.TestCase):
             reference search.
         """
 
-        keys = self.romania.node.keys()
+        keys = self.romania.nodes.keys()
         triplets = itertools.permutations(keys, 3)
         for goals in triplets:
             self.romania.reset_search()
@@ -330,7 +330,7 @@ class SearchUnitTests(unittest.TestCase):
         """Test breadth first search with Romania data."""
 
 
-        keys = self.romania.node.keys()
+        keys = self.romania.nodes.keys()
         pairs = itertools.permutations(keys, 2)
         for src in keys:
             for dst in keys:

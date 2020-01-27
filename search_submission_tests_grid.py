@@ -66,8 +66,8 @@ def create_grid(size=20, randomize_weights=False, file_name='grid_test.gpickle')
             grid[s][t]['weight'] = 1
 
     for n in grid.nodes():
-        grid.node[n]['pos'] = n
-        grid.node[n]['position'] = n
+        grid.nodes[n]['pos'] = n
+        grid.nodes[n]['position'] = n
 
     nx.write_gpickle(grid, file_name)
 

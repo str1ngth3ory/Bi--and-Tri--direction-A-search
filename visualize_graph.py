@@ -40,7 +40,7 @@ def plot_nodes(node_list, graph, outfile, header=False, footer=False, color="#F5
 
 def node_to_GeoJSON(node, graph, color="#F5A207"):
     """Convert node to GeoJSON string."""
-    data = graph.node[node]
+    data = graph.nodes[node]
     lat = data['lat']
     lon = data['lon']
     node_string = ''
@@ -66,10 +66,10 @@ def edge_to_GeoJSON(edge, graph, color="#F5A207"):
     """Convert edge to GeoJSON string."""
     start = edge[0]
     end = edge[1]
-    start_lon = graph.node[start]['lon']
-    start_lat = graph.node[start]['lat']
-    end_lon = graph.node[end]['lon']
-    end_lat = graph.node[end]['lat']
+    start_lon = graph.nodes[start]['lon']
+    start_lat = graph.nodes[start]['lat']
+    end_lon = graph.nodes[end]['lon']
+    end_lat = graph.nodes[end]['lat']
     edge_string = ''
     edge_string += '{ "type" : "Feature",\n'
     edge_string += '"geometry" : {"type": "LineString", ' 
