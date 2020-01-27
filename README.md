@@ -79,7 +79,8 @@ We will be using an undirected network representing a map of Romania (and an opt
 Also, as an extra note, there are some things that are among our most common questions:
 
 * Remember that if start and goal are the same, you should return []. This keeps your results consistent with ours and avoids some headache.
-* Make sure you break ties using FIFO in your priority queue implementation. Hint: https://docs.python.org/2/library/heapq.html#priority-queue-implementation-notes
+* When nodes in the priority queue have the same priority value, break ties according to FIFO. Hint: A counter can be used to track when nodes enter the priority queue.
+* Your priority queue implementation should allow for duplicate nodes to enter the queue.
 * There is a little more to this when you get to tridirectional, so read those Notes especially carefully as well
 * **Do not** use graph.explored_nodes for anything that you submit to Gradescope. This can be used for debugging, but you should not be calling this in your code. **Additionally, please make sure you read the "Notes" section above.**
 * If you are stuck, check out the resources! We recognize this is a hard assignment and tri-directional search is a more research-oriented topic than the other search algorithms. Many previous students have found it useful to go through the resources in this README if they are having difficulty understanding the algorithms. Hopefully they are of some use to you all as well! :)
@@ -88,6 +89,18 @@ Also, as an extra note, there are some things that are among our most common que
 * If you're having problems (exploring too many nodes) with your Breadth first search implementation, one thing many students have found useful is to re-watch the Udacity videos for an optimization trick mentioned.
 * Most 'NoneType object ...' errors are because the path you return is not completely connected (a pair of successive nodes in the path are not connected). Or because the path variable itself is empty.
 * Adding unit tests to your code may cause your submission to fail. It is best to comment them out when you submit.
+* Individual tests can be run using the following:
+```python
+import search_submission_tests as tests
+tests.TestPriorityQueue().test_append_and_pop()
+```
+* For running the search tests, use this:
+``` python
+import search_submission_tests as tests
+testclass = tests.TestBasicSearch()
+testclass.setUp()
+testclass.test_bfs()
+```
 
 ### Warmups
 We'll start by implementing some simpler optimization and search algorithms before the real exercises.
@@ -102,14 +115,18 @@ To show this, you'll implement a priority queue which will help you in understan
 
 In this implementation of priority queue, if two elements have the same priority, they should be served according to the order in which they were enqueued.  
 
-> **Hint:**
-> **The heapq module has been imported for you. Feel free to use it**
-> **Each edge has an associated weight.**
-
-> **Hint 2:**
+> **Notes**:
 > **While the idea of amortization is quite an interesting one that you may want to think about, please note that this is not the focus
 > of this assignment. The heapq library should be enough for this assignment. If you want to optimize further, you can always come back to
 > this section.**
+
+> **Hint:**
+> **The heapq module has been imported for you. Feel free to use it.**
+> **Each edge has an associated weight.**
+
+> **Hint 2:**
+> **The local tests provided test the correctness. To verify that your implementation consistently beats the naive implementation, you might want to test it with > more number of elements.**
+
 
 #### Warmup 2: BFS
 
@@ -126,8 +143,9 @@ For this part, it is optional to use the PriorityQueue as your frontier. You wil
 > 2. **If your start and goal are the same then just return [].**
 > 3. The above are just to keep your results consistent with our test cases.
 > 4. You can access all the neighbors of a given node by calling `graph[node]`, or `graph.neighbors(node)` ONLY. 
-> 5. To measure your search performance, the `explorable_graph.py` provided keeps track of which nodes you have accessed in this way (this is referred to as the set of 'Explored' nodes). To retrieve the set of nodes you've explored in this way, call `graph.explored_nodes`. If you wish to perform multiple searches on the same graph instance, call `graph.reset_search()` to clear out the current set of 'Explored' nodes. **WARNING**, these functions are intended for debugging purposes only. Calls to these functions will fail on Gradescope.
-> 6. In BFS, because we are using unit edge weight, make sure you process the neighbors in alphabetical order. Because networkx uses dictionaries, the order that it returns the neighbors is not fixed. This can cause differences in the number of explored nodes from run to run. If you sort the neighbors alphabetically before processing them, you should return the same number of explored nodes each time.
+> 5. You are not allowed to maintain a cache of the neighbors for any node. You need to use the above mentioned methods to get the neighbors.
+> 6. To measure your search performance, the `explorable_graph.py` provided keeps track of which nodes you have accessed in this way (this is referred to as the set of 'Explored' nodes). To retrieve the set of nodes you've explored in this way, call `graph.explored_nodes`. If you wish to perform multiple searches on the same graph instance, call `graph.reset_search()` to clear out the current set of 'Explored' nodes. **WARNING**, these functions are intended for debugging purposes only. Calls to these functions will fail on Gradescope.
+> 7. In BFS, because we are using unit edge weight, make sure you process the neighbors in alphabetical order. Because networkx uses dictionaries, the order that it returns the neighbors is not fixed. This can cause differences in the number of explored nodes from run to run. If you sort the neighbors alphabetically before processing them, you should return the same number of explored nodes each time.
 
 #### Warmup 3: Uniform-cost search
 
@@ -143,7 +161,8 @@ Implement uniform-cost search, using PriorityQueue as your frontier. From now on
 > 3. The above are just to keep your results consistent with our test cases.
 > 4. You can access all the neighbors of a given node by calling `graph[node]`, or `graph.neighbors(node)` ONLY. 
 > 5. You can access the weight of an edge using: `graph.get_edge_weight(node_1, node_2)`. Not using this method will result in your explored nodes count being higher than it should be.
-> 6. We will provide some margin of error in grading the size of your 'Explored' set, but it should be close to the results provided by our reference implementation.
+> 6. You are not allowed to maintain a cache of the neighbors for any node. You need to use the above mentioned methods to get the neighbors and corresponding weights.
+> 7. We will provide some margin of error in grading the size of your 'Explored' set, but it should be close to the results provided by our reference implementation.
 
 #### Warmup 4: A* search
 
@@ -160,12 +179,13 @@ Implement A* search using Euclidean distance as your heuristic. You'll need to i
 > 3. The above are just to keep your results consistent with our test cases.
 > 4. You can access all the neighbors of a given node by calling `graph[node]`, or `graph.neighbors(node)` ONLY. 
 > 5. You can access the weight of an edge using: `graph.get_edge_weight(node_1, node_2)`. Not using this method will result in your explored nodes count being higher than it should be.
-> 6. You can access the (x, y) position of a node using: `graph.node[n]['pos']`. You will need this for calculating the heuristic distance.
-> 7. We will provide some margin of error in grading the size of your 'Explored' set, but it should be close to the results provided by our reference implementation.
+> 6. You are not allowed to maintain a cache of the neighbors for any node. You need to use the above mentioned methods to get the neighbors and corresponding weights.
+> 7. You can access the (x, y) position of a node using: `graph.node[n]['pos']`. You will need this for calculating the heuristic distance.
+> 8. We will provide some margin of error in grading the size of your 'Explored' set, but it should be close to the results provided by our reference implementation.
 
 ---
 ### Exercises
-The following exercises will require you to implement several kinds of bidirectional searches. The benefits of these algorithms over uninformed or unidirectional search are more clearly seen on larger graphs. As such, during grading, we will evaluate your performance on the map of Atlanta [OpenStreetMap](http://wiki.openstreetmap.org) included in this assignment.
+The following exercises will require you to implement several kinds of bidirectional searches. The benefits of these algorithms over uninformed or unidirectional search are more clearly seen on larger graphs. As such, during grading, we will evaluate your performance on the map of Romania included in this assignment.
 
 For these exercises, we recommend you take a look at the following resources.
 
@@ -190,7 +210,8 @@ Implement bidirectional uniform-cost search. Remember that this requires startin
 > 3. The above are just to keep your results consistent with our test cases.
 > 4. You can access all the neighbors of a given node by calling `graph[node]`, or `graph.neighbors(node)` ONLY. 
 > 5. You can access the weight of an edge using: `graph.get_edge_weight(node_1, node_2)`. Not using this method will result in your explored nodes count being higher than it should be.
-> 6. We will provide some margin of error in grading the size of your 'Explored' set, but it should be close to the results provided by our reference implementation.
+> 6. You are not allowed to maintain a cache of the neighbors for any node. You need to use the above mentioned methods to get the neighbors and corresponding weights.
+> 7. We will provide some margin of error in grading the size of your 'Explored' set, but it should be close to the results provided by our reference implementation.
 
 #### Exercise 2: Bidirectional A* search
 
@@ -207,8 +228,9 @@ To test this function, as well as using the provided tests, you can compare the 
 > 3. The above are just to keep your results consistent with our test cases.
 > 4. You can access all the neighbors of a given node by calling `graph[node]`, or `graph.neighbors(node)` ONLY. 
 > 5. You can access the weight of an edge using: `graph.get_edge_weight(node_1, node_2)`. Not using this method will result in your explored nodes count being higher than it should be.
-> 6. You can access the (x, y) position of a node using: `graph.node[n]['pos']`. You will need this for calculating the heuristic distance.
-> 7. We will provide some margin of error in grading the size of your 'Explored' set, but it should be close to the results provided by our reference implementation.
+> 6. You are not allowed to maintain a cache of the neighbors for any node. You need to use the above mentioned methods to get the neighbors and corresponding weights.
+> 7. You can access the (x, y) position of a node using: `graph.node[n]['pos']`. You will need this for calculating the heuristic distance.
+> 8. We will provide some margin of error in grading the size of your 'Explored' set, but it should be close to the results provided by our reference implementation.
 
 #### Exercise 3: Tridirectional UCS search
 
@@ -229,7 +251,8 @@ For example, suppose we have goal nodes [a,b,c]. Then what we want you to do is 
 > 4. The above are just to keep your results consistent with our test cases.
 > 5. You can access all the neighbors of a given node by calling `graph[node]`, or `graph.neighbors(node)` ONLY. 
 > 6. You can access the weight of an edge using: `graph.get_edge_weight(node_1, node_2)`. Not using this method will result in your explored nodes count being higher than it should be.
-> 7. We will provide some margin of error in grading the size of your 'Explored' set, but it should be close to the results provided by our reference implementation.
+> 7. You are not allowed to maintain a cache of the neighbors for any node. You need to use the above mentioned methods to get the neighbors and corresponding weights.
+> 8. We will provide some margin of error in grading the size of your 'Explored' set, but it should be close to the results provided by our reference implementation.
 
 #### Exercise 4: Upgraded Tridirectional search
 
@@ -254,8 +277,9 @@ The specifics are up to you, but we have a few suggestions:
 > 4. The above are just to keep your results consistent with our test cases.
 > 5. You can access all the neighbors of a given node by calling `graph[node]`, or `graph.neighbors(node)` ONLY. 
 > 6. You can access the weight of an edge using: `graph.get_edge_weight(node_1, node_2)`. Not using this method will result in your explored nodes count being higher than it should be.
-> 7. You can access the (x, y) position of a node using: `graph.node[n]['pos']`. You will need this for calculating the heuristic distance.
-> 8. We will provide some margin of error in grading the size of your 'Explored' set, but it should be close to the results provided by our reference implementation.
+> 7. You are not allowed to maintain a cache of the neighbors for any node. You need to use the above mentioned methods to get the neighbors and corresponding weights.
+> 8. You can access the (x, y) position of a node using: `graph.node[n]['pos']`. You will need this for calculating the heuristic distance.
+> 9. We will provide some margin of error in grading the size of your 'Explored' set, but it should be close to the results provided by our reference implementation.
      
      
 #### Final Task: Return your name
