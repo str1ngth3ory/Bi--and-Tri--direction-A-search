@@ -35,12 +35,12 @@ class SearchUnitTests(unittest.TestCase):
     points on atlanta.
     Comment out any tests that you haven't implemented yet.
 
-    If you failed on bonnie because of non-optimal path, make sure you pass
+    If you failed on Gradescope because of non-optimal path, make sure you pass
     all the local tests.
-    Change test_count=-1 if you failed the path test on bonnie, it will run
+    Change test_count=-1 if you failed the path test on Gradescope, it will run
     tests on atlanta until it finds a set of points that fail.
 
-    If you failed on bonnie because of your explored set is too large,
+    If you failed on Gradescope because of your explored set is too large,
     there is no easy way to test without a reference implementation.
     But you can read the pdf slides for the optimized terminal condition.
 
