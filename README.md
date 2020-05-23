@@ -53,7 +53,7 @@ If you want to see how **_visualize_graph.py_** is used, take a look at the clas
 
 ## Resources
 
-* Udacity, [Lesson 2: Search](https://classroom.udacity.com/courses/ud954/lessons/6375179396/concepts/68711451400923)
+* Canvas, [Lesson 2: Search](https://gatech.instructure.com/courses/151546/pages/2-search?module_item_id=806500)
 * R&N slides on [Uninformed Search](https://www.cc.gatech.edu/~thad/6601-gradAI-fall2015/chapter03-clean.pdf)
 * [Informed Search](https://www.cc.gatech.edu/~thad/6601-gradAI-fall2015/chapter04a.pdf)
 * [Comparing BFS and DFS](https://cs.stanford.edu/people/abisee/tutorial/bfsdfs.html)
@@ -113,7 +113,7 @@ In all searches that involve calculating path cost or heuristic (e.g. uniform-co
 
 To show this, you'll implement a priority queue which will help you in understanding its performance benefits. For large graphs, sorting all input to a priority queue is impractical. As such, the data structure you implement should have an amortized O(1) insertion and O(lg n) removal time. It should do better than the naive implementation in our tests (InsertionSortQueue), which sorts the entire list after every insertion.
 
-In this implementation of priority queue, if two elements have the same priority, they should be served according to the order in which they were enqueued.  
+In this implementation of priority queue, if two elements have the same priority, they should be served according to the order in which they were enqueued (see Hint 3).  
 
 > **Notes**:
 > **While the idea of amortization is quite an interesting one that you may want to think about, please note that this is not the focus
@@ -122,11 +122,15 @@ In this implementation of priority queue, if two elements have the same priority
 
 > **Hint:**
 > **The heapq module has been imported for you. Feel free to use it.**
-> **Each edge has an associated weight.**
 
 > **Hint 2:**
-> **The local tests provided test the correctness. To verify that your implementation consistently beats the naive implementation, you might want to test it with > more number of elements.**
+> **The local tests provided are used to test the correctness of your implementation of the Priority Queue. To verify that your implementation consistently beats the naive implementation, you might want to test it with a large number of elements.**
 
+> **Hint 3:**
+> **If you choose to use the heapq library, keep in mind that the queue will sort entries as a whole upon being enqueued, not just on the first element. This means you need to figure out a way to keep elements with the same priority in FIFO order.**
+
+> **Hint 4:**
+> **You may enqueue nodes however you like, but when your Priority Queue is tested, we feed node in the form (priority, value).**
 
 #### Warmup 2: BFS
 
@@ -205,7 +209,7 @@ Implement bidirectional uniform-cost search. Remember that this requires startin
 `bidirectional_ucs()` should return the path from the start node to the goal node (as a list of nodes).
 
 > **Notes**:
-> 1. You need to include start and goal in the path.
+> 1. You need to include start and goal in the path. Make sure the path returned is from start to goal and not in the reverse order.
 > 2. **If your start and goal are the same then just return [].**
 > 3. The above are just to keep your results consistent with our test cases.
 > 4. You can access all the neighbors of a given node by calling `graph[node]`, or `graph.neighbors(node)` ONLY. 
@@ -242,7 +246,7 @@ expanding until two of the three searches meet. This should be one continuous pa
 For example, suppose we have goal nodes [a,b,c]. Then what we want you to do is to start at node a and expand like in a normal search. However, notice that you will be searching for both nodes b and c during this search and a similar search will start from nodes b and c. Finally, please note that this is a problem that can be accomplished without using 6 frontiers, which is why we stress that **this is not the same as 3 bi-directional searches.**
 
 `tridirectional_search()` should return a path between all three nodes. You can return the path in any order. Eg.
-(1->2->3 == 3->2->1). You may also want to look at the [Tri-city search challenge question on Udacity](https://classroom.udacity.com/courses/ud954/lessons/6375179396/concepts/65019286790923).
+(1->2->3 == 3->2->1). You may also want to look at the [Tri-city search challenge question on Canvas](https://gatech.instructure.com/courses/151546/pages/45-challenge-question-revisited?module_item_id=806646).
 
 > **Notes**:
 > 1. You need to include start and goal in the path.
