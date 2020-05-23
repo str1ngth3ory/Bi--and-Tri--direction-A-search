@@ -45,16 +45,15 @@ class PriorityQueue(object):
         # TODO: finish this function!
         raise NotImplementedError
 
-    def remove(self, node_id):
+    def remove(self, node):
         """
         Remove a node from the queue.
 
-        This is a hint, you might require this in ucs,
-        however, if you choose not to use it, you are free to
-        define your own method and not use it.
+        Hint: You might require this in ucs. However, you may
+        choose not to use it or to define your own method.
 
         Args:
-            node_id (int): Index of node in queue.
+            node (tuple): The node to remove from the queue.
         """
 
         raise NotImplementedError
@@ -324,6 +323,7 @@ def custom_heuristic(graph, v, goal):
 
 pass
 
+
 # Extra Credit: Your best search method for the race
 def custom_search(graph, start, goal, data=None):
     """
@@ -351,7 +351,6 @@ def custom_search(graph, start, goal, data=None):
     raise NotImplementedError
 
 
-
 def load_data(graph, time_left):
     """
     Feel free to implement this method. We'll call it only once 
@@ -368,6 +367,7 @@ def load_data(graph, time_left):
 
     # nodes = graph.nodes()
     return None
+ 
  
 def haversine_dist_heuristic(graph, v, goal):
     """
