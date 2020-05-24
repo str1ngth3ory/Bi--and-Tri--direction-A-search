@@ -330,7 +330,7 @@ def custom_search(graph, start, goal, data=None):
     Race!: Implement your best search algorithm here to compete against the
     other student agents.
 
-    If you implement this function and submit your code to bonnie, you'll be
+    If you implement this function and submit your code to Gradescope, you'll be
     registered for the Race!
 
     See README.md for exercise description.
