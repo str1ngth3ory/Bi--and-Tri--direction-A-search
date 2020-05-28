@@ -59,7 +59,7 @@ If you want to see how **_visualize_graph.py_** is used, take a look at the clas
 * [Comparing BFS and DFS](https://cs.stanford.edu/people/abisee/tutorial/bfsdfs.html)
 * [A* Search](https://cs.stanford.edu/people/abisee/tutorial/astar.html)
 
-Links from Udacity, below the videos:
+Links from Canvas, below the videos:
 * [Finding Optimal Solutions to Rubik's Cube Using Pattern Databases](https://www.cs.princeton.edu/courses/archive/fall06/cos402/papers/korfrubik.pdf)
 * [God's Number is 26 in the Quarter-Turn Metric](http://www.cube20.org/qtm/)
 * [Reach for A∗: An Efficient Point-to-Point Shortest Path Algorithm](http://www.cc.gatech.edu/~thad/6601-gradAI-fall2015/02-search-01-Astart-ALT-Reach.pdf)
@@ -86,7 +86,7 @@ Also, as an extra note, there are some things that are among our most common que
 * If you are stuck, check out the resources! We recognize this is a hard assignment and tri-directional search is a more research-oriented topic than the other search algorithms. Many previous students have found it useful to go through the resources in this README if they are having difficulty understanding the algorithms. Hopefully they are of some use to you all as well! :)
 * We have included the "Haversine" heuristic in the `search_submission_tests.py` file. All of the local tests on the Atlanta map use this method. For the race, you can use whatever you choose, but know that the Atlanta map positions are (latitude, longitude). If you would like to learn more about this formula, here is a link: https://en.wikipedia.org/wiki/Haversine_formula
 * Make sure you clean up any changes/modifications/additions you make to the networkx graph structure before you exit the search function. Depending on your changes, the auto grader might face difficulties while testing. The best alternative is to create your own data structure(s).
-* If you're having problems (exploring too many nodes) with your Breadth first search implementation, one thing many students have found useful is to re-watch the Udacity videos for an optimization trick mentioned.
+* If you're having problems (exploring too many nodes) with your Breadth first search implementation, one thing many students have found useful is to re-watch the Canvas videos for an optimization trick mentioned.
 * Most 'NoneType object ...' errors are because the path you return is not completely connected (a pair of successive nodes in the path are not connected). Or because the path variable itself is empty.
 * Adding unit tests to your code may cause your submission to fail. It is best to comment them out when you submit.
 * Individual tests can be run using the following:
