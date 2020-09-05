@@ -88,7 +88,7 @@ If you want to see how **_visualize_graph.py_** is used, take a look at the clas
 > * Your priority queue implementation should allow for duplicate nodes to enter the queue.
 > * There is a little more to this when you get to tridirectional, so read those Notes especially carefully as well
 > * **Do not** use graph.explored_nodes for anything that you submit to Gradescope. This can be used for debugging, but you should not be calling this in your code. Please make sure you read the "grading" section above.
-> * You cannot create a copy of the graph structure for any of the algorithms or compuations.
+> * **Do not** create a copy of the graph structure for any of the algorithms or compuations.
 > * If you are stuck, check out the resources! We recognize this is a hard assignment and tri-directional search is a more research-oriented topic than the other search algorithms. Many previous students have found it useful to go through the resources in this README if they are having difficulty understanding the algorithms. Hopefully they are of some use to you all as well! :)
 > * We have included the "Haversine" heuristic in the `search_submission_tests.py` file. All of the local tests on the Atlanta map use this method. For the race, you can use whatever you choose, but know that the Atlanta map positions are (latitude, longitude). If you would like to learn more about this formula, here is a link: https://en.wikipedia.org/wiki/Haversine_formula
 > * Make sure you clean up any changes/modifications/additions you make to the networkx graph structure before you exit the search function. Depending on your changes, the auto grader might face difficulties while testing. The best alternative is to create your own data structure(s).
