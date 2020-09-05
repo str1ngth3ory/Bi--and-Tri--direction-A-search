@@ -295,6 +295,8 @@ def tridirectional_upgraded(graph, goals, heuristic=euclidean_dist_heuristic, la
         goals (list): Key values for the 3 goals
         heuristic: Function to determine distance heuristic.
             Default: euclidean_dist_heuristic.
+        landmarks: Iterable containing landmarks pre-computed in compute_landmarks()
+            Default: None
 
     Returns:
         The best path as a list from one of the goal nodes (including both of
