@@ -321,7 +321,7 @@ def compute_landmarks(graph):
         graph (ExplorableGraph): Undirected graph to search.
 
     Returns:
-    Iterable with not more than 4 computed landmarks. 
+    List with not more than 4 computed landmarks. 
     """
     return None
 
