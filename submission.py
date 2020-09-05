@@ -284,7 +284,7 @@ def tridirectional_search(graph, goals):
     raise NotImplementedError
 
 
-def tridirectional_upgraded(graph, goals, heuristic=euclidean_dist_heuristic):
+def tridirectional_upgraded(graph, goals, heuristic=euclidean_dist_heuristic, landmarks=None):
     """
     Exercise 4: Upgraded Tridirectional Search
 
@@ -310,6 +310,20 @@ def return_your_name():
     raise NotImplementedError
 
 
+def compute_landmarks(graph):
+    """
+    Feel free to implement this method for computing landmarks. We will call
+    tridirectional_upgraded() with the object returned from this function.
+
+    Args:
+        graph (ExplorableGraph): Undirected graph to search.
+
+    Returns:
+    Iterable with not more than 4 computed landmarks. 
+    """
+    return None
+
+
 def custom_heuristic(graph, v, goal):
     """
        Feel free to use this method to try and work with different heuristics and come up with a better search algorithm.
@@ -320,8 +334,7 @@ def custom_heuristic(graph, v, goal):
        Returns:
            Custom heuristic distance between `v` node and `goal` node
        """
-
-pass
+    pass
 
 
 # Extra Credit: Your best search method for the race
