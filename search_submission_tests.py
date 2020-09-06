@@ -83,7 +83,7 @@ class TestBasicSearch(unittest.TestCase):
         self.assertEqual(path, ['a', 's', 'f', 'b', 'u'])   # Check for correct path
 
         explored_nodes = sum(list(self.romania.explored_nodes.values()))
-        self.assertEqual(explored_nodes, 10)    # Compare explored nodes to reference implementation
+        self.assertEqual(True, explored_nodes <= 10)    # Compare explored nodes to reference implementation
 
     def test_bfs_empty_path(self):
         start = "a"
@@ -230,7 +230,23 @@ class TestBidirectionalSearch(unittest.TestCase):
                         start=start, goal=goal, path=path,
                         title='bi-ucs blue=start, yellow=goal, green=explored')
 
-        self.assertEqual(path, ['o', 's', 'r', 'c', 'd'])   # Check for correct path
+
+    def test_bidirectional_ucs_explored(self):
+        """Test A* for correct path and number of explored nodes"""
+        start = 'o'
+        goal = 'd'
+
+        node_positions = {n: self.romania.nodes[n]['pos'] for n in
+                          self.romania.nodes.keys()}
+
+        self.romania.reset_search()
+        path = bidirectional_ucs(self.romania, start, goal)
+
+        self.assertEqual(path, ['o', 's', 'r', 'c', 'd'])   # Check for correct path. Check your stopping condition
+
+        explored_nodes = sum(list(self.romania.explored_nodes.values()))
+        # print('BiUCS explore', explored_nodes, list(self.romania.explored_nodes.values()))
+        self.assertEqual(True, explored_nodes <= 12)    # Compare explored nodes to reference implementation
 
     def test_bidirectional_a_star(self):
         """Test and generate GeoJSON for bidirectional A* search"""
