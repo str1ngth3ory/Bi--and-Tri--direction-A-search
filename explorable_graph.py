@@ -16,6 +16,7 @@ class ExplorableGraph(object):
         self.__graph = graph
         self._explored_nodes = dict([(node, 0) for node in self.__graph.nodes()])
 
+    @property
     def explored_nodes(self):
         return self._explored_nodes
 
