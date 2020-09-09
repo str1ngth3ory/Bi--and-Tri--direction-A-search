@@ -1,5 +1,3 @@
-**The assignment is not yet released for the Fall 2020 and might be subject to change.**
-
 # CS 6601: Artificial Intelligence - Assignment 2 - Search
 
 ## Setup
