@@ -27,7 +27,6 @@ class ExplorableGraph(object):
         self._explored_nodes = dict([(node, 0) for node in self.__graph.nodes()])
 
     def __iter__(self):
-        #self._explored_nodes = set(iter(self.graph.node))
         return self.__graph.__iter__()
 
     def __getitem__(self, n):
@@ -37,18 +36,13 @@ class ExplorableGraph(object):
         return self.__graph.__getitem__(n)
 
     def nodes_iter(self, data=False):
-        self._explored_nodes = set(self.graph.nodes_iter())
-        return self.graph.nodes_iter(data)
+        self._explored_nodes = set(self.__graph.nodes_iter())
+        return self.__graph.nodes_iter(data)
 
     def neighbors(self, n):
         if n in self.__graph.nodes():
             self._explored_nodes[n] += 1
         return self.__graph.neighbors(n)
-
-    def neighbors_iter(self, n):
-        if n in self.graph.nodes():
-            self._explored_nodes[n] += 1
-        return self.graph.neighbors_iter(n)
     
     def get_edge_weight(self, u, v):
         return self.__graph.get_edge_data(u, v)['weight']
