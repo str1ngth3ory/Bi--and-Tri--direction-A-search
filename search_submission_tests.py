@@ -30,7 +30,7 @@ class TestPriorityQueue(unittest.TestCase):
 
         for item in temp_list:
             popped = queue.pop()
-            self.assertEqual(item, popped[0])
+            self.assertEqual(popped[0], item)
 
     def test_fifo_property(self):
         "Test the fifo property for nodes with same priority"
@@ -42,7 +42,7 @@ class TestPriorityQueue(unittest.TestCase):
         
         for expected_node in temp_list:
             actual_node = queue.pop()
-            self.assertEqual(expected_node[-1], actual_node[-1])
+            self.assertEqual(actual_node[-1], expected_node[-1])
 
 class TestBasicSearch(unittest.TestCase):
     """Test the simple search algorithms: BFS, UCS, A*"""
@@ -83,13 +83,13 @@ class TestBasicSearch(unittest.TestCase):
         self.assertEqual(path, ['a', 's', 'f', 'b', 'u'])   # Check for correct path
 
         explored_nodes = sum(list(self.romania.explored_nodes.values()))
-        self.assertEqual(True, explored_nodes <= 10)    # Compare explored nodes to reference implementation
+        self.assertLessEqual(explored_nodes, 10)    # Compare explored nodes to reference implementation
 
     def test_bfs_empty_path(self):
         start = "a"
         goal = "a"
         path = breadth_first_search(self.romania, start, goal)
-        self.assertEqual([], path)
+        self.assertEqual(path, [])
 
     def test_ucs(self):
         """TTest and visualize uniform-cost search"""
@@ -246,7 +246,7 @@ class TestBidirectionalSearch(unittest.TestCase):
 
         explored_nodes = sum(list(self.romania.explored_nodes.values()))
         # print('BiUCS explore', explored_nodes, list(self.romania.explored_nodes.values()))
-        self.assertEqual(True, explored_nodes <= 12)    # Compare explored nodes to reference implementation
+        self.assertLessEqual(explored_nodes, 12)    # Compare explored nodes to reference implementation
 
     def test_bidirectional_a_star(self):
         """Test and generate GeoJSON for bidirectional A* search"""
