@@ -83,8 +83,11 @@ class SearchUnitTests(unittest.TestCase):
         """
 
         graph.reset_search()
-        path = networkx.shortest_path(graph, src_node, dst_node, weight=weight)
-        cost = self.sum_weight(graph, path)
+        if src_node==dst_node:
+            cost, path = 0, []
+        else:
+            path = networkx.shortest_path(graph, src_node, dst_node, weight=weight)
+            cost = self.sum_weight(graph, path)
 
         return cost, path
 
