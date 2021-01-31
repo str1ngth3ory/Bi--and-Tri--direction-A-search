@@ -232,7 +232,7 @@ class TestBidirectionalSearch(unittest.TestCase):
 
 
     def test_bidirectional_ucs_explored(self):
-        """Test A* for correct path and number of explored nodes"""
+        """Test Bi-UCS for correct path and number of explored nodes"""
         start = 'o'
         goal = 'd'
 
