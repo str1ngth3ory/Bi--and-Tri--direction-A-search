@@ -97,7 +97,7 @@ class TestSearchExperimental(unittest.TestCase):
         coordinates = [(0, 0), (6, 7)]
         path = bidirectional_ucs(self.grid, coordinates[0], coordinates[1])
         # path = bidirectional_a_star(self.grid, coordinates[0], coordinates[1], heuristic=custom_heuristic)
-        explored = list(self.grid.explored_nodes.keys())
+        explored = list(self.grid.explored_nodes().keys())
 
         """
 
@@ -123,7 +123,7 @@ class TestSearchExperimental(unittest.TestCase):
                    show_edge_labels=False,
                    color_values=color_values)
 
-        expanded_nodes_dict = dict(self.grid.explored_nodes)
+        expanded_nodes_dict = dict(self.grid.explored_nodes())
         # Color of nodes gets lighter as it gets explored more
         expansion_color_values = list(expanded_nodes_dict.values())
         save_graph(self.original_grid, "grid_expansion_bidirectional_search.png",
@@ -142,7 +142,7 @@ class TestSearchExperimental(unittest.TestCase):
         path = tridirectional_search(self.grid, coordinates)
         # path = tridirectional_upgraded(self.grid, coordinates, heuristic=custom_heuristic)
         # path = three_bidirectional_search(self.grid, coordinates, heuristic=custom_heuristic)
-        explored = list(self.grid.explored_nodes.keys())
+        explored = list(self.grid.explored_nodes().keys())
 
         """
 
@@ -169,7 +169,7 @@ class TestSearchExperimental(unittest.TestCase):
                    show_edge_labels=False,
                    color_values=color_values)
 
-        expanded_nodes_dict = dict(self.grid.explored_nodes)
+        expanded_nodes_dict = dict(self.grid.explored_nodes())
         # Color of nodes gets lighter as it gets explored more
         expansion_color_values = list(expanded_nodes_dict.values())
         save_graph(self.original_grid, "grid_expansion_tridirectional_search.png",
