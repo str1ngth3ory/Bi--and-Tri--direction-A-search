@@ -59,6 +59,7 @@ Resources for bi-directional searches
 * [Bi Directional A Star](https://github.gatech.edu/omscs6601/assignment_2_online/raw/master/resources/Bi%20Directional%20A%20Star.pdf)
 * [Search Algorithms Slide Deck](https://github.gatech.edu/omscs6601/assignment_2_online/raw/master/resources/Search%20Algorithms%20Slide%20Deck.pdf)
 * [Bi-directional Stopping Conditions, Piazza '17](https://docs.google.com/document/d/14Wr2SeRKDXFGdD-qNrBpXjW8INCGIfiAoJ0UkZaLWto/pub)
+* [Bidirectional search visulazations] (https://docs.google.com/document/d/13ssrkqauVf6Nk696fA0sh-w9EB3iSYwiv25UsAEMqK4/edit?usp=sharing)
 * [Piazza: Landmark Example](https://docs.google.com/document/d/1YEptGbSYUtu180MfvmrmA4B6X9ImdI4oOmLaaMRHiCA/pub)
 
 
