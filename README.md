@@ -1,4 +1,3 @@
-**The assignment is not yet released for the Spring 2021 and might be subject to change.**
 
 # CS 6601: Artificial Intelligence - Assignment 2 - Search
 
