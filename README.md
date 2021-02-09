@@ -38,7 +38,7 @@ While you'll only have to edit and submit **__submission.py__**, there are a num
 ## Resources
 
 * [Gradescope: Error Messages](https://docs.google.com/document/d/1hykYneVoV_JbwBjVz9ayFTA6Yr3pgw6JBvzrCgM0vyY/pub)
-* [Udacity Videos: Lesson 2, Search](https://gatech.instructure.com/courses/134646/modules)
+* [Canvas Course Videos: Lesson 2, Search](https://gatech.instructure.com/courses/169828/pages/2-search?module_item_id=1393968)
 * [R&N slides on Uninformed Search](https://www.cc.gatech.edu/~thad/6601-gradAI-fall2015/chapter03-clean.pdf)
 * [Informed Search](https://www.cc.gatech.edu/~thad/6601-gradAI-fall2015/chapter04a.pdf)
 * [Comparing BFS and DFS](https://cs.stanford.edu/people/abisee/tutorial/bfsdfs.html)
@@ -247,7 +247,7 @@ expanding until two of the three searches meet. This should be one continuous pa
 For example, suppose we have goal nodes [a,b,c]. Then what we want you to do is to start at node a and expand like in a normal search. However, notice that you will be searching for both nodes b and c during this search and a similar search will start from nodes b and c. Finally, please note that this is a problem that can be accomplished without using 6 frontiers, which is why we stress that **this is not the same as 3 bi-directional searches.**
 
 `tridirectional_search()` should return a path between all three nodes. You can return the path in any order. Eg.
-(1->2->3 == 3->2->1). You may also want to look at the [Tri-city search challenge question on Canvas](https://gatech.instructure.com/courses/169828/pages/45-challenge-question-revisited).
+(1->2->3 == 3->2->1). You may also want to look at the [Tri-city search challenge question on Canvas](https://gatech.instructure.com/courses/169828/pages/45-challenge-question-revisited?module_item_id=1394114).
 
 > **Notes**:
 > 1. You need to include start and goal in the path.
