@@ -52,11 +52,11 @@ Links from Canvas, below the videos:
 * [Reach-based Routing: A New Approach to Shortest Path Algorithms Optimized for Road Networks](http://www.cc.gatech.edu/~thad/6601-gradAI-fall2015/02-search-Gutman04siam.pdf)
 
 Resources for bi-directional searches
-* [A Star meets Graph Theory](https://github.gatech.edu/omscs6601/assignment_2_online/raw/master/resources/A%20Star%20meets%20Graph%20Theory.pdf)
-* [Bi Directional A Star - Slides](https://github.gatech.edu/omscs6601/assignment_2_online/raw/master/resources/Bi%20Directional%20A%20Star%20-%20Slides.pdf)
-* [Bi Directional A Star with Additive Approx Bounds](https://github.gatech.edu/omscs6601/assignment_2_online/raw/master/resources/Bi%20Directional%20A%20Star%20with%20Additive%20Approx%20Bounds.pdf)
-* [Bi Directional A Star](https://github.gatech.edu/omscs6601/assignment_2_online/raw/master/resources/Bi%20Directional%20A%20Star.pdf)
-* [Search Algorithms Slide Deck](https://github.gatech.edu/omscs6601/assignment_2_online/raw/master/resources/Search%20Algorithms%20Slide%20Deck.pdf)
+* [A Star meets Graph Theory](https://github.gatech.edu/omscs6601/assignment_1/raw/master/resources/A%20Star%20meets%20Graph%20Theory.pdf)
+* [Bi Directional A Star - Slides](https://github.gatech.edu/omscs6601/assignment_1/raw/master/resources/Bi%20Directional%20A%20Star%20-%20Slides.pdf)
+* [Bi Directional A Star with Additive Approx Bounds](https://github.gatech.edu/omscs6601/assignment_1/raw/master/resources/Bi%20Directional%20A%20Star%20with%20Additive%20Approx%20Bounds.pdf)
+* [Bi Directional A Star](https://github.gatech.edu/omscs6601/assignment_1/raw/master/resources/Bi%20Directional%20A%20Star.pdf)
+* [Search Algorithms Slide Deck](https://github.gatech.edu/omscs6601/assignment_1/raw/master/resources/Search%20Algorithms%20Slide%20Deck.pdf)
 * [Bi Directional Stopping Conditions, Piazza '17](https://docs.google.com/document/d/14Wr2SeRKDXFGdD-qNrBpXjW8INCGIfiAoJ0UkZaLWto/pub)
 * [Bi Directional Search Visualizations](https://docs.google.com/document/d/13ssrkqauVf6Nk696fA0sh-w9EB3iSYwiv25UsAEMqK4/edit?usp=sharing)
 * [Piazza: Landmark Example](https://docs.google.com/document/d/1YEptGbSYUtu180MfvmrmA4B6X9ImdI4oOmLaaMRHiCA/pub)
