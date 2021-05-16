@@ -1,12 +1,12 @@
 
-# CS 6601: Artificial Intelligence - Assignment 2 - Search
+# CS 6601: Artificial Intelligence - Assignment 1 - Search
 
 ## Setup
 
 Clone the repository and activate the Conda repository you created in Assignment 0:
 
 ```
-git clone https://github.gatech.edu/omscs6601/assignment_2.git
+git clone https://github.gatech.edu/omscs6601/assignment_1.git
 conda activate ai_env
 ```
 
@@ -38,7 +38,7 @@ While you'll only have to edit and submit **__submission.py__**, there are a num
 ## Resources
 
 * [Gradescope: Error Messages](https://docs.google.com/document/d/1hykYneVoV_JbwBjVz9ayFTA6Yr3pgw6JBvzrCgM0vyY/pub)
-* [Canvas Course Videos: Lesson 2, Search](https://gatech.instructure.com/courses/169828/pages/2-search?module_item_id=1393968)
+* Canvas Course Videos: Search Module
 * [R&N slides on Uninformed Search](https://www.cc.gatech.edu/~thad/6601-gradAI-fall2015/chapter03-clean.pdf)
 * [Informed Search](https://www.cc.gatech.edu/~thad/6601-gradAI-fall2015/chapter04a.pdf)
 * [Comparing BFS and DFS](https://cs.stanford.edu/people/abisee/tutorial/bfsdfs.html)
