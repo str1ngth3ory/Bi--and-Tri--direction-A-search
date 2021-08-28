@@ -125,7 +125,7 @@ class PriorityQueue(object):
         Get the top item in the queue.
 
         Returns:
-            The first item stored in teh queue.
+            The first item stored in the queue.
         """
 
         return self.queue[0]
