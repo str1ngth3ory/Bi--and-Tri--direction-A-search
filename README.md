@@ -203,7 +203,7 @@ For these exercises, we recommend you take a look at the resources mentioned ear
 
 #### Exercise 1: Bidirectional uniform-cost search
 
-_[15 points]_
+_[20 points]_
 
 Implement bidirectional uniform-cost search. Remember that this requires starting your search at both the start and end states.
 
@@ -220,7 +220,7 @@ Implement bidirectional uniform-cost search. Remember that this requires startin
 
 #### Exercise 2: Bidirectional A* search
 
-_[20 points]_
+_[29 points]_
 
 Implement bidirectional A* search. Remember that you need to calculate a heuristic for both the start-to-goal search and the goal-to-start search.
 
@@ -239,7 +239,7 @@ To test this function, as well as using the provided tests, you can compare the 
 
 #### Exercise 3: Tridirectional UCS search
 
-_[19 points]_
+_[12 points]_
 
 Implement tridirectional search in the naive way: starting from each goal node, perform a uniform-cost search and keep
 expanding until two of the three searches meet. This should be one continuous path that connects all three nodes.
@@ -261,7 +261,7 @@ For example, suppose we have goal nodes [a,b,c]. Then what we want you to do is 
 
 #### Exercise 4: Upgraded Tridirectional search
 
-_[15 points]_
+_[8 points]_
 
 This is the heart of the assignment. Implement tridirectional search in such a way as to consistently improve on the
 performance of your previous implementation. This means consistently exploring fewer nodes during your search in order
