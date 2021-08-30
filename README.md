@@ -111,7 +111,7 @@ testclass.test_bfs()
 -->
 
 
-#### Unit Tets
+#### Unit Tests
 
 We have provided two official unit test files, and one unofficially developed one that students have found useful. They are not complete, and these tests are not guaranteed to ensure full points on the autograder, but they should help in development. To run:
 ```
