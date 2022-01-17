@@ -40,7 +40,7 @@ def plot_nodes(node_list, graph, outfile, header=False, footer=False, color="#F5
 
 def node_to_GeoJSON(node, graph, color="#F5A207"):
     """Convert node to GeoJSON string."""
-    data = graph.node[node]
+    data = graph.nodes[node]
     lat = data['lat']
     lon = data['lon']
     node_string = ''
@@ -66,10 +66,10 @@ def edge_to_GeoJSON(edge, graph, color="#F5A207"):
     """Convert edge to GeoJSON string."""
     start = edge[0]
     end = edge[1]
-    start_lon = graph.node[start]['lon']
-    start_lat = graph.node[start]['lat']
-    end_lon = graph.node[end]['lon']
-    end_lat = graph.node[end]['lat']
+    start_lon = graph.nodes[start]['lon']
+    start_lat = graph.nodes[start]['lat']
+    end_lon = graph.nodes[end]['lon']
+    end_lat = graph.nodes[end]['lat']
     edge_string = ''
     edge_string += '{ "type" : "Feature",\n'
     edge_string += '"geometry" : {"type": "LineString", ' 
@@ -128,7 +128,7 @@ def plot_search(graph, outfile_name, path_nodes, explored_nodes):
         # explored nodes (non-path ones)
         # plot them as black
         if explored_nodes:
-            explored_nodes = set(explored_nodes)
+            explored_nodes = set([key for key in explored_nodes.keys() if explored_nodes[key] > 0])
             explored_nodes = explored_nodes.difference(set(path_nodes))
             if len(explored_nodes) > 0:
                 outfile.write(',\n')

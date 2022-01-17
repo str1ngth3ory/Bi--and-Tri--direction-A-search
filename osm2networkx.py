@@ -191,7 +191,7 @@ if __name__ == '__main__':
 
     graph = read_osm('atlanta.osm')
 
-    new_nodes = {node:graph.node[node]['data'] for node in graph.nodes()}
+    new_nodes = {node:graph.nodes[node]['data'] for node in graph.nodes()}
 
     euclidean = lambda p1, p2: math.sqrt((p1[0]-p2[0])**2 + (p1[1] - p2[1])**2) * (1 + random.random())
     rads = lambda p1, p2: map(math.radians, [p1[0], p1[1], p2[0], p2[1]])
@@ -200,13 +200,12 @@ if __name__ == '__main__':
     new_edges = [(new_nodes[node1], new_nodes[node2], haversine(*rads(new_nodes[node1]['pos'], new_nodes[node2]['pos'])))  for node1, node2 in graph.edges()]
 
     new_graph = networkx.Graph()
-
     [new_graph.add_node(node, data.__dict__) for node, data in new_nodes.items()]
-    [new_graph.add_edge(s,t,weight=w) for s,t,w in new_edges]
+    [new_graph.add_edge(s.id,t.id,weight=w) for s,t,w in new_edges]
 
-    for key in new_graph.node.keys():
-        new_graph.node[node]['pos'] = (new_graph.node[node]['lat'], new_graph.node[node]['lon'])
-    
-    pickle.dump( new_graph , open( 'atlanta_osm.pickle' ,'w') )
+    for key in new_graph.nodes.keys():
+        new_graph.nodes[node]['pos'] = (new_graph.nodes[node]['lat'], new_graph.nodes[node]['lon'])
+        new_graph.nodes[node]['position'] = (new_graph.nodes[node]['lat'], new_graph.nodes[node]['lon'])
+    pickle.dump( new_graph , open( 'atlanta_osm.pickle' ,'wb') )
 
     print('Done')
