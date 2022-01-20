@@ -122,37 +122,37 @@ class TestBasicSearch(unittest.TestCase):
         explored_nodes = sum(list(self.romania.explored_nodes().values()))
         self.assertEqual(explored_nodes, 13)    # Compare explored nodes to reference implementation
 
-#     def test_a_star(self):
-#         """Test and visualize A* search"""
-#         start = 'a'
-#         goal = 'u'
-#
-#         node_positions = {n: self.romania.nodes[n]['pos'] for n in
-#                           self.romania.nodes.keys()}
-#
-#         self.romania.reset_search()
-#         path = a_star(self.romania, start, goal)
-#
-#         self.draw_graph(self.romania, node_positions=node_positions,
-#                         start=start, goal=goal, path=path,
-#                         title='test_astar blue=start, yellow=goal, green=explored')
-#
-#     def test_a_star_num_explored(self):
-#         """Test A* for correct path and number of explored nodes"""
-#         start = 'a'
-#         goal = 'u'
-#
-#         node_positions = {n: self.romania.nodes[n]['pos'] for n in
-#                           self.romania.nodes.keys()}
-#
-#         self.romania.reset_search()
-#         path = a_star(self.romania, start, goal)
-#
-#         self.assertEqual(path, ['a', 's', 'r', 'p', 'b', 'u'])   # Check for correct path
-#
-#         explored_nodes = sum(list(self.romania.explored_nodes().values()))
-#         self.assertEqual(explored_nodes, 8)    # Compare explored nodes to reference implementation
-#
+    def test_a_star(self):
+        """Test and visualize A* search"""
+        start = 'a'
+        goal = 'u'
+
+        node_positions = {n: self.romania.nodes[n]['pos'] for n in
+                          self.romania.nodes.keys()}
+
+        self.romania.reset_search()
+        path = a_star(self.romania, start, goal)
+
+        self.draw_graph(self.romania, node_positions=node_positions,
+                        start=start, goal=goal, path=path,
+                        title='test_astar blue=start, yellow=goal, green=explored')
+
+    def test_a_star_num_explored(self):
+        """Test A* for correct path and number of explored nodes"""
+        start = 'a'
+        goal = 'u'
+
+        node_positions = {n: self.romania.nodes[n]['pos'] for n in
+                          self.romania.nodes.keys()}
+
+        self.romania.reset_search()
+        path = a_star(self.romania, start, goal)
+
+        self.assertEqual(path, ['a', 's', 'r', 'p', 'b', 'u'])   # Check for correct path
+
+        explored_nodes = sum(list(self.romania.explored_nodes().values()))
+        self.assertEqual(explored_nodes, 8)    # Compare explored nodes to reference implementation
+
     @staticmethod
     def draw_graph(graph, node_positions=None, start=None, goal=None,
                    path=None, title=''):

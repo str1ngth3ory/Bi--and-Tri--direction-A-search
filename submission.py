@@ -284,7 +284,7 @@ def a_star(graph, start, goal, heuristic=euclidean_dist_heuristic):
     frontier = PriorityQueue()
     explored = set()
 
-    frontier.append((0+, [start]))
+    frontier.append((0+euclidean_dist_heuristic(graph, start, goal), [start]))
 
     while frontier:
 
@@ -301,7 +301,9 @@ def a_star(graph, start, goal, heuristic=euclidean_dist_heuristic):
 
         for a in sorted(graph[s]):
             if (a not in explored):
-                new_path = (path[0]+graph.get_edge_weight(s,a),path[2]+[a])
+                new_path = (path[0] - euclidean_dist_heuristic(graph, s, goal)
+                            + graph.get_edge_weight(s, a)
+                            + euclidean_dist_heuristic(graph, a, goal), path[2]+[a])
                 frontier.append(new_path)
         # import pdb; pdb.set_trace()
 
