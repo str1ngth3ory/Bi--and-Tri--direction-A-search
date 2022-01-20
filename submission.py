@@ -5,7 +5,7 @@ code on the relevant classes included here. Do not add any classes or functions
 to this file that are not part of the classes that we want.
 """
 
-import heapq
+import heapq as hq
 import os
 import pickle
 import math
@@ -33,6 +33,7 @@ class PriorityQueue(object):
         """Initialize a new Priority Queue."""
 
         self.queue = []
+        self.entry_count = 0
 
     def pop(self):
         """
@@ -43,7 +44,7 @@ class PriorityQueue(object):
         """
 
         # TODO: finish this function!
-        raise NotImplementedError
+        return hq.heappop(self.queue) # O(logn) Time
 
     def remove(self, node):
         """
@@ -56,7 +57,14 @@ class PriorityQueue(object):
             node (tuple): The node to remove from the queue.
         """
 
-        raise NotImplementedError
+        # searching the item takes O(n), removing and rebalancing takes O(logn)
+        # overall O(n)
+        for i in range(self.size()):
+            if node == (self.queue[i][0],self.queue[i][2]):
+                self.queue[i] = self.queue[-1]
+                self.queue.pop()
+                hq._siftup(self.queue, i)
+                return
 
     def __iter__(self):
         """Queue iterator."""
@@ -77,8 +85,10 @@ class PriorityQueue(object):
         """
 
         # TODO: finish this function!
-        raise NotImplementedError
-        
+        self.entry_count += 1
+        node = (node[0], self.entry_count, node[1])
+        hq.heappush(self.queue, node) # Average O(1) time, worst O(logn) time
+
     def __contains__(self, key):
         """
         Containment Check operator for 'in'
@@ -130,7 +140,6 @@ class PriorityQueue(object):
 
         return self.queue[0]
 
-
 def breadth_first_search(graph, start, goal):
     """
     Warm-up exercise: Implement breadth-first-search.
@@ -147,7 +156,28 @@ def breadth_first_search(graph, start, goal):
     """
 
     # TODO: finish this function!
-    raise NotImplementedError
+    if start == goal:
+        return []
+
+    frontier = PriorityQueue()
+    explored = set()
+
+    frontier.append((0, [start]))
+
+    while frontier:
+
+        path = frontier.pop()
+
+        s = path[2][-1]
+        explored.add(s)
+
+        for a in sorted(graph[s]):
+            if (a not in explored) and (not any(a == p[2][-1] for p in frontier)):
+                new_path = (path[0]+1,path[2]+[a])
+                frontier.append(new_path)
+                if a == goal:
+                    return new_path[1]
+        # import pdb; pdb.set_trace()
 
 
 def uniform_cost_search(graph, start, goal):
@@ -166,8 +196,32 @@ def uniform_cost_search(graph, start, goal):
     """
 
     # TODO: finish this function!
-    raise NotImplementedError
+    if start == goal:
+        return []
 
+    frontier = PriorityQueue()
+    explored = set()
+
+    frontier.append((0, [start]))
+
+    while frontier:
+
+        path = frontier.pop()
+
+        s = path[2][-1]
+        if s in explored:
+            continue
+        else:
+            explored.add(s)
+
+        if s == goal:
+            return path[2]
+
+        for a in sorted(graph[s]):
+            if (a not in explored):
+                new_path = (path[0]+graph.get_edge_weight(s,a),path[2]+[a])
+                frontier.append(new_path)
+        # import pdb; pdb.set_trace()
 
 def null_heuristic(graph, v, goal):
     """
@@ -201,7 +255,9 @@ def euclidean_dist_heuristic(graph, v, goal):
     """
 
     # TODO: finish this function!
-    raise NotImplementedError
+    p_1 = graph.nodes[v]['pos']
+    p_2 = graph.nodes[goal]['pos']
+    return ((p_2[0]-p_1[0])**2 + (p_2[1]-p_1[1])**2)**0.5
 
 
 def a_star(graph, start, goal, heuristic=euclidean_dist_heuristic):
@@ -222,7 +278,32 @@ def a_star(graph, start, goal, heuristic=euclidean_dist_heuristic):
     """
 
     # TODO: finish this function!
-    raise NotImplementedError
+    if start == goal:
+        return []
+
+    frontier = PriorityQueue()
+    explored = set()
+
+    frontier.append((0+, [start]))
+
+    while frontier:
+
+        path = frontier.pop()
+
+        s = path[2][-1]
+        if s in explored:
+            continue
+        else:
+            explored.add(s)
+
+        if s == goal:
+            return path[2]
+
+        for a in sorted(graph[s]):
+            if (a not in explored):
+                new_path = (path[0]+graph.get_edge_weight(s,a),path[2]+[a])
+                frontier.append(new_path)
+        # import pdb; pdb.set_trace()
 
 
 def bidirectional_ucs(graph, start, goal):
@@ -321,7 +402,7 @@ def compute_landmarks(graph):
         graph (ExplorableGraph): Undirected graph to search.
 
     Returns:
-    List with not more than 4 computed landmarks. 
+    List with not more than 4 computed landmarks.
     """
     return None
 
@@ -368,7 +449,7 @@ def custom_search(graph, start, goal, data=None):
 
 def load_data(graph, time_left):
     """
-    Feel free to implement this method. We'll call it only once 
+    Feel free to implement this method. We'll call it only once
     at the beginning of the Race, and we'll pass the output to your custom_search function.
     graph: a networkx graph
     time_left: function you can call to keep track of your remaining time.
@@ -382,8 +463,8 @@ def load_data(graph, time_left):
 
     # nodes = graph.nodes()
     return None
- 
- 
+
+
 def haversine_dist_heuristic(graph, v, goal):
     """
     Note: This provided heuristic is for the Atlanta race.
