@@ -1,4 +1,4 @@
-# coding=utf-8
+    # coding=utf-8
 """
 This file is your main submission that will be graded against. Only copy-paste
 code on the relevant classes included here. Do not add any classes or functions
@@ -86,7 +86,8 @@ class PriorityQueue(object):
 
         # TODO: finish this function!
         self.entry_count += 1
-        node = (node[0], self.entry_count, node[1])
+        node = list(node)
+        node = tuple([node[0]] + [self.entry_count] + node[1:])
         hq.heappush(self.queue, node) # Average O(1) time, worst O(logn) time
 
     def __contains__(self, key):
@@ -284,7 +285,7 @@ def a_star(graph, start, goal, heuristic=euclidean_dist_heuristic):
     frontier = PriorityQueue()
     explored = set()
 
-    frontier.append((0+euclidean_dist_heuristic(graph, start, goal), [start]))
+    frontier.append((0+heuristic(graph, start, goal), [start]))
 
     while frontier:
 
@@ -301,12 +302,11 @@ def a_star(graph, start, goal, heuristic=euclidean_dist_heuristic):
 
         for a in sorted(graph[s]):
             if (a not in explored):
-                new_path = (path[0] - euclidean_dist_heuristic(graph, s, goal)
+                new_path = (path[0] - heuristic(graph, s, goal)
                             + graph.get_edge_weight(s, a)
-                            + euclidean_dist_heuristic(graph, a, goal), path[2]+[a])
+                            + heuristic(graph, a, goal), path[2]+[a])
                 frontier.append(new_path)
         # import pdb; pdb.set_trace()
-
 
 def bidirectional_ucs(graph, start, goal):
     """
@@ -324,7 +324,58 @@ def bidirectional_ucs(graph, start, goal):
     """
 
     # TODO: finish this function!
-    raise NotImplementedError
+    def _proceed(bool_forward, frontier_1, explored_1, frontier_2, explored_2, solution):
+
+        path = frontier_1.pop()
+        s = path[2][-1]
+        if s not in explored_1:
+            explored_1[s] = (path[0], path[2])
+        elif path[0] < explored_1[s][0]:
+            explored_1[s] = (path[0], path[2])
+        else:
+            return solution
+
+        for a in sorted(graph[s]):
+            if (a not in explored_1):
+                new_cost = path[0] + graph.get_edge_weight(s, a)
+                new_path = (new_cost, path[2]+[a])
+                frontier_1.append(new_path)
+                if a in explored_2:
+                    new_result = new_cost + explored_2[a][0]
+                    if new_result < solution[0]:
+                        path_1 = new_path[1].copy()
+                        path_2 = explored_2[a][1].copy()
+                        solution = [new_result, _join_paths(bool_forward, path_1, path_2)]
+        return solution
+
+    def _join_paths(bool_forward, path_1, path_2):
+        if bool_forward:
+            path_2.reverse()
+            return path_1 + path_2[1:]
+        else:
+            path_1.reverse()
+            return path_2 + path_1[1:]
+
+    result = [math.inf, []]
+    if start == goal:
+        return result[1]
+
+    frontier_F = PriorityQueue()
+    frontier_B = PriorityQueue()
+    explored_F = dict()
+    explored_B = dict()
+
+    frontier_F.append((0, [start]))
+    frontier_B.append((0, [goal]))
+
+    while frontier_F.queue[0][0] + frontier_B.queue[0][0] < result[0]:
+        # import pdb; pdb.set_trace()
+        if frontier_F.queue[0][0] <= frontier_B.queue[0][0]:
+            result = _proceed(True, frontier_F, explored_F, frontier_B, explored_B, result)
+        else:
+            result = _proceed(False, frontier_B, explored_B, frontier_F, explored_F, result)
+
+    return result[1]
 
 
 def bidirectional_a_star(graph, start, goal,
@@ -346,8 +397,79 @@ def bidirectional_a_star(graph, start, goal,
     """
 
     # TODO: finish this function!
-    raise NotImplementedError
+    def _proceed(bool_forward, frontier_1, explored_1, frontier_2, explored_2, solution):
+        if bool_forward:
+            dest = goal
+            opp_dest = start
+            bool_alt = 0
+        else:
+            dest = start
+            opp_dest = goal
+            bool_alt = 1
 
+        path = frontier_1.pop()
+        s = path[2][-1]
+
+        if s not in explored_1:
+            explored_1[s] = (path[3], path[2])
+        elif path[0] < explored_1[s][0]:
+            explored_1[s] = (path[3], path[2])
+        else:
+            return solution, bool_alt
+
+        for a in sorted(graph[s]):
+            if a == goal and s == start:
+                solution = [graph.get_edge_weight(s, a), [s, a]]
+
+            if (a not in explored_1):
+                old_g = path[3]
+                g = old_g + graph.get_edge_weight(s, a)
+
+                if bool_forward:
+                    h = 0.5 * (heuristic(graph, a, goal) - heuristic(graph, a, start) + heuristic(graph, goal, start))
+                else:
+                    h = 0.5 * (heuristic(graph, a, start) - heuristic(graph, a, goal) + heuristic(graph, start, goal))
+
+                new_f = g + h
+                new_path = (new_f, path[2]+[a], g)
+                frontier_1.append(new_path)
+                if a in explored_2:
+                    new_result = g + explored_2[a][0]
+                    if new_result < solution[0]:
+                        path_1 = new_path[1].copy()
+                        path_2 = explored_2[a][1].copy()
+                        solution = [new_result, _join_paths(bool_forward, path_1, path_2)]
+        return solution, bool_alt
+
+    def _join_paths(bool_forward, path_1, path_2):
+        if bool_forward:
+            path_2.reverse()
+            return path_1 + path_2[1:]
+        else:
+            path_1.reverse()
+            return path_2 + path_1[1:]
+
+    result = [math.inf, []]
+    if start == goal:
+        return result[1]
+
+    frontier_F = PriorityQueue()
+    frontier_B = PriorityQueue()
+    explored_F = dict()
+    explored_B = dict()
+
+    frontier_F.append((0.5 * (heuristic(graph, start, goal) + heuristic(graph, goal, start)), [start], 0))
+    frontier_B.append((0.5 * (heuristic(graph, goal, start) + heuristic(graph, start, goal)), [goal], 0))
+
+    bool_alt = 1
+    while frontier_F.queue[0][0] + frontier_B.queue[0][0] < result[0] + heuristic(graph, goal, start):
+        # import pdb; pdb.set_trace()
+        if bool_alt:
+            result, bool_alt = _proceed(True, frontier_F, explored_F, frontier_B, explored_B, result)
+        else:
+            result, bool_alt = _proceed(False, frontier_B, explored_B, frontier_F, explored_F, result)
+
+    return result[1]
 
 def tridirectional_search(graph, goals):
     """
@@ -363,9 +485,122 @@ def tridirectional_search(graph, goals):
         The best path as a list from one of the goal nodes (including both of
         the other goal nodes).
     """
-    # TODO: finish this function
-    raise NotImplementedError
 
+    # internal helper functions
+    def _proceed(idx, frontiers, explored, solution):
+        if check_optimal(idx, frontiers, solution):
+            frontiers[idx].pop()
+            return solution
+
+        path = frontiers[idx].pop()
+        s = path[2][-1]
+        if s not in explored[idx]:
+            explored[idx][s] = (path[0], path[2])
+        elif path[0] < explored[idx][s][0]:
+            explored[idx][s] = (path[0], path[2])
+        else:
+            return solution
+
+        for a in sorted(graph[s]):
+            pool = [0, 1, 2]
+            pool.remove(idx)
+
+            if (a not in explored[idx]):
+                new_cost = path[0] + graph.get_edge_weight(s, a)
+                new_path = (new_cost, path[2]+[a])
+                frontiers[idx].append(new_path)
+                for j in pool:
+                    if a in explored[j] and new_cost < solution[idx][j][0]:
+                        new_result = new_cost + explored[j][a][0]
+                        path_1 = new_path[1].copy()
+                        path_2 = explored[j][a][1].copy()
+                        combined_path = _join_path(path_1, path_2)
+                        reverse_path = combined_path.copy()
+                        combined_path.reverse()
+                        if new_result < solution[idx][j][0]:
+                            solution[idx][j] = [new_result, combined_path]
+                            solution[j][idx] = [new_result, reverse_path]
+
+        return solution
+
+    def _join_path(path_1, path_2):
+        if path_1 == path_2[::-1]:
+            return path_1
+        else:
+            path_2.reverse()
+            return path_1 + path_2[1:]
+
+    def _calc_path(results):
+        list_paths = []
+        for i in range(3):
+            for key, result in results[i].items():
+                if (result[0] != math.inf) and not any((result[1][::-1] == _[1] or result[1] == _[1]) for _ in list_paths):
+                    list_paths.append(result)
+
+        list_paths.sort(key = lambda k:k[0])
+        if len(list_paths) > 2:
+            list_paths.pop()
+        elif len(list_paths) < 2:
+            return list_paths[0][1]
+
+        list_paths = [list_paths[0][1], list_paths[1][1]]
+
+        if list_paths[0][0] == list_paths[1][0]:
+            list_paths[0].reverse()
+        elif list_paths[0][-1] == list_paths[1][-1]:
+            list_paths[1].reverse()
+        elif list_paths[0][0] == list_paths[1][-1]:
+            list_paths[0].reverse()
+            list_paths[1].reverse()
+        return list_paths[0] + list_paths[1][1:]
+
+    def terminate(frontiers, solution):
+        min_0, min_1, min_2 = [frontiers[_].queue[0][0] for _ in range(3)]
+        b_0 = ((min_0 + min_1) >= solution[0][1][0])
+        b_1 = ((min_0 + min_2) >= solution[0][2][0])
+        b_2 = ((min_1 + min_2) >= solution[1][2][0])
+        return b_0 and b_1 and b_2
+
+    def check_optimal(idx, frontiers, solution):
+        pool = [0, 1, 2]
+        pool.remove(idx)
+        min_idx = frontiers[idx].queue[0][0]
+        for j in pool:
+            min_goal = frontiers[j].queue[0][0]
+            if min_idx + min_goal < solution[idx][j][0]:
+                return False
+        return True
+
+    # if three goals are identical, return []
+    result = [math.inf, []]
+    if goals[1] == goals[2] and goals[1] == goals[3]:
+        return
+
+    # define and initiate frontiers, explored, and result for each goal
+    if len(goals) == 3:
+        frontiers = {i:PriorityQueue() for i in range(3)}
+        explored = {i:dict() for i in range(3)}
+        results = {0:dict(), 1:dict(), 2:dict()}
+        for i in range(3):
+            k = [0, 1, 2]
+            k.remove(i)
+            for j in k:
+                temp = {j:[math.inf, []]}
+                results[i].update(temp.copy())
+        for i in range(3):
+            frontiers[i].append((0, [goals[i]]))
+            frontiers[i].append((math.inf, []))
+        mu = math.inf
+
+    # terminate when stopping condition met - two edges have been found
+        # expand three goals by minimum of three frontiers
+        while not terminate(frontiers, results):
+            # import pdb; pdb.set_trace()
+            idx = min(frontiers.items(), key = lambda k:k[1].queue[0][0])[0]
+            result = _proceed(idx, frontiers, explored, results)
+        # import pdb; pdb.set_trace()
+        tri_path = _calc_path(results)
+    return tri_path
 
 def tridirectional_upgraded(graph, goals, heuristic=euclidean_dist_heuristic, landmarks=None):
     """
@@ -386,13 +621,127 @@ def tridirectional_upgraded(graph, goals, heuristic=euclidean_dist_heuristic, la
         the other goal nodes).
     """
     # TODO: finish this function
-    raise NotImplementedError
+    # internal helper functions
+    def _proceed(idx, frontiers, explored, solution):
+        if check_optimal(idx, frontiers, solution):
+            frontiers[idx].pop()
+            return solution
+
+        path = frontiers[idx].pop()
+        s = path[2][-1]
+        if s not in explored[idx]:
+            explored[idx][s] = (path[0], path[2])
+        elif path[0] < explored[idx][s][0]:
+            explored[idx][s] = (path[0], path[2])
+        else:
+            return solution
+
+        for a in sorted(graph[s]):
+            pool = [0, 1, 2]
+            pool.remove(idx)
+
+            if (a not in explored[idx]):
+                new_cost = path[0] + graph.get_edge_weight(s, a)
+                new_path = (new_cost, path[2]+[a])
+                frontiers[idx].append(new_path)
+                for j in pool:
+                    if a in explored[j] and new_cost < solution[idx][j][0]:
+                        new_result = new_cost + explored[j][a][0]
+                        path_1 = new_path[1].copy()
+                        path_2 = explored[j][a][1].copy()
+                        combined_path = _join_path(path_1, path_2)
+                        reverse_path = combined_path.copy()
+                        combined_path.reverse()
+                        if new_result < solution[idx][j][0]:
+                            solution[idx][j] = [new_result, combined_path]
+                            solution[j][idx] = [new_result, reverse_path]
+
+        return solution
+
+    def _join_path(path_1, path_2):
+        if path_1 == path_2[::-1]:
+            return path_1
+        else:
+            path_2.reverse()
+            return path_1 + path_2[1:]
+
+    def _calc_path(results):
+        list_paths = []
+        for i in range(3):
+            for key, result in results[i].items():
+                if (result[0] != math.inf) and not any((result[1][::-1] == _[1] or result[1] == _[1]) for _ in list_paths):
+                    list_paths.append(result)
+
+        list_paths.sort(key = lambda k:k[0])
+        if len(list_paths) > 2:
+            list_paths.pop()
+        elif len(list_paths) < 2:
+            return list_paths[0][1]
+
+        list_paths = [list_paths[0][1], list_paths[1][1]]
+
+        if list_paths[0][0] == list_paths[1][0]:
+            list_paths[0].reverse()
+        elif list_paths[0][-1] == list_paths[1][-1]:
+            list_paths[1].reverse()
+        elif list_paths[0][0] == list_paths[1][-1]:
+            list_paths[0].reverse()
+            list_paths[1].reverse()
+        return list_paths[0] + list_paths[1][1:]
+
+    def terminate(frontiers, solution):
+        min_0, min_1, min_2 = [frontiers[_].queue[0][0] for _ in range(3)]
+        b_0 = ((min_0 + min_1) >= solution[0][1][0])
+        b_1 = ((min_0 + min_2) >= solution[0][2][0])
+        b_2 = ((min_1 + min_2) >= solution[1][2][0])
+        return b_0 and b_1 and b_2
+
+    def check_optimal(idx, frontiers, solution):
+        pool = [0, 1, 2]
+        pool.remove(idx)
+        min_idx = frontiers[idx].queue[0][0]
+        for j in pool:
+            min_goal = frontiers[j].queue[0][0]
+            if min_idx + min_goal < solution[idx][j][0]:
+                return False
+        return True
+
+    # if three goals are identical, return []
+    result = [math.inf, []]
+    if goals[1] == goals[2] and goals[1] == goals[3]:
+        return
+
+    # define and initiate frontiers, explored, and result for each goal
+    if len(goals) == 3:
+        frontiers = {i:PriorityQueue() for i in range(3)}
+        explored = {i:dict() for i in range(3)}
+        results = {0:dict(), 1:dict(), 2:dict()}
+        for i in range(3):
+            k = [0, 1, 2]
+            k.remove(i)
+            for j in k:
+                temp = {j:[math.inf, []]}
+                results[i].update(temp.copy())
+        for i in range(3):
+            frontiers[i].append((0, [goals[i]]))
+            frontiers[i].append((math.inf, []))
+        mu = math.inf
+
+    # terminate when stopping condition met - two edges have been found
+        # expand three goals by minimum of three frontiers
+        while not terminate(frontiers, results):
+            # import pdb; pdb.set_trace()
+            idx = min(frontiers.items(), key = lambda k:k[1].queue[0][0])[0]
+            result = _proceed(idx, frontiers, explored, results)
+        # import pdb; pdb.set_trace()
+        tri_path = _calc_path(results)
+    return tri_path
 
 
 def return_your_name():
     """Return your name from this function"""
     # TODO: finish this function
-    raise NotImplementedError
+    return 'Zi Sang'
 
 
 def compute_landmarks(graph):

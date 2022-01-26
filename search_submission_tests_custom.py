@@ -9,7 +9,7 @@ import networkx
 from explorable_graph import ExplorableGraph
 from submission import PriorityQueue, a_star, bidirectional_a_star, \
     bidirectional_ucs, breadth_first_search, uniform_cost_search, haversine_dist_heuristic, \
-    tridirectional_upgraded, custom_heuristic
+    tridirectional_upgraded, custom_heuristic, tridirectional_search
 from visualize_graph import plot_search
 #
 #
@@ -208,52 +208,61 @@ class TestBidirectionalSearch(unittest.TestCase):
         self.romania = ExplorableGraph(romania)
         self.romania.reset_search()
 
-    def test_bidirectional_ucs(self):
-        """Test and generate GeoJSON for bidirectional UCS search"""
-        path = bidirectional_ucs(self.atlanta, '69581003', '69581000')
-        all_explored = self.atlanta.explored_nodes()
-        plot_search(self.atlanta, 'atlanta_search_bidir_ucs.json', path,
-                    all_explored)
+    # def test_bidirectional_ucs(self):
+    #     """Test and generate GeoJSON for bidirectional UCS search"""
+    #     path = bidirectional_ucs(self.atlanta, '69581003', '69581000')
+    #     all_explored = self.atlanta.explored_nodes()
+    #     plot_search(self.atlanta, 'atlanta_search_bidir_ucs.json', path,
+    #                 all_explored)
 
-    def test_bidirectional_ucs_romania(self):
-        """Test Bi-UCS and visualize"""
-        start = 'o'
-        goal = 'd'
+    # def test_bidirectional_ucs_romania(self):
+    #     """Test Bi-UCS and visualize"""
+    #     start = 'o'
+    #     goal = 'd'
+    #
+    #     node_positions = {n: self.romania.nodes[n]['pos'] for n in
+    #                       self.romania.nodes.keys()}
+    #
+    #     self.romania.reset_search()
+    #     path = bidirectional_ucs(self.romania, start, goal)
+    #
+    #     TestBasicSearch.draw_graph(self.romania, node_positions=node_positions,
+    #                     start=start, goal=goal, path=path,
+    #                     title='bi-ucs blue=start, yellow=goal, green=explored')
 
+    #
+    # def test_bidirectional_ucs_explored(self):
+    #     """Test Bi-UCS for correct path and number of explored nodes"""
+    #     start = 'b'
+    #     goal = 'u'
+    #
+    #     node_positions = {n: self.romania.nodes[n]['pos'] for n in
+    #                       self.romania.nodes.keys()}
+    #
+    #     self.romania.reset_search()
+    #     path = bidirectional_a_star(self.romania, start, goal)
+    #
+    #     self.assertEqual(path, ['b', 'u'])   # Check for correct path. Check your stopping condition
+    #
+    #     explored_nodes = sum(list(self.romania.explored_nodes().values()))
+    #     print('BiUCS explore', explored_nodes, list(self.romania.explored_nodes().values()))
+    #     self.assertLessEqual(explored_nodes, 1)    # Compare explored nodes to reference implementation
+
+    def test_tri(self):
+        goals = ['a', 'a', 'u']
         node_positions = {n: self.romania.nodes[n]['pos'] for n in
                           self.romania.nodes.keys()}
-
         self.romania.reset_search()
-        path = bidirectional_ucs(self.romania, start, goal)
+        path = tridirectional_search(self.romania, goals)
 
-        TestBasicSearch.draw_graph(self.romania, node_positions=node_positions,
-                        start=start, goal=goal, path=path,
-                        title='bi-ucs blue=start, yellow=goal, green=explored')
+        self.assertEqual(path, ['b', 'u'])
 
-
-    def test_bidirectional_ucs_explored(self):
-        """Test Bi-UCS for correct path and number of explored nodes"""
-        start = 'o'
-        goal = 'd'
-
-        node_positions = {n: self.romania.nodes[n]['pos'] for n in
-                          self.romania.nodes.keys()}
-
-        self.romania.reset_search()
-        path = bidirectional_ucs(self.romania, start, goal)
-
-        self.assertEqual(path, ['o', 's', 'r', 'c', 'd'])   # Check for correct path. Check your stopping condition
-
-        explored_nodes = sum(list(self.romania.explored_nodes().values()))
-        print('BiUCS explore', explored_nodes, list(self.romania.explored_nodes().values()))
-        self.assertLessEqual(explored_nodes, 12)    # Compare explored nodes to reference implementation
-
-    def test_bidirectional_a_star(self):
-        """Test and generate GeoJSON for bidirectional A* search"""
-        path = bidirectional_a_star(self.atlanta, '69581003', '69581000', heuristic=haversine_dist_heuristic)
-        all_explored = self.atlanta.explored_nodes()
-        plot_search(self.atlanta, 'atlanta_search_bidir_a_star.json', path,
-                    all_explored)
+    # def test_bidirectional_a_star(self):
+    #     """Test and generate GeoJSON for bidirectional A* search"""
+    #     path = bidirectional_a_star(self.atlanta, '69581003', '69581000', heuristic=haversine_dist_heuristic)
+    #     all_explored = self.atlanta.explored_nodes()
+    #     plot_search(self.atlanta, 'atlanta_search_bidir_a_star.json', path,
+    #                 all_explored)
 
 if __name__ == '__main__':
     unittest.main()

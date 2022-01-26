@@ -131,52 +131,52 @@ class TestSearchExperimental(unittest.TestCase):
                    show_edge_labels=False,
                    color_values=expansion_color_values)
 
-    def test_grid_viz_tridirectional_search(self):
-        """ Use this function to test out your code on a grid to
-        visualize the paths and explored nodes for Tridirectional Search.
-        This function will save the image files grid_paths_tridirectional_search.png and
-        grid_expansion_tridirectional_search.png
-        """
-
-        coordinates = [(0, 0), (5, 1), (19, 10)]
-        path = tridirectional_search(self.grid, coordinates)
-        # path = tridirectional_upgraded(self.grid, coordinates, heuristic=custom_heuristic)
-        # path = three_bidirectional_search(self.grid, coordinates, heuristic=custom_heuristic)
-        explored = list(self.grid.explored_nodes().keys())
-
-        """
-
-        Color Map Code:
-        * Source/destination coordinates : Blue
-        * Nodes never explored : White
-        * Nodes explored but not in path : Red
-        * Nodes in path : Green
-
-        """
-        val_map = {
-            0: {
-                0: {0: 'w', 1: 'w'},
-                1: {0: 'w', 1: 'w'},
-            },
-            1: {
-                0: {0: 'r', 1: 'r'},
-                1: {0: 'g', 1: 'b'}
-            }
-        }
-        color_values = [val_map[node in explored][node in path][node in coordinates] for node in self.grid.nodes()]
-        save_graph(self.original_grid, "grid_paths_tridirectional_search.png",
-                   show_node_labels=True,
-                   show_edge_labels=False,
-                   color_values=color_values)
-
-        expanded_nodes_dict = dict(self.grid.explored_nodes())
-        # Color of nodes gets lighter as it gets explored more
-        expansion_color_values = list(expanded_nodes_dict.values())
-        save_graph(self.original_grid, "grid_expansion_tridirectional_search.png",
-                   show_node_labels=True,
-                   show_edge_labels=False,
-                   color_values=expansion_color_values)
-
+    # def test_grid_viz_tridirectional_search(self):
+    #     """ Use this function to test out your code on a grid to
+    #     visualize the paths and explored nodes for Tridirectional Search.
+    #     This function will save the image files grid_paths_tridirectional_search.png and
+    #     grid_expansion_tridirectional_search.png
+    #     """
+    #
+    #     coordinates = [(0, 0), (5, 1), (19, 10)]
+    #     path = tridirectional_search(self.grid, coordinates)
+    #     # path = tridirectional_upgraded(self.grid, coordinates, heuristic=custom_heuristic)
+    #     # path = three_bidirectional_search(self.grid, coordinates, heuristic=custom_heuristic)
+    #     explored = list(self.grid.explored_nodes().keys())
+    #
+    #     """
+    #
+    #     Color Map Code:
+    #     * Source/destination coordinates : Blue
+    #     * Nodes never explored : White
+    #     * Nodes explored but not in path : Red
+    #     * Nodes in path : Green
+    #
+    #     """
+    #     val_map = {
+    #         0: {
+    #             0: {0: 'w', 1: 'w'},
+    #             1: {0: 'w', 1: 'w'},
+    #         },
+    #         1: {
+    #             0: {0: 'r', 1: 'r'},
+    #             1: {0: 'g', 1: 'b'}
+    #         }
+    #     }
+    #     color_values = [val_map[node in explored][node in path][node in coordinates] for node in self.grid.nodes()]
+    #     save_graph(self.original_grid, "grid_paths_tridirectional_search.png",
+    #                show_node_labels=True,
+    #                show_edge_labels=False,
+    #                color_values=color_values)
+    #
+    #     expanded_nodes_dict = dict(self.grid.explored_nodes())
+    #     # Color of nodes gets lighter as it gets explored more
+    #     expansion_color_values = list(expanded_nodes_dict.values())
+    #     save_graph(self.original_grid, "grid_expansion_tridirectional_search.png",
+    #                show_node_labels=True,
+    #                show_edge_labels=False,
+    #                color_values=expansion_color_values)
+    #
 
 if __name__ == '__main__':
     unittest.main()
