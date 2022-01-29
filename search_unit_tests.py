@@ -419,11 +419,11 @@ class SearchUnitTests(unittest.TestCase):
     #     self.run_atlanta_data(bidirectional_a_star,
     #                           heuristic=haversine_dist_heuristic,
     #                           test_count=10)
-
-    def test_tri_ucs_romania(self):
-        """Test Tri-UC search with Romania data."""
-
-        self.run_romania_tri(tridirectional_search)
+    #
+    # def test_tri_ucs_romania(self):
+    #     """Test Tri-UC search with Romania data."""
+    #
+    #     self.run_romania_tri(tridirectional_search)
     #
     # def test_tri_ucs_atlanta(self):
     #     """
@@ -440,7 +440,7 @@ class SearchUnitTests(unittest.TestCase):
     #     """
     #
     #     self.run_romania_tri(tridirectional_upgraded, heuristic=null_heuristic)
-    #
+
     # def test_tri_upgraded_null_atlanta(self):
     #     """
     #     Test upgraded tri search with Atlanta data and the Null heuristic.
@@ -450,15 +450,15 @@ class SearchUnitTests(unittest.TestCase):
     #
     #     self.run_atlanta_tri(tridirectional_upgraded, test_count=10,
     #                          heuristic=null_heuristic)
-    #
-    # def test_tri_upgraded_euclidean_romania(self):
-    #     """
-    #     Test upgraded tri search with Romania data and the Euclidean heuristic.
-    #     """
-    #
-    #     self.run_romania_tri(tridirectional_upgraded,
-    #                          heuristic=euclidean_dist_heuristic)
-    #
+
+    def test_tri_upgraded_euclidean_romania(self):
+        """
+        Test upgraded tri search with Romania data and the Euclidean heuristic.
+        """
+
+        self.run_romania_tri(tridirectional_upgraded,
+                             heuristic=euclidean_dist_heuristic)
+
     # def test_tri_upgraded_euclidean_atlanta(self):
     #     """
     #     Test upgraded tri search with Atlanta data and the Euclidean heuristic.
