@@ -623,7 +623,6 @@ def tridirectional_upgraded(graph, goals, heuristic=euclidean_dist_heuristic, la
 
     # internal helper functions
     def _tri_proceed(idx, frontiers, explored, solution):
-        bool_terminate, connected = False, []
         path = frontiers[idx].pop()
         s = path[2][-1]
         if s not in explored[idx]:
@@ -636,8 +635,12 @@ def tridirectional_upgraded(graph, goals, heuristic=euclidean_dist_heuristic, la
         for a in sorted(graph[s]):
             pool = [0, 1, 2]
             pool.remove(idx)
+            if (a == pool[0] or a == pool[1]) and s == goals[idx]:
+                solution[idx][j] = [graph.get_edge_weight(a, s), [goals[idx], goals[j]]]
+                solution[j][idx] = [graph.get_edge_weight(s, a), [goals[j], goals[idx]]]
+                return solution
 
-            if (a not in explored[idx]):
+            elif (a not in explored[idx]):
                 g = path[3] + graph.get_edge_weight(s, a)
                 h = []
                 for j in pool:
@@ -656,14 +659,12 @@ def tridirectional_upgraded(graph, goals, heuristic=euclidean_dist_heuristic, la
                         if new_result < solution[idx][j][0]:
                             solution[idx][j] = [new_result, combined_path]
                             solution[j][idx] = [new_result, reverse_path]
-                            bool_terminate = True
-                            connected.append([idx, j])
-        return solution, bool_terminate, connected
+        return solution
 
     def _bi_proceed(goal, frontier_1, frontier_2, explored_1, explored_2, solution):
         path = frontier_1.pop()
         s = path[2][-1]
-        idx = goals.index(s)
+        idx = goals.index(path[2][0])
         if s not in explored_1 or path[3] < explored_1[s][0]:
             explored_1[s] = (path[3], path[2])
         else:
@@ -672,15 +673,15 @@ def tridirectional_upgraded(graph, goals, heuristic=euclidean_dist_heuristic, la
         for a in sorted(graph[s]):
             if (a not in explored_1):
                 g = path[3] + graph.get_edge_weight(s, a)
-                if len(goal) == 2:
+                if type(goal) is list:
                     h = []
                     for j in goal:
                         h.append(0.5 * (heuristic(graph, a, goals[j]) - heuristic(graph, a, goals[idx])))
                     f = g + min(h)
-                    if any((a == frontier[2][-1] and f > frontier[0]) for frontier in frontier_1):
+                    if any((f > frontier[0] and a == frontier[2][-1]) for frontier in frontier_1):
                         return solution
                 else:
-                    h = 0.5 * (heuristic(graph, a, goals[goal]) - heuristic(graph, a, goals[goal]))
+                    h = 0.5 * (heuristic(graph, a, goals[goal]) - heuristic(graph, a, goals[idx]))
                     f = g + h
                 new_path = (f, path[2]+[a], g)
                 frontier_1.append(new_path)
@@ -688,12 +689,13 @@ def tridirectional_upgraded(graph, goals, heuristic=euclidean_dist_heuristic, la
                     new_result = g + explored_2[a][0]
                     path_1 = new_path[1].copy()
                     path_2 = explored_2[a][1].copy()
+                    goal_idx = goals.index(path_2[0])
                     combined_path = _join_path(path_1, path_2)
                     reverse_path = combined_path.copy()
                     combined_path.reverse()
-                    if new_result < solution[idx][goal][0]:
-                        solution[idx][goal] = [new_result, combined_path]
-                        solution[goal][idx] = [new_result, reverse_path]
+                    if new_result < solution[idx][goal_idx][0]:
+                        solution[idx][goal_idx] = [new_result, combined_path]
+                        solution[goal_idx][idx] = [new_result, reverse_path]
         return solution
 
     def _join_path(path_1, path_2):
@@ -727,11 +729,20 @@ def tridirectional_upgraded(graph, goals, heuristic=euclidean_dist_heuristic, la
             list_paths[1].reverse()
         return list_paths[0] + list_paths[1][1:]
 
+    def _tri_terminate(frontiers, solution):
+        min_0, min_1, min_2 = [frontiers[_].queue[0][0] for _ in range(3)]
+        b_0 = ((min_0 + min_1) >= solution[0][1][0] + 0 * heuristic(graph, goals[1], goals[0]))
+        b_1 = ((min_0 + min_2) >= solution[0][2][0] + 0 * heuristic(graph, goals[2], goals[0]))
+        b_2 = ((min_1 + min_2) >= solution[1][2][0] + 0 * heuristic(graph, goals[2], goals[1]))
+        return b_0 or b_1 or b_2
+
     def _bi_terminate(frontier_1, frontier_2, solution, connected, unconnected):
         min_F = frontier_1.queue[0][0]
         min_B = frontier_2.queue[0][0]
+        bool_pool = []
         for j in connected:
-        return bool_pool[0] and bool_pool[1]
+            bool_pool.append((min_F + min_B) >= 1 * solution[j][unconnected][0] + 0.18 * (heuristic(graph, goals[j], goals[unconnected])))
+        return bool_pool[0] or bool_pool[1]
 
     def _convert_frontiers(connected, unconnected, frontiers):
         frontier_F = PriorityQueue()
@@ -752,20 +763,20 @@ def tridirectional_upgraded(graph, goals, heuristic=euclidean_dist_heuristic, la
         explored_1, explored_2 = dict(), dict()
         explored_1 = explored[connected[0]].copy()
         explored[connected[0]].clear()
-        for key, value in explored[connected[1]]:
+        for key, value in explored[connected[1]].items():
             if key not in explored_1:
                 explored_1[key] = value
             elif value[0] < explored_1[key][0]:
                 explored_1[key] = value
         explored[connected[1]].clear()
-        explored_2 = explored[unconnected]
+        explored_2 = explored[unconnected].copy()
         explored[unconnected].clear()
         return explored_1, explored_2
 
     # if three goals are identical, return []
     result = [math.inf, []]
-    if goals[1] == goals[2] and goals[1] == goals[3]:
-        return
+    if goals[0] == goals[1] and goals[1] == goals[2]:
+        return result[1]
 
     # define and initiate frontiers, explored, and result for each goal
     if len(goals) == 3:
@@ -786,26 +797,32 @@ def tridirectional_upgraded(graph, goals, heuristic=euclidean_dist_heuristic, la
                 h.append(0.5 * (heuristic(graph, goals[i], goals[j])))
             frontiers[i].append((min(h), [goals[i]], 0))
             frontiers[i].append((math.inf, [], math.inf))
-        tri_terminate = False
 
     # terminate when stopping condition met - two edges have been found
         # expand three goals by minimum of three frontiers
-        while not tri_terminate:
-            # import pdb; pdb.set_trace()
+        while not _tri_terminate(frontiers, results):
             idx = min(frontiers.items(), key = lambda k:k[1].queue[0][0])[0]
-            results, tri_terminate, connected = _tri_proceed(idx, frontiers, explored, results)
-            # import pdb; pdb.set_trace()
+            results = _tri_proceed(idx, frontiers, explored, results)
 
-        unconnected = [element for element in [0, 1, 2] if element not in connected]
+        # import pdb; pdb.set_trace()
+        min_connected = []
+        for i in [0, 1, 2]:
+            for j in results[i]:
+                if min_connected == []:
+                    min_connected = [results[i][j][0], [i, j]]
+                elif results[i][j][0] < min_connected[0]:
+                    min_connected = [results[i][j][0], [i, j]]
+        connected = min_connected[1]
+        unconnected = [element for element in [0, 1, 2] if element not in connected][0]
         frontier_F, frontier_B = _convert_frontiers(connected, unconnected, frontiers)
         explored_F, explored_B = _convert_explored(connected, unconnected, explored)
+        # import pdb; pdb.set_trace()
 
-        while not _bi_terminate(frontiers, results, unconnected):
-            # import pdb; pdb.set_trace()
+        while not _bi_terminate(frontier_F, frontier_B, results, connected, unconnected):
             if frontier_F.queue[0][0] < frontier_B.queue[0][0]:
-                results = _bi_proceed(unconnected, frontier_F, frontier_B, explored_F, explored_B, solution)
+                results = _bi_proceed(unconnected, frontier_F, frontier_B, explored_F, explored_B, results)
             else:
-                results = _bi_proceed(connected, frontier_F, frontier_B, explored_F, explored_B, solution)
+                results = _bi_proceed(connected, frontier_B, frontier_F, explored_B, explored_F, results)
             # import pdb; pdb.set_trace()
 
         tri_path = _calc_path(results)

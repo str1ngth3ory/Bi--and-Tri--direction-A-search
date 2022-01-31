@@ -323,7 +323,7 @@ class SearchUnitTests(unittest.TestCase):
     #         tridirectional_upgraded, euclidean_dist_heuristic
     #     """
     #
-    #     self.same_node_tri_test(self.romania, tridirectional_search)
+    #     # self.same_node_tri_test(self.romania, tridirectional_search)
     #     self.same_node_tri_test(self.romania, tridirectional_upgraded,
     #                             heuristic=null_heuristic)
     #     self.same_node_tri_test(self.romania, tridirectional_upgraded,
@@ -448,16 +448,16 @@ class SearchUnitTests(unittest.TestCase):
     #     To loop test forever, set test_count to -1
     #     """
     #
-    #     self.run_atlanta_tri(tridirectional_upgraded, test_count=10,
+    #     self.run_atlanta_tri(tridirectional_upgraded, test_count=1,
     #                          heuristic=null_heuristic)
 
-    def test_tri_upgraded_euclidean_romania(self):
-        """
-        Test upgraded tri search with Romania data and the Euclidean heuristic.
-        """
-
-        self.run_romania_tri(tridirectional_upgraded,
-                             heuristic=euclidean_dist_heuristic)
+    # def test_tri_upgraded_euclidean_romania(self):
+    #     """
+    #     Test upgraded tri search with Romania data and the Euclidean heuristic.
+    #     """
+    #
+    #     self.run_romania_tri(tridirectional_upgraded,
+    #                          heuristic=euclidean_dist_heuristic)
 
     # def test_tri_upgraded_euclidean_atlanta(self):
     #     """
@@ -469,15 +469,15 @@ class SearchUnitTests(unittest.TestCase):
     #     self.run_atlanta_tri(tridirectional_upgraded, test_count=10,
     #                          heuristic=euclidean_dist_heuristic)
     #
-    # def test_tri_upgraded_haversine_atlanta(self):
-    #     """
-    #     Test upgraded tri search with Atlanta data and the Haversine heuristic.
-    #
-    #     To loop test forever, set test_count to -1
-    #     """
-    #
-    #     self.run_atlanta_tri(tridirectional_upgraded, test_count=10,
-    #                          heuristic=haversine_dist_heuristic)
+    def test_tri_upgraded_haversine_atlanta(self):
+        """
+        Test upgraded tri search with Atlanta data and the Haversine heuristic.
+
+        To loop test forever, set test_count to -1
+        """
+
+        self.run_atlanta_tri(tridirectional_upgraded, test_count=10,
+                             heuristic=haversine_dist_heuristic)
 
 if __name__ == '__main__':
     unittest.main()

@@ -250,7 +250,7 @@ class TestBidirectionalSearch(unittest.TestCase):
     #     self.assertLessEqual(explored_nodes, 1)    # Compare explored nodes to reference implementation
 
     def test_tri(self):
-        goals = ['a', 'd', 'u']
+        goals = ['g', 'p', 'u']
         node_positions = {n: self.romania.nodes[n]['pos'] for n in
                           self.romania.nodes.keys()}
         self.romania.reset_search()
